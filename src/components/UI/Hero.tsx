@@ -22,10 +22,10 @@ const Hero = ({
   imageSrc,
 }: HeroProps) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-secondary to-background py-16 md:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-secondary/10 to-background py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="max-w-xl animate-fade-in">
+          <div className="max-w-xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               {title}
             </h1>
@@ -52,7 +52,7 @@ const Hero = ({
               )}
             </div>
           </div>
-          <div className="relative animate-scale-in">
+          <div className="relative">
             {imageSrc ? (
               <img
                 src={imageSrc}

@@ -25,7 +25,7 @@ const RecommendationCard = ({
 }: RecommendationCardProps) => {
   return (
     <div 
-      className="hover-card bg-card rounded-lg overflow-hidden shadow-sm border border-border animate-fade-in"
+      className="bg-card rounded-lg overflow-hidden shadow-sm border border-border"
       style={{
         animationDelay: `${delay * 0.1}s`,
       }}

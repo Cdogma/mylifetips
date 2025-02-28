@@ -23,7 +23,7 @@ const CategoryCard = ({
   return (
     <Link
       to={link}
-      className="block hover-card bg-card rounded-lg overflow-hidden"
+      className="block bg-card hover:bg-card/80 transition-colors rounded-lg overflow-hidden shadow-sm border border-border"
       style={{
         animationDelay: `${delay * 0.1}s`,
       }}
