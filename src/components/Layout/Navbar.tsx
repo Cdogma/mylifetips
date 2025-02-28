@@ -1,14 +1,36 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -19,30 +41,42 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      scrolled ? "bg-background/90 backdrop-blur-lg shadow-sm" : "bg-background/80 backdrop-blur-md"
+    } border-b border-border`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-primary">MyLifeTips</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">MyLifeTips</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href || 
+                (link.href !== "/" && location.pathname.startsWith(link.href));
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`relative py-5 text-foreground hover:text-primary transition-colors ${
+                    isActive ? "text-primary font-medium" : ""
+                  }`}
+                >
+                  {link.name}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full"></span>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Mobile Navigation Toggle */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-foreground p-2 hover:bg-muted rounded-full transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -52,19 +86,28 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-border">
+        <div className="md:hidden bg-background border-t border-border animate-fade-in">
           <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+            <nav className="flex flex-col space-y-1">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.href || 
+                  (link.href !== "/" && location.pathname.startsWith(link.href));
+                
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`text-foreground hover:text-primary transition-colors py-3 px-4 rounded-md ${
+                      isActive 
+                        ? "bg-primary/10 text-primary font-medium" 
+                        : "hover:bg-muted/50"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         </div>
