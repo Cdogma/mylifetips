@@ -39,6 +39,8 @@ const Navbar = () => {
     { name: "Business", href: "/business" },
     { name: "Technik", href: "/technik" },
     { name: "Lifestyle", href: "/lifestyle" },
+    { name: "Blog", href: "/blog" },
+    { name: "Kontakt", href: "/kontakt" },
   ];
 
   return (
