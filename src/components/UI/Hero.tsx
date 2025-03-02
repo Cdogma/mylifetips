@@ -94,8 +94,8 @@ const Hero = ({
             
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 dark:border-white/10 transition-all duration-500 hover:shadow-primary/10 hover:scale-[1.01]">
               <img
-                src="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
-                alt="Arbeitsplatz mit Laptop, Kaffee und Notizbuch in hellem Ambiente"
+                src={imageSrc || "/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"}
+                alt="Finanzen und Investitionen Darstellung"
                 className="w-full object-cover rounded-2xl"
                 style={{ minHeight: '400px', maxHeight: '450px' }}
               />

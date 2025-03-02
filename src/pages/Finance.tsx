@@ -76,6 +76,7 @@ const Finance = () => {
         subtitle="Entdecke meine persönlichen Erfahrungen und Empfehlungen zu Bankkonten, Kreditkarten, Brokern, ETFs und Versicherungen für deine finanzielle Freiheit."
         ctaText="Top-Empfehlungen"
         ctaLink="#empfehlungen"
+        imageSrc="/lovable-uploads/6d8ac2cf-9a66-448d-80c5-dcccf33f9917.png"
       />
 
       <section className="section-padding">
