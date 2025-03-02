@@ -12,7 +12,7 @@ const Index = () => {
       title: "Finanzen & Investitionen",
       description: "Bankkonten, Kreditkarten, Broker, ETFs und mehr für deine finanzielle Freiheit.",
       link: "/finanzen",
-      imageSrc: "/lovable-uploads/7d9fa4fc-ef15-4802-b54a-a2e1a54b4366.png", // Aktualisiert auf das neue Bild mit Pflanze und Münzen
+      imageSrc: "/lovable-uploads/cd444879-28be-4115-9d2b-c9c36da952fa.png", // Aktualisiert auf das neue Bild mit Pflanze und Münzen in sonnigem Licht
     },
     {
       title: "Business & Unternehmertum",
