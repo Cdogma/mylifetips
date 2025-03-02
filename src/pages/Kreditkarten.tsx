@@ -2,70 +2,61 @@
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import SectionHeading from "../components/UI/SectionHeading";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, CreditCard, Gem, Plane, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 const Kreditkarten = () => {
   const creditCards = [
     {
-      title: "American Express Platinum",
-      description: "Die ultimative Premium-Kreditkarte mit exklusiven Vorteilen",
-      annualFee: "660€",
-      category: "Premium",
-      benefits: [
-        "Umfassender Reiseschutz inkl. Reiserücktrittsversicherung",
-        "Zugang zu 1.400+ Airport Lounges weltweit",
-        "Membership Rewards Programm mit wertvollen Punkten",
-        "Concierge-Service rund um die Uhr",
-        "Hotel- und Mietwagenstatusvorteile"
+      title: "Hanseatic Bank GenialCard",
+      description: "Eine kostenlose Kreditkarte mit attraktivem Cashback-Programm und flexiblen Zahlungsoptionen",
+      features: [
+        "Dauerhaft keine Jahresgebühr",
+        "Bis zu 3% Cashback in ausgewählten Kategorien",
+        "Flexible Teilzahlungsfunktion mit fairen Zinsen",
+        "Kostenloses Abheben an Automaten weltweit",
+        "Apple Pay & Google Pay kompatibel"
       ],
-      icon: <Gem className="h-8 w-8" />,
       isAffiliate: true,
-      rating: 4.8,
-      link: "/finanzen/kreditkarten/amex-platinum"
+      rating: 4.7,
+      link: "/finanzen/kreditkarten/genialcard"
+    },
+    {
+      title: "American Express Payback",
+      description: "Sammle PAYBACK Punkte bei jedem Einkauf und profitiere von exklusiven Amex-Angeboten",
+      features: [
+        "Sammle bis zu 3x mehr PAYBACK Punkte",
+        "Umfangreiche Versicherungsleistungen inklusive",
+        "Exklusive American Express Angebote",
+        "Weltweit Bargeld abheben",
+        "Kontaktloses Bezahlen und Wallet-Integration"
+      ],
+      isAffiliate: true,
+      rating: 4.5,
+      link: "/finanzen/kreditkarten/amex-payback"
     },
     {
       title: "DKB Visa Debitkarte",
-      description: "Die kostenlose Karte für preisbewusste Weltenbummler",
-      annualFee: "0€",
-      category: "Standard",
-      benefits: [
-        "Gebührenfreies Abheben weltweit",
-        "Keine Fremdwährungsgebühren",
-        "Einfache Integration mit Apple Pay & Google Pay",
-        "Echtzeit-Überweisungen",
-        "Kostenlose Kontoführung"
+      description: "Die solide Debitkarte für Preisbewusste mit weltweiten Vorteilen",
+      features: [
+        "Kostenlose Kontoführung bei aktivem Kontomodell",
+        "Weltweit kostenlos Geld abheben",
+        "Echtzeit-Überweisungen direkt vom Konto",
+        "Volle Kontrolle durch Echtzeit-Abbuchungen",
+        "Umfangreiche Sicherheitsfeatures"
       ],
-      icon: <CreditCard className="h-8 w-8" />,
       isAffiliate: false,
-      rating: 4.5,
-      link: "/finanzen/kreditkarten/dkb-visa"
-    },
-    {
-      title: "Lufthansa Miles & More Credit Card",
-      description: "Die ideale Kreditkarte für Vielflieger und Meilensammler",
-      annualFee: "110€",
-      category: "Travel",
-      benefits: [
-        "Automatisches Meilensammeln bei jedem Einkauf",
-        "2.000 Willkommensmeilen",
-        "Verlängerte Gültigkeit der Meilen",
-        "Zusätzliche Versicherungsleistungen",
-        "Status-Benefits bei Partnern"
-      ],
-      icon: <Plane className="h-8 w-8" />,
-      isAffiliate: true,
       rating: 4.3,
-      link: "/finanzen/kreditkarten/miles-and-more"
+      link: "/finanzen/kreditkarten/dkb-visa"
     }
   ];
 
   return (
     <Layout>
       <Hero
-        title="Kreditkarten für jeden Bedarf"
-        subtitle="Von kostenlosen Basis-Kreditkarten bis zu Premium-Karten mit exklusiven Vorteilen - finde die perfekte Kreditkarte für deine Bedürfnisse."
+        title="Die besten Kreditkarten 2024"
+        subtitle="Meine persönlichen Erfahrungen und Empfehlungen für optimale Kreditkarten - mit Cashback, ohne Jahresgebühr und mit zahlreichen Zusatzleistungen."
         ctaText="Zu den Empfehlungen"
         ctaLink="#empfehlungen"
       />
@@ -73,27 +64,24 @@ const Kreditkarten = () => {
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="Die richtige Kreditkarte finden"
-            description="Eine Kreditkarte sollte zu deinem Lebensstil und deinen finanziellen Bedürfnissen passen. Hier erfährst du, worauf es ankommt."
+            title="Warum die richtige Kreditkarte wichtig ist"
+            description="Eine gute Kreditkarte sollte zu deinem Ausgabeverhalten passen und dir im Idealfall zusätzliche Vorteile wie Cashback, Versicherungen oder Reisevorteile bieten."
           />
 
           <div className="mt-12 prose max-w-none">
             <p>
-              Die Welt der Kreditkarten ist vielfältig und oft unübersichtlich. Von kostenlosen Basiskarten bis hin zu teuren Premium-Karten mit umfangreichen Zusatzleistungen gibt es für jeden Bedarf das passende Produkt. Doch welche Kreditkarte ist für dich die richtige?
+              Kreditkarten haben sich in den letzten Jahren stark weiterentwickelt. Statt teurer Jahresgebühren bieten viele Anbieter heute kostenlose Karten mit attraktiven Zusatzleistungen an.
             </p>
             <p>
-              In meinen Tests bewerte ich Kreditkarten nach diesen Kriterien:
+              Bei der Auswahl der richtigen Kreditkarte solltest du besonders auf folgende Faktoren achten:
             </p>
             <ul>
-              <li><strong>Kosten:</strong> Jahresgebühr, Auslandseinsatzgebühren, Fremdwährungsgebühren</li>
-              <li><strong>Zusatzleistungen:</strong> Versicherungen, Bonusprogramme, Rabatte, Status-Vorteile</li>
-              <li><strong>Reisevorteile:</strong> Lounge-Zugang, Reiseversicherungen, Mietwagen-Benefits</li>
-              <li><strong>Alltägliche Nutzbarkeit:</strong> Akzeptanz, Gebühren, App-Integration</li>
-              <li><strong>Kundenservice:</strong> Erreichbarkeit, Problemlösung, Kommunikationswege</li>
+              <li><strong>Kosten:</strong> Jahresgebühr, Fremdwährungsgebühren, Abhebungsgebühren</li>
+              <li><strong>Cashback & Bonusprogramme:</strong> Rückvergütungen, Punktesysteme, Rabatte</li>
+              <li><strong>Versicherungsleistungen:</strong> Reiseversicherungen, Einkaufsschutz, Mietwagenschutz</li>
+              <li><strong>Zahlungsflexibilität:</strong> Teilzahlungsoption, Verfügungsrahmen, Zahlungsziele</li>
+              <li><strong>Mobile Payment:</strong> Kompatibilität mit Apple Pay, Google Pay, Samsung Pay</li>
             </ul>
-            <p>
-              Besonders wertvoll können Kreditkarten für Vielreisende sein, da sie oft umfassende Reiseversicherungen und Zusatzleistungen bieten, die die Jahresgebühr mehr als kompensieren können. Für den Alltag in Deutschland reicht hingegen oft eine kostenlose Debitkarte völlig aus.
-            </p>
           </div>
         </div>
       </section>
@@ -110,47 +98,36 @@ const Kreditkarten = () => {
             {creditCards.map((card, index) => (
               <Card key={card.title} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      {card.icon}
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle>{card.title}{card.isAffiliate && "*"}</CardTitle>
+                      <CardDescription className="mt-2">{card.description}</CardDescription>
                     </div>
-                    <span className="inline-block bg-primary/80 text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
-                      {card.category}{card.isAffiliate && "*"}
-                    </span>
+                    <div className="flex items-center bg-primary/10 px-2.5 py-1 rounded-full">
+                      <span className="text-primary font-semibold">{card.rating.toFixed(1)}</span>
+                      <span className="text-primary ml-1">/5</span>
+                    </div>
                   </div>
-                  <CardTitle>{card.title}{card.isAffiliate && "*"}</CardTitle>
-                  <CardDescription className="mt-2">{card.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <div className="flex justify-between items-center mb-4 p-3 bg-muted rounded-lg">
-                    <span className="text-sm font-medium">Jahresgebühr</span>
-                    <span className="font-bold">{card.annualFee}</span>
-                  </div>
-                  <p className="text-sm font-medium mb-2">Top Vorteile:</p>
                   <ul className="space-y-2">
-                    {card.benefits.map((benefit, i) => (
+                    {card.features.map((feature, i) => (
                       <li key={i} className="flex items-start">
-                        <Check className="h-5 w-5 text-primary shrink-0 mr-2 mt-0.5" />
-                        <span className="text-sm">{benefit}</span>
+                        <CheckCircle className="h-5 w-5 text-primary shrink-0 mr-2 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-                <CardFooter className="border-t pt-6">
-                  <div className="flex justify-between items-center w-full">
-                    <div className="flex items-center">
-                      <Shield className="h-4 w-4 text-primary mr-1.5" />
-                      <span className="text-sm text-muted-foreground">Bewertung: {card.rating.toFixed(1)}/5.0</span>
-                    </div>
+                  <div className="mt-6">
                     <Link
                       to={card.link}
                       className="group flex items-center text-primary hover:text-primary/80 font-medium"
                     >
-                      <span>Details</span>
-                      <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <span>Zum Testbericht</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </div>
-                </CardFooter>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -166,51 +143,51 @@ const Kreditkarten = () => {
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="Kreditkarten Wissen"
-            description="Wichtige Informationen, die dir bei der Auswahl der richtigen Kreditkarte helfen"
+            title="Häufig gestellte Fragen"
+            description="Antworten auf die wichtigsten Fragen rund um Kreditkarten"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             <Card>
               <CardHeader>
-                <CardTitle>Kreditkarte vs. Debitkarte - Was ist der Unterschied?</CardTitle>
+                <CardTitle>Unterschied zwischen Debit- und Kreditkarte?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Bei einer echten Kreditkarte erhältst du einen Kredit bis zur Abbuchung am Monatsende. Bei einer Debitkarte wird dein Konto hingegen sofort belastet. Debitkarten werden heute oft als "Kreditkarten" vermarktet, bieten aber nicht den gleichen Zahlungsaufschub. Dafür sind sie meist kostenlos, während echte Kreditkarten oft eine Jahresgebühr haben.
+                  Bei einer Debitkarte wird dein Konto sofort oder sehr zeitnah belastet, während eine Kreditkarte dir einen Zahlungsaufschub bis zur monatlichen Abrechnung gewährt. Echte Kreditkarten bieten zudem meistens Teilzahlungsoptionen, bessere Versicherungsleistungen und oft attraktivere Bonusprogramme.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Wann lohnt sich eine Premium-Kreditkarte?</CardTitle>
+                <CardTitle>Beeinflussen Kreditkarten meine Schufa?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Premium-Kreditkarten mit hohen Jahresgebühren lohnen sich vor allem für Vielreisende und Menschen, die regelmäßig die enthaltenen Vorteile nutzen. Wenn du oft fliegst, Hotels buchst und die inkludierten Versicherungen und Lounge-Zugänge nutzt, kann eine Premium-Karte trotz hoher Gebühr ein gutes Angebot sein. Rechne genau nach, ob sich die Vorteile für dich auszahlen.
+                  Ja, Kreditkarten werden in der Schufa vermerkt. Ein hoher ungenutzter Kreditrahmen kann sich sogar negativ auf deine Bonität auswirken. Wenn du viele Kreditkartenanträge in kurzer Zeit stellst, kann das deinen Score ebenfalls negativ beeinflussen. Wichtig ist, dass du deine Kreditkartenrechnungen immer pünktlich bezahlst.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Die wichtigsten Versicherungsleistungen</CardTitle>
+                <CardTitle>Wie schütze ich mich vor Kreditkartenbetrug?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Viele Kreditkarten bieten Versicherungsleistungen, die besonders auf Reisen wertvoll sein können. Zu den wichtigsten gehören: Auslandsreisekrankenversicherung, Reiserücktrittsversicherung, Mietwagen-Vollkaskoversicherung und Reisegepäckversicherung. Achte jedoch immer auf die genauen Bedingungen - oft gilt der Versicherungsschutz nur, wenn du die Reise mit der Karte bezahlt hast.
+                  Aktiviere Benachrichtigungen für jede Transaktion, nutze starke unterschiedliche Passwörter für Online-Banking, überprüfe regelmäßig deine Abrechnungen, gib deine Kartendaten nur auf sicheren Websites ein (https), aktiviere 2-Faktor-Authentifizierung und schütze deine PIN beim Eingeben. Die meisten modernen Kreditkarten bieten zudem einen Käuferschutz.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Bonusprogramme effektiv nutzen</CardTitle>
+                <CardTitle>Lohnt sich eine Kreditkarte mit Jahresgebühr?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Viele Kreditkarten bieten Punkte- oder Meilen-Programme, bei denen du für jeden Einkauf Bonuspunkte sammelst. Diese können für Flüge, Hotels oder andere Prämien eingelöst werden. Um das Maximum herauszuholen, konzentriere deine Ausgaben auf eine Karte statt auf mehrere, achte auf Bonuskategorien mit höheren Punkteraten und nutze Willkommensangebote.
+                  Das hängt von deinem Nutzungsverhalten ab. Premium-Kreditkarten mit Jahresgebühr bieten oft umfangreiche Versicherungspakete, Lounge-Zugang, bessere Cashback-Raten oder Reisegutschriften. Wenn du diese Vorteile regelmäßig nutzt und ihr Wert die Jahresgebühr übersteigt, kann sich eine kostenpflichtige Karte durchaus lohnen.
                 </p>
               </CardContent>
             </Card>

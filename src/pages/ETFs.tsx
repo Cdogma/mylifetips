@@ -2,134 +2,96 @@
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import SectionHeading from "../components/UI/SectionHeading";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ArrowRight, BarChart3, Globe, Leaf, Banknote, TrendingUp, Info } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 const ETFs = () => {
-  const recommendedETFs = [
+  const recommendedEtfs = [
     {
       title: "Vanguard FTSE All-World UCITS ETF",
-      ticker: "VWCE",
-      description: "Mein persönlicher Favorit für eine globale, breit diversifizierte Geldanlage.",
-      details: {
-        ter: "0,22%",
-        type: "Thesaurierend",
-        index: "FTSE All-World",
-        stocks: "~3.800",
-        focus: "Global"
-      },
-      highlights: [
-        "Sehr breite Streuung über fast 4.000 Unternehmen",
-        "Entwickelte Märkte (88%) und Schwellenländer (12%)",
-        "Geringe Kosten und hohe Liquidität",
-        "Von Vanguard, einem der größten ETF-Anbieter weltweit"
+      description: "Der perfekte ETF für Einsteiger mit weltweiter Streuung und günstiger TER",
+      features: [
+        "Über 3.500 Unternehmen aus Industrie- und Schwellenländern",
+        "Sehr niedrige Gesamtkostenquote (TER) von 0,22%",
+        "Physisch replizierend mit vollständiger Replikation",
+        "Thesaurierend oder ausschüttend erhältlich",
+        "Hohe Liquidität und geringe Tracking Difference"
       ],
-      icon: <Globe />,
-      category: "Kern-Investment",
+      isAffiliate: true,
+      rating: 4.9,
       link: "/finanzen/etfs/vanguard-ftse-all-world"
     },
     {
       title: "iShares Core MSCI World UCITS ETF",
-      ticker: "EUNL",
-      description: "Der ETF-Klassiker für Anleger, die sich auf Industrieländer konzentrieren möchten.",
-      details: {
-        ter: "0,20%",
-        type: "Thesaurierend",
-        index: "MSCI World",
-        stocks: "~1.500",
-        focus: "Industrieländer"
-      },
-      highlights: [
-        "Fokus auf entwickelte Märkte wie USA, Europa, Japan",
-        "Langjährige Erfolgsgeschichte mit stabiler Performance",
-        "Sehr liquide mit hohem Handelsvolumen",
-        "Ideal als Basis für eine Erweiterung mit Schwellenländer-ETFs"
+      description: "Solider ETF für Industrieländer mit hoher Marktkapitalisierung und niedrigen Kosten",
+      features: [
+        "Über 1.500 Unternehmen aus Industrieländern",
+        "Sehr günstige Gesamtkostenquote (TER) von 0,20%",
+        "Physisch replizierend mit optimierter Stichprobenbildung",
+        "Thesaurierend, ideal für langfristigen Vermögensaufbau",
+        "Sehr hohes Fondsvolumen mit über 40 Mrd. EUR"
       ],
-      icon: <BarChart3 />,
-      category: "Basis-Investment",
-      link: "/finanzen/etfs/ishares-msci-world"
+      isAffiliate: true,
+      rating: 4.7,
+      link: "/finanzen/etfs/ishares-core-msci-world"
     },
     {
-      title: "UBS MSCI World Socially Responsible UCITS ETF",
-      ticker: "UB39",
-      description: "Für nachhaltigkeitsbewusste Anleger, die auf ESG-Kriterien Wert legen.",
-      details: {
-        ter: "0,25%",
-        type: "Thesaurierend",
-        index: "MSCI World SRI",
-        stocks: "~400",
-        focus: "Nachhaltige Unternehmen"
-      },
-      highlights: [
-        "Strenge ESG-Kriterien (Umwelt, Soziales, Unternehmensführung)",
-        "Ausschluss kontroverser Branchen wie Waffen, Tabak, Glücksspiel",
-        "Fokus auf Unternehmen mit überdurchschnittlichen ESG-Ratings",
-        "Geringere Diversifikation, aber ethischere Investments"
+      title: "Xtrackers MSCI USA UCITS ETF",
+      description: "Fokussierter ETF auf den US-Markt für höhere Renditechancen",
+      features: [
+        "Über 600 US-amerikanische Unternehmen",
+        "Attraktive Gesamtkostenquote (TER) von 0,12%",
+        "Physisch replizierend für optimale Indexabbildung",
+        "Überdurchschnittliche historische Renditen",
+        "Ideal für Anleger mit Schwerpunkt auf US-Markt"
       ],
-      icon: <Leaf />,
-      category: "Nachhaltig",
-      link: "/finanzen/etfs/ubs-msci-world-sri"
-    }
-  ];
-
-  const etfTypes = [
-    {
-      title: "Aktien-ETFs",
-      description: "Die beliebteste ETF-Kategorie, die dir Anteile an hunderten oder tausenden Unternehmen weltweit verschafft.",
-      examples: ["MSCI World", "FTSE All-World", "S&P 500"],
-      icon: <TrendingUp className="h-8 w-8" />,
-      link: "/finanzen/etfs/aktien-etfs"
-    },
-    {
-      title: "Anleihen-ETFs",
-      description: "Investieren in Staatsanleihen oder Unternehmensanleihen für regelmäßige Zinserträge und mehr Stabilität.",
-      examples: ["Staatsanleihen", "Unternehmensanleihen", "Hochzinsanleihen"],
-      icon: <Banknote className="h-8 w-8" />,
-      link: "/finanzen/etfs/anleihen-etfs"
-    },
-    {
-      title: "Nachhaltige ETFs",
-      description: "ETFs mit Fokus auf Unternehmen, die bestimmte Umwelt-, Sozial- und Governance-Kriterien erfüllen.",
-      examples: ["MSCI SRI", "ESG Leaders", "Clean Energy"],
-      icon: <Leaf className="h-8 w-8" />,
-      link: "/finanzen/etfs/nachhaltige-etfs"
+      isAffiliate: false,
+      rating: 4.6,
+      link: "/finanzen/etfs/xtrackers-msci-usa"
     }
   ];
 
   return (
     <Layout>
       <Hero
-        title="ETF-Investieren leicht gemacht"
-        subtitle="Erfahre, welche ETFs (Exchange Traded Funds) ich selbst kaufe und warum sie eine exzellente Wahl für langfristigen Vermögensaufbau sind."
-        ctaText="Meine ETF-Empfehlungen"
+        title="Die besten ETFs für langfristigen Vermögensaufbau"
+        subtitle="Meine persönlichen Empfehlungen für kostengünstige ETFs mit breiter Diversifikation - ideal für Einsteiger und langfristig orientierte Anleger."
+        ctaText="Zu den Empfehlungen"
         ctaLink="#empfehlungen"
       />
 
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="Warum ETFs die ideale Geldanlage sind"
-            description="Exchange Traded Funds bieten eine einfache, kostengünstige und effektive Möglichkeit, dein Geld langfristig anzulegen und Vermögen aufzubauen."
+            title="Warum ETFs die beste Wahl für die meisten Anleger sind"
+            description="ETFs (Exchange Traded Funds) bieten eine kostengünstige und einfache Möglichkeit, in breit gestreute Aktienkörbe zu investieren."
           />
 
           <div className="mt-12 prose max-w-none">
             <p>
-              ETFs (Exchange Traded Funds) haben die Welt der Geldanlage revolutioniert. Sie bieten Privatanlegern die Möglichkeit, mit kleinen Beträgen breit diversifiziert in hunderte oder tausende Unternehmen gleichzeitig zu investieren. Anders als aktiv gemanagte Fonds folgen ETFs passiv einem Index und versuchen nicht, den Markt zu schlagen.
+              ETFs haben in den letzten Jahren die Welt der Geldanlage revolutioniert. Sie ermöglichen auch Kleinanlegern mit geringem Budget, von den Renditen des Aktienmarktes zu profitieren und dabei breit diversifiziert zu sein.
             </p>
             <p>
-              Die Vorteile von ETFs auf einen Blick:
+              Die wichtigsten Vorteile von ETFs sind:
             </p>
             <ul>
-              <li><strong>Niedrige Kosten:</strong> ETFs haben deutlich geringere laufende Kosten als aktiv gemanagte Fonds</li>
-              <li><strong>Breite Diversifikation:</strong> Mit einem einzigen ETF investierst du in hunderte oder tausende Unternehmen</li>
-              <li><strong>Transparenz:</strong> Die Zusammensetzung eines ETFs ist jederzeit einsehbar</li>
-              <li><strong>Flexibilität:</strong> ETFs werden wie Aktien an der Börse gehandelt und können jederzeit gekauft oder verkauft werden</li>
-              <li><strong>Einfachheit:</strong> Auch als Einsteiger kannst du mit ETFs langfristig und erfolgreich investieren</li>
+              <li><strong>Niedrige Kosten:</strong> ETFs haben deutlich geringere Gebühren als aktiv gemanagte Fonds</li>
+              <li><strong>Breite Diversifikation:</strong> Mit einem einzigen ETF kannst du in Hunderte oder Tausende von Unternehmen investieren</li>
+              <li><strong>Transparenz:</strong> Die Zusammensetzung von ETFs ist jederzeit einsehbar</li>
+              <li><strong>Flexibilität:</strong> ETFs können jederzeit zum aktuellen Kurs gehandelt werden</li>
+              <li><strong>Einfachheit:</strong> Keine komplexen Anlageentscheidungen notwendig</li>
             </ul>
             <p>
-              Meine persönliche ETF-Strategie ist einfach und fokussiert sich auf global diversifizierte Welt-ETFs. Statt zu versuchen, den Markt zu timen oder einzelne Gewinner-Aktien zu picken, setze ich auf die langfristige Entwicklung der Weltwirtschaft. Diese Strategie ist wissenschaftlich fundiert und hat sich über Jahrzehnte bewährt.
+              Bei der Auswahl des richtigen ETFs solltest du besonders auf folgende Faktoren achten:
             </p>
+            <ul>
+              <li><strong>Kosten (TER):</strong> Je niedriger, desto besser für deine langfristige Rendite</li>
+              <li><strong>Indexauswahl:</strong> Weltweite Streuung oder gezielter Fokus je nach Anlagestrategie</li>
+              <li><strong>Replikationsmethode:</strong> Physisch ist meist vorzuziehen gegenüber synthetisch</li>
+              <li><strong>Fondsvolumen:</strong> Größere ETFs bieten mehr Sicherheit und Liquidität</li>
+              <li><strong>Ausschüttungsart:</strong> Thesaurierend für Vermögensaufbau, ausschüttend für Einkommen</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -138,61 +100,52 @@ const ETFs = () => {
         <div className="container">
           <SectionHeading
             subtitle="Meine Top-Empfehlungen"
-            title="Diese ETFs kaufe ich selbst"
-            description="Basierend auf meiner persönlichen Anlagestrategie und jahrelanger Recherche empfehle ich diese ETFs für langfristigen Vermögensaufbau."
+            title="Die besten ETFs im Vergleich"
+            description="Basierend auf meinen persönlichen Erfahrungen und ausführlichen Analysen empfehle ich diese ETFs."
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {recommendedETFs.map((etf, index) => (
-              <Card key={etf.title} className="h-full hover:shadow-lg transition-shadow duration-300 animate-fade-in flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="pb-2">
-                  <div className="flex justify-between items-start mb-2">
-                    <div className="p-2 bg-primary/10 rounded-md">
-                      {etf.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recommendedEtfs.map((etf, index) => (
+              <Card key={etf.title} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle>{etf.title}{etf.isAffiliate && "*"}</CardTitle>
+                      <CardDescription className="mt-2">{etf.description}</CardDescription>
                     </div>
-                    <span className="inline-block bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full">
-                      {etf.category}
-                    </span>
+                    <div className="flex items-center bg-primary/10 px-2.5 py-1 rounded-full">
+                      <span className="text-primary font-semibold">{etf.rating.toFixed(1)}</span>
+                      <span className="text-primary ml-1">/5</span>
+                    </div>
                   </div>
-                  <div className="space-y-1">
-                    <CardTitle className="flex items-center">{etf.title}</CardTitle>
-                    <CardDescription className="text-xs font-medium text-muted-foreground">
-                      ISIN/Ticker: {etf.ticker}
-                    </CardDescription>
-                  </div>
-                  <CardDescription className="text-sm mt-2">{etf.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <div className="grid grid-cols-2 gap-2 mb-4">
-                    {Object.entries(etf.details).map(([key, value]) => (
-                      <div key={key} className="bg-muted rounded-md p-2 flex flex-col">
-                        <span className="text-xs text-muted-foreground capitalize">{key}</span>
-                        <span className="text-sm font-medium">{value}</span>
-                      </div>
+                  <ul className="space-y-2">
+                    {etf.features.map((feature, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-primary shrink-0 mr-2 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
                     ))}
-                  </div>
-                  <div className="space-y-2 mt-4">
-                    {etf.highlights.map((highlight, i) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <div className="h-5 w-5 text-primary shrink-0 mt-0.5">
-                          <Info className="h-4 w-4" />
-                        </div>
-                        <span className="text-sm">{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-4 pt-4 border-t">
+                  </ul>
+                  <div className="mt-6">
                     <Link
                       to={etf.link}
                       className="group flex items-center text-primary hover:text-primary/80 font-medium"
                     >
-                      <span>Mehr Details</span>
-                      <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <span>Zum Testbericht</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          <div className="mt-12 bg-card rounded-lg p-6 border border-border/50 shadow-sm">
+            <p className="text-sm text-muted-foreground">
+              <strong>Hinweis:</strong> Mit * gekennzeichnete Links sind Affiliate-Links. Wenn du über diese Links ein Produkt kaufst oder einen Dienst abonnierst, erhalte ich eine kleine Provision. Für dich entstehen dabei keine zusätzlichen Kosten. Diese Provisionen helfen mir, diese Website zu betreiben und weiterhin kostenlose Inhalte zu erstellen.
+            </p>
           </div>
         </div>
       </section>
@@ -200,88 +153,104 @@ const ETFs = () => {
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="ETF-Arten im Überblick"
-            description="Es gibt verschiedene Arten von ETFs für unterschiedliche Anlageziele."
+            title="ETF-Strategien für verschiedene Anlegertypen"
+            description="Je nach deinen persönlichen Zielen und deiner Risikobereitschaft gibt es unterschiedliche ETF-Strategien"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {etfTypes.map((type, index) => (
-              <Card key={type.title} className="hover:shadow-md transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="p-3 bg-primary/10 rounded-lg w-fit mb-4">
-                    {type.icon}
-                  </div>
-                  <CardTitle>{type.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{type.description}</p>
-                  <div className="mb-4">
-                    <p className="text-sm font-medium mb-2">Bekannte Beispiele:</p>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground">
-                      {type.examples.map((example, i) => (
-                        <li key={i}>{example}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Link
-                    to={type.link}
-                    className="group flex items-center text-primary hover:text-primary/80 font-medium"
-                  >
-                    <span>Mehr erfahren</span>
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+            <Card>
+              <CardHeader>
+                <CardTitle>Für Einsteiger: Der All-World ETF</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Ein einzelner global diversifizierter ETF wie der Vanguard FTSE All-World ist die perfekte Lösung für Einsteiger. Du investierst mit einem einzigen Produkt in über 3.500 Unternehmen weltweit und musst dich um nichts weiter kümmern.
+                </p>
+                <p className="text-muted-foreground">
+                  Diese Strategie ist extrem einfach, kostengünstig und hat historisch solide Renditen von etwa 7-8% pro Jahr geliefert.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Für Fortgeschrittene: Core-Satellite</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Bei der Core-Satellite-Strategie bildest du mit einem breit gestreuten Welt-ETF den Kern (Core) deines Portfolios, z.B. mit 70% deines Kapitals. Die restlichen 30% investierst du in Satelliten-ETFs für spezielle Länder, Branchen oder Themen.
+                </p>
+                <p className="text-muted-foreground">
+                  So kannst du deine persönlichen Überzeugungen abbilden, ohne das Gesamtrisiko zu stark zu erhöhen.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Für Risikoaverse: Mit Anleihen-ETFs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Wenn dir das Risiko von 100% Aktien zu hoch ist, kannst du einen Teil deines Portfolios in Anleihen-ETFs investieren. Eine klassische Aufteilung wäre z.B. 60% Aktien-ETFs und 40% Anleihen-ETFs.
+                </p>
+                <p className="text-muted-foreground">
+                  Diese Strategie reduziert die Schwankungen deines Portfolios, allerdings auf Kosten der langfristigen Rendite.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-primary/5">
+      <section className="section-padding bg-muted/30">
         <div className="container">
           <SectionHeading
-            title="ETF-Faustregeln für Einsteiger"
-            description="Einfache Grundsätze, die dir beim erfolgreichen ETF-Investieren helfen."
-            align="center"
+            title="Häufig gestellte Fragen"
+            description="Antworten auf die wichtigsten Fragen rund um ETFs"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            <Card className="bg-card/80 backdrop-blur-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-primary mb-4 text-center">1.</div>
-                <p className="text-center font-medium mb-2">Breit streuen</p>
-                <p className="text-sm text-muted-foreground text-center">
-                  Investiere in ETFs, die hunderte oder tausende Unternehmen aus verschiedenen Ländern und Branchen enthalten.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <Card>
+              <CardHeader>
+                <CardTitle>Wie viel Rendite kann ich mit ETFs erwarten?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Historisch betrachtet haben globale Aktien-ETFs langfristig (15+ Jahre) eine durchschnittliche jährliche Rendite von etwa a7-8% erzielt. Diese Rendite ist jedoch nicht garantiert und kann von Jahr zu Jahr stark schwanken. Es gab Phasen mit deutlich höheren Renditen, aber auch Jahre mit negativen Ergebnissen. ETFs sind daher vor allem für langfristige Anlagezeiträume geeignet.
                 </p>
               </CardContent>
             </Card>
-            
-            <Card className="bg-card/80 backdrop-blur-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-primary mb-4 text-center">2.</div>
-                <p className="text-center font-medium mb-2">Auf Kosten achten</p>
-                <p className="text-sm text-muted-foreground text-center">
-                  Wähle ETFs mit niedrigen laufenden Kosten (TER). Jeder gesparte Basispunkt erhöht deine langfristige Rendite.
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Thesaurierend oder ausschüttend wählen?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Thesaurierende ETFs reinvestieren die Dividenden automatisch, was den Zinseszinseffekt verstärkt und steuerlich effizienter ist. Ausschüttende ETFs zahlen die Dividenden regelmäßig aus, was für Anleger interessant sein kann, die regelmäßige Einnahmen wünschen. Für den langfristigen Vermögensaufbau sind thesaurierende ETFs in der Regel die bessere Wahl, es sei denn, du möchtest den Freibetrag von 1.000€ pro Jahr ausnutzen.
                 </p>
               </CardContent>
             </Card>
-            
-            <Card className="bg-card/80 backdrop-blur-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-primary mb-4 text-center">3.</div>
-                <p className="text-center font-medium mb-2">Langfristig denken</p>
-                <p className="text-sm text-muted-foreground text-center">
-                  ETF-Investments sollten langfristig (10+ Jahre) geplant werden. Kurzfristige Schwankungen sind normal.
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Was ist der ideale Sparplan-Rhythmus?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Aus Kostensicht ist ein monatlicher Sparrhythmus in der Regel optimal, da viele Broker kostenlose monatliche Ausführungen anbieten. Aus Rendite-Sicht haben Studien gezeigt, dass die Unterschiede zwischen monatlichen, vierteljährlichen oder jährlichen Sparplänen langfristig minimal sind. Wichtiger als der Rhythmus ist die Regelmäßigkeit und Disziplin beim Sparen. Wähle daher den Rhythmus, der am besten zu deinem Einkommensfluss und deiner persönlichen Präferenz passt.
                 </p>
               </CardContent>
             </Card>
-            
-            <Card className="bg-card/80 backdrop-blur-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-primary mb-4 text-center">4.</div>
-                <p className="text-center font-medium mb-2">Regelmäßig investieren</p>
-                <p className="text-sm text-muted-foreground text-center">
-                  Nutze Sparpläne, um regelmäßig und automatisiert zu investieren - unabhängig von kurzfristigen Marktentwicklungen.
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Wie hoch sollte meine ETF-Sparrate sein?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Als Faustregel gilt: Versuche mindestens 10-15% deines Nettoeinkommens zu investieren. Starter können mit kleineren Beträgen beginnen und ihre Sparrate im Laufe der Zeit steigern. Wichtig ist, dass deine Sparrate zu deiner finanziellen Situation passt und du sie langfristig durchhalten kannst. Selbst kleine Beträge können dank des Zinseszinseffekts über Jahrzehnte zu beachtlichen Summen anwachsen. Bei den meisten Brokern kannst du bereits ab 25€ monatlich in ETFs investieren.
                 </p>
               </CardContent>
             </Card>
