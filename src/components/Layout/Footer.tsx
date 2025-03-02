@@ -13,6 +13,9 @@ const Footer = () => {
             <p className="text-muted-foreground mb-4">
               Ehrliche Tipps und Empfehlungen für ein besseres Leben.
             </p>
+            <p className="text-xs text-muted-foreground mb-4">
+              * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
+            </p>
           </div>
           
           <div>
