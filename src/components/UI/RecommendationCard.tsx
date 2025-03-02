@@ -44,19 +44,14 @@ const RecommendationCard = ({
         )}
         <div className="absolute top-3 left-3">
           <span className="inline-block bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
-            {category}
+            {category}{isAffiliate && "*"}
           </span>
         </div>
-        {isAffiliate && (
-          <div className="absolute top-3 right-3">
-            <span className="inline-block text-xs font-medium text-foreground/70 bg-background/60 backdrop-blur-sm px-1.5 py-0.5 rounded border border-border/30 shadow-sm">
-              *
-            </span>
-          </div>
-        )}
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-foreground to-foreground/80 group-hover:from-primary group-hover:to-primary/80 bg-clip-text text-transparent transition-colors duration-300">{title}</h3>
+        <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-foreground to-foreground/80 group-hover:from-primary group-hover:to-primary/80 bg-clip-text text-transparent transition-colors duration-300">
+          {title}{isAffiliate && "*"}
+        </h3>
         <div className="flex items-center mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
