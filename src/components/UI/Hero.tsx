@@ -52,12 +52,13 @@ const Hero = ({
               )}
             </div>
           </div>
-          <div className="relative flex justify-center items-start md:h-full">
-            <div className="w-full h-full relative">
+          <div className="relative flex justify-center items-start">
+            <div className="w-full relative flex items-center">
               <img
                 src="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
                 alt="Arbeitsplatz mit Laptop, Kaffee und Notizbuch in hellem Ambiente"
-                className="w-full h-auto object-cover rounded-lg shadow-xl md:h-[calc(100%-2rem)]"
+                className="w-full object-cover rounded-lg shadow-xl"
+                style={{ minHeight: '350px', maxHeight: '400px' }}
               />
               <div className="absolute -bottom-4 -right-4 w-2/3 h-2/3 bg-secondary/50 rounded-lg -z-10"></div>
             </div>
