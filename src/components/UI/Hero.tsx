@@ -59,22 +59,24 @@ const Hero = ({
               {ctaText && ctaLink && (
                 <Link
                   to={ctaLink}
-                  className="inline-flex items-center bg-primary text-primary-foreground px-7 py-3.5 
-                           rounded-xl hover:bg-primary/90 transition-all duration-300 
-                           hover:shadow-lg hover:shadow-primary/20 group"
+                  className="inline-flex items-center bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-7 py-3.5 
+                           rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 
+                           border border-primary/10 relative overflow-hidden group"
                 >
-                  {ctaText}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <span className="relative z-10">{ctaText}</span>
+                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
                 </Link>
               )}
               {secondaryCtaText && secondaryCtaLink && (
                 <Link
                   to={secondaryCtaLink}
                   className="inline-flex items-center backdrop-blur-md bg-white/10 border border-white/20
-                           text-foreground px-7 py-3.5 rounded-xl hover:bg-white/20 
-                           transition-all duration-300 hover:shadow-md"
+                           text-foreground px-7 py-3.5 rounded-xl hover:bg-white/20 relative overflow-hidden
+                           transition-all duration-300 group hover:shadow-md"
                 >
-                  {secondaryCtaText}
+                  <span className="relative z-10">{secondaryCtaText}</span>
+                  <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </Link>
               )}
             </div>
@@ -101,11 +103,6 @@ const Hero = ({
         </div>
       </div>
 
-      {/* Floating decorative elements */}
-      <div className="absolute hidden md:block top-1/4 left-10 w-8 h-8 bg-primary/30 rounded-full animate-pulse"></div>
-      <div className="absolute hidden md:block bottom-1/4 right-10 w-12 h-12 bg-secondary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute hidden md:block top-1/2 right-32 w-6 h-6 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-      
       {/* Glass orbs */}
       <div className="absolute hidden md:block top-1/3 left-1/4 w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"></div>
       <div className="absolute hidden md:block bottom-1/4 right-1/5 w-16 h-16 bg-white/5 backdrop-blur-lg rounded-full border border-white/10 shadow-lg"></div>
