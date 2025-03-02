@@ -34,14 +34,12 @@ const Hero = ({
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-secondary/5 via-background to-primary/5 py-16 md:py-24">
-      {/* Background elements */}
+      {/* Hintergrund-Elemente */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-50"></div>
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-secondary/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Text content */}
+          {/* Text-Inhalt */}
           <div className={`max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full 
                           bg-gradient-to-r from-primary/20 to-secondary/20 
@@ -59,35 +57,35 @@ const Hero = ({
               {ctaText && ctaLink && (
                 <Link
                   to={ctaLink}
-                  className="inline-flex items-center bg-gradient-to-r from-primary via-primary/90 to-primary/80 
-                           text-primary-foreground px-7 py-3.5 rounded-xl shadow-md
-                           hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 
+                  className="inline-flex items-center bg-primary text-primary-foreground 
+                           px-7 py-3.5 rounded-xl shadow-lg 
+                           hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 
                            border border-primary/20 relative overflow-hidden group scale-100 hover:scale-105"
                 >
                   <span className="relative z-10">{ctaText}</span>
-                  <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
                 </Link>
               )}
               {secondaryCtaText && secondaryCtaLink && (
                 <Link
                   to={secondaryCtaLink}
-                  className="inline-flex items-center backdrop-blur-md bg-white/15 border border-white/30
-                           text-foreground px-7 py-3.5 rounded-xl shadow-sm
-                           hover:bg-white/25 relative overflow-hidden
-                           transition-all duration-300 group hover:shadow-md scale-100 hover:scale-105"
+                  className="inline-flex items-center bg-white/20 backdrop-blur-md border border-white/40
+                           text-foreground px-7 py-3.5 rounded-xl shadow-md
+                           hover:bg-white/30 relative overflow-hidden
+                           transition-all duration-300 group hover:shadow-lg scale-100 hover:scale-105"
                 >
                   <span className="relative z-10">{secondaryCtaText}</span>
-                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </Link>
               )}
             </div>
           </div>
           
-          {/* Image content */}
+          {/* Bild-Inhalt */}
           <div className={`relative flex justify-center items-start transform transition-all duration-1000 delay-150 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
             <div className="w-full relative flex items-center">
-              {/* Glass card effect */}
+              {/* Glaseffekt */}
               <div className="absolute -inset-4 bg-white/10 backdrop-blur-xl rounded-2xl -z-10 border border-white/20 shadow-xl"></div>
               
               <img
@@ -96,18 +94,10 @@ const Hero = ({
                 className="w-full object-cover rounded-xl shadow-lg transform transition-all duration-500 hover:scale-[1.02]"
                 style={{ minHeight: '350px', maxHeight: '400px' }}
               />
-              
-              {/* Decorative elements around image */}
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/20 rounded-full blur-xl -z-10"></div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-secondary/30 rounded-full blur-xl -z-10"></div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Glass orbs */}
-      <div className="absolute hidden md:block top-1/3 left-1/4 w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl"></div>
-      <div className="absolute hidden md:block bottom-1/4 right-1/5 w-16 h-16 bg-white/5 backdrop-blur-lg rounded-full border border-white/10 shadow-lg"></div>
     </section>
   );
 };
