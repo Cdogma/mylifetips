@@ -41,19 +41,26 @@ const Hero = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text-Inhalt */}
           <div className={`max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="inline-flex items-center px-4 py-1.5 mb-6 
-                         bg-white/10 backdrop-blur-lg
-                         border-l-4 border-primary
-                         rounded-r-lg shadow-sm">
-              <span className="text-primary font-medium tracking-wide">✨ Willkommen bei MyLifeTips</span>
+            <div className="inline-block px-4 py-2 mb-6 
+                         relative overflow-hidden
+                         rounded-lg shadow-sm">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 backdrop-blur-sm"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary"></div>
+              <span className="relative z-10 text-primary font-medium tracking-wide flex items-center">
+                <span className="mr-2 text-yellow-400">✨</span>
+                Willkommen bei MyLifeTips
+              </span>
             </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 
                          bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
               {title}
             </h1>
+            
             <p className="text-lg md:text-xl text-foreground/80 mb-8">
               {subtitle}
             </p>
+            
             <div className={`flex flex-wrap gap-4 transform transition-all duration-1000 delay-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               {ctaText && ctaLink && (
                 <Link
