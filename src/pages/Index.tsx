@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
@@ -13,7 +12,7 @@ const Index = () => {
       title: "Finanzen & Investitionen",
       description: "Bankkonten, Kreditkarten, Broker, ETFs und mehr für deine finanzielle Freiheit.",
       link: "/finanzen",
-      imageSrc: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop",
+      imageSrc: "/lovable-uploads/e68cda6d-da6f-426f-98a6-69e0a669bae1.png", // Aktualisiert auf das neue Finanz-Bild
     },
     {
       title: "Business & Unternehmertum",
