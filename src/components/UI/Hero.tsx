@@ -59,24 +59,26 @@ const Hero = ({
               {ctaText && ctaLink && (
                 <Link
                   to={ctaLink}
-                  className="inline-flex items-center bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-7 py-3.5 
-                           rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 
-                           border border-primary/10 relative overflow-hidden group"
+                  className="inline-flex items-center bg-gradient-to-r from-primary via-primary/90 to-primary/80 
+                           text-primary-foreground px-7 py-3.5 rounded-xl shadow-md
+                           hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 
+                           border border-primary/20 relative overflow-hidden group scale-100 hover:scale-105"
                 >
                   <span className="relative z-10">{ctaText}</span>
-                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
                 </Link>
               )}
               {secondaryCtaText && secondaryCtaLink && (
                 <Link
                   to={secondaryCtaLink}
-                  className="inline-flex items-center backdrop-blur-md bg-white/10 border border-white/20
-                           text-foreground px-7 py-3.5 rounded-xl hover:bg-white/20 relative overflow-hidden
-                           transition-all duration-300 group hover:shadow-md"
+                  className="inline-flex items-center backdrop-blur-md bg-white/15 border border-white/30
+                           text-foreground px-7 py-3.5 rounded-xl shadow-sm
+                           hover:bg-white/25 relative overflow-hidden
+                           transition-all duration-300 group hover:shadow-md scale-100 hover:scale-105"
                 >
                   <span className="relative z-10">{secondaryCtaText}</span>
-                  <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </Link>
               )}
             </div>
