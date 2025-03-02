@@ -41,16 +41,11 @@ const Hero = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text-Inhalt */}
           <div className={`max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-300"></div>
-              <div className="relative inline-flex items-center justify-center px-6 py-2 mb-6 text-sm font-medium rounded-full 
-                          bg-gradient-to-r from-primary/80 to-secondary/80
-                          text-white shadow-lg shadow-primary/25 border border-white/20 backdrop-blur-md
-                          animate-pulse">
-                <span className="mr-2 text-lg">✨</span>
-                Willkommen bei MyLifeTips
-                <span className="ml-2 text-lg">✨</span>
-              </div>
+            <div className="inline-flex items-center px-4 py-1.5 mb-6 
+                         bg-white/10 backdrop-blur-lg
+                         border-l-4 border-primary
+                         rounded-r-lg shadow-sm">
+              <span className="text-primary font-medium tracking-wide">✨ Willkommen bei MyLifeTips</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 
                          bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
