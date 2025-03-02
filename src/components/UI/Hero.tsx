@@ -41,7 +41,7 @@ const Hero = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text-Inhalt mit Glaseffekt */}
           <div className={`max-w-xl transform transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="inline-block px-4 py-2 mb-6 backdrop-blur-sm bg-white/10 border-l border-primary/50 rounded-r-md">
+            <div className="inline-block px-4 py-2 mb-6 backdrop-blur-sm bg-white/10 rounded-md">
               <span className="text-primary font-medium">✨ Willkommen bei MyLifeTips</span>
             </div>
             
