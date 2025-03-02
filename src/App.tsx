@@ -19,6 +19,7 @@ import Kreditkarten from "./pages/Kreditkarten";
 import Broker from "./pages/Broker";
 import ETFs from "./pages/ETFs";
 import Versicherungen from "./pages/Versicherungen";
+import Business from "./pages/Business";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/finanzen/broker" element={<Broker />} />
             <Route path="/finanzen/etfs" element={<ETFs />} />
             <Route path="/finanzen/versicherungen" element={<Versicherungen />} />
+            <Route path="/business" element={<Business />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
