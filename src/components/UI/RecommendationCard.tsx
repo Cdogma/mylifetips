@@ -49,8 +49,8 @@ const RecommendationCard = ({
         </div>
         {isAffiliate && (
           <div className="absolute top-3 right-3">
-            <span className="inline-block bg-secondary text-secondary-foreground text-xs font-medium px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
-              *
+            <span className="inline-block text-xs font-medium text-foreground/70 bg-background/60 backdrop-blur-sm px-1.5 py-0.5 rounded border border-border/30 shadow-sm">
+              *Affiliate
             </span>
           </div>
         )}
