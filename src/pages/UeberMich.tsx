@@ -4,63 +4,24 @@ import SectionHeading from "../components/UI/SectionHeading";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { HeartIcon, AwardIcon, UsersIcon, TargetIcon, CheckCircle2Icon } from "lucide-react";
+import { HeartIcon, AwardIcon, TargetIcon, CheckCircle2Icon } from "lucide-react";
 
-const UeberUns = () => {
-  const teamMembers = [
-    {
-      name: "Lisa Müller",
-      position: "Gründerin & CEO",
-      bio: "Lisa hat MyLifeTips 2018 mit der Vision gegründet, komplexe Themen verständlich zu machen und praktische Tipps für den Alltag zu liefern. Mit ihrer Erfahrung im Digital Publishing und Content Marketing führt sie das Unternehmen mit Leidenschaft und Innovationsgeist.",
-      avatar: "/placeholder.svg"
-    },
-    {
-      name: "Mark Weber",
-      position: "Chefredakteur",
-      bio: "Als erfahrener Journalist und Content-Stratege sorgt Mark für die hohe Qualität unserer Inhalte. Er hat zuvor bei renommierten Online-Magazinen gearbeitet und bringt sein Fachwissen für verständliche und wertvolle Inhalte ein.",
-      avatar: "/placeholder.svg"
-    },
-    {
-      name: "Sarah Schmidt",
-      position: "Finanzexpertin",
-      bio: "Mit ihrem Hintergrund als zertifizierte Finanzberaterin und freie Journalistin macht Sarah komplexe Finanzthemen verständlich. Sie liebt es, Menschen zu helfen, fundierte finanzielle Entscheidungen zu treffen.",
-      avatar: "/placeholder.svg"
-    },
-    {
-      name: "Thomas Becker",
-      position: "Tech-Experte",
-      bio: "Thomas hat über 15 Jahre Erfahrung in der Tech-Branche und teilt sein Wissen mit unseren Lesern. Seine praxisnahen Tipps zu Technologie im Alltag sind bei unseren Lesern besonders beliebt.",
-      avatar: "/placeholder.svg"
-    },
-    {
-      name: "Jana König",
-      position: "Lifestyle-Redakteurin",
-      bio: "Jana ist spezialisiert auf Nachhaltigkeit, Gesundheit und Wohlbefinden. Mit ihrem Hintergrund in Psychologie und als zertifizierte Yoga-Lehrerin bringt sie eine ganzheitliche Perspektive in unsere Lifestyle-Inhalte ein.",
-      avatar: "/placeholder.svg"
-    },
-    {
-      name: "Daniel Fischer",
-      position: "Business-Stratege",
-      bio: "Nach Jahren als Unternehmensberater und erfolgreicher Gründer mehrerer Startups teilt Daniel sein Wissen über Unternehmertum, Leadership und Produktivität mit unserer Community.",
-      avatar: "/placeholder.svg"
-    }
-  ];
-
+const UeberMich = () => {
   const milestones = [
     {
       year: "2018",
       title: "Gründung von MyLifeTips",
-      description: "Lisa Müller startet MyLifeTips als persönlichen Blog mit Fokus auf Produktivitätstipps."
+      description: "Ich startete MyLifeTips als persönlichen Blog mit Fokus auf Produktivitätstipps."
     },
     {
       year: "2019",
       title: "Erweiterung des Themenspektrums",
-      description: "Ausweitung auf die Bereiche Finanzen und Technologie. Die monatlichen Besucherzahlen steigen auf über 50.000."
+      description: "Ausweitung auf die Bereiche Finanzen und Technologie. Die monatlichen Besucherzahlen stiegen auf über 50.000."
     },
     {
       year: "2020",
-      title: "Wachstum des Teams",
-      description: "Das Team wächst auf 5 Vollzeitmitarbeiter. Launch des wöchentlichen Newsletters mit über 10.000 Abonnenten."
+      title: "Erste Kooperationen",
+      description: "Beginn der Zusammenarbeit mit verschiedenen Marken und Experten. Launch des wöchentlichen Newsletters mit über 10.000 Abonnenten."
     },
     {
       year: "2021",
@@ -70,7 +31,7 @@ const UeberUns = () => {
     {
       year: "2022",
       title: "1 Million monatliche Besucher",
-      description: "MyLifeTips erreicht einen wichtigen Meilenstein mit 1 Million monatlichen Besuchern und erweitert das Angebot um kostenlose E-Books."
+      description: "MyLifeTips erreicht einen wichtigen Meilenstein mit 1 Million monatlichen Besuchern und einem erweiterten Angebot um kostenlose E-Books."
     },
     {
       year: "2023",
@@ -83,22 +44,17 @@ const UeberUns = () => {
     {
       icon: <CheckCircle2Icon className="h-12 w-12 text-primary" />,
       title: "Qualität",
-      description: "Wir recherchieren gründlich und bieten nur Informationen, die einen echten Mehrwert bieten."
-    },
-    {
-      icon: <UsersIcon className="h-12 w-12 text-primary" />,
-      title: "Gemeinschaft",
-      description: "Wir glauben an die Kraft des Austausches und fördern den Dialog in unserer Community."
+      description: "Ich recherchiere gründlich und biete nur Informationen, die einen echten Mehrwert bieten."
     },
     {
       icon: <HeartIcon className="h-12 w-12 text-primary" />,
       title: "Authentizität",
-      description: "Wir teilen ehrliche Erfahrungen und praktische Tipps, die im echten Leben funktionieren."
+      description: "Ich teile ehrliche Erfahrungen und praktische Tipps, die im echten Leben funktionieren."
     },
     {
       icon: <TargetIcon className="h-12 w-12 text-primary" />,
       title: "Relevanz",
-      description: "Wir konzentrieren uns auf Themen, die einen echten Unterschied im Leben unserer Leser machen."
+      description: "Ich konzentriere mich auf Themen, die einen echten Unterschied im Leben meiner Leser machen."
     }
   ];
 
@@ -107,27 +63,27 @@ const UeberUns = () => {
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <SectionHeading
-            title="Über MyLifeTips"
-            description="Erfahre mehr über unsere Geschichte, unsere Werte und die Menschen hinter MyLifeTips"
+            title="Über Mich"
+            description="Erfahre mehr über die Person hinter MyLifeTips"
             align="center"
           />
 
           {/* Intro Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-16">
             <div>
-              <h3 className="text-2xl font-bold mb-4 title-with-bar">Unsere Mission</h3>
+              <h3 className="text-2xl font-bold mb-4 title-with-bar">Meine Mission</h3>
               <p className="text-lg mb-6 text-muted-foreground">
-                Bei MyLifeTips haben wir es uns zur Aufgabe gemacht, komplexe Themen aus den Bereichen Finanzen, 
+                Bei MyLifeTips habe ich es mir zur Aufgabe gemacht, komplexe Themen aus den Bereichen Finanzen, 
                 Business, Technologie und Lifestyle verständlich zu erklären und praktische Tipps zu liefern, 
-                die unseren Lesern helfen, fundierte Entscheidungen zu treffen und ihr Leben zu verbessern.
+                die meinen Lesern helfen, fundierte Entscheidungen zu treffen und ihr Leben zu verbessern.
               </p>
               <p className="text-lg mb-6 text-muted-foreground">
-                Wir glauben daran, dass Wissen allen zugänglich sein sollte. Daher bemühen wir uns, 
+                Ich glaube daran, dass Wissen allen zugänglich sein sollte. Daher bemühe ich mich, 
                 hochwertige Inhalte zu erstellen, die informativ, praktisch und leicht verständlich sind.
               </p>
               <p className="text-lg text-muted-foreground">
-                Unser Ziel ist es, eine vertrauenswürdige Quelle für hilfreiche Informationen und Tipps 
-                zu sein, die unseren Lesern dabei helfen, in verschiedenen Lebensbereichen erfolgreicher zu sein.
+                Mein Ziel ist es, eine vertrauenswürdige Quelle für hilfreiche Informationen und Tipps 
+                zu sein, die meinen Lesern dabei helfen, in verschiedenen Lebensbereichen erfolgreicher zu sein.
               </p>
             </div>
             <div className="relative">
@@ -137,7 +93,7 @@ const UeberUns = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 dark:border-white/10">
                 <img
                   src="/placeholder.svg"
-                  alt="Das MyLifeTips Team bei einem Meeting"
+                  alt="Profilbild"
                   className="w-full h-full object-cover"
                   style={{ minHeight: '400px' }}
                 />
@@ -149,12 +105,12 @@ const UeberUns = () => {
           {/* Values Section */}
           <div className="my-20">
             <SectionHeading
-              title="Unsere Werte"
-              description="Diese Prinzipien leiten unsere tägliche Arbeit"
+              title="Meine Werte"
+              description="Diese Prinzipien leiten meine tägliche Arbeit"
               align="center"
             />
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               {values.map((value, index) => (
                 <Card key={index} className="bg-card/60 backdrop-blur-sm border border-border/10 shadow-sm hover:shadow-md transition-shadow text-center">
                   <CardHeader className="pb-2">
@@ -171,34 +127,43 @@ const UeberUns = () => {
             </div>
           </div>
 
-          {/* Tabs for Team and History */}
+          {/* Tabs for About Me and History */}
           <div className="my-20">
-            <Tabs defaultValue="team" className="w-full">
+            <Tabs defaultValue="about" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8 max-w-md mx-auto">
-                <TabsTrigger value="team">Unser Team</TabsTrigger>
-                <TabsTrigger value="history">Unsere Geschichte</TabsTrigger>
+                <TabsTrigger value="about">Über Mich</TabsTrigger>
+                <TabsTrigger value="history">Meine Geschichte</TabsTrigger>
               </TabsList>
               
-              <TabsContent value="team">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {teamMembers.map((member, index) => (
-                    <Card key={index} className="bg-card/60 backdrop-blur-sm border border-border/10 shadow-sm hover:shadow-md transition-all duration-300">
-                      <CardHeader className="flex flex-col items-center text-center pb-2">
-                        <Avatar className="h-24 w-24 mb-4 border-4 border-background">
-                          <AvatarImage src={member.avatar} alt={member.name} />
-                          <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                        </Avatar>
-                        <CardTitle className="text-xl">{member.name}</CardTitle>
-                        <CardDescription className="font-medium text-primary">
-                          {member.position}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="text-center">
-                        <p className="text-muted-foreground">{member.bio}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+              <TabsContent value="about">
+                <Card className="bg-card/60 backdrop-blur-sm border border-border/10 shadow-sm max-w-3xl mx-auto">
+                  <CardHeader className="flex flex-col items-center text-center pb-2">
+                    <Avatar className="h-24 w-24 mb-4 border-4 border-background">
+                      <AvatarImage src="/placeholder.svg" alt="Profilbild" />
+                      <AvatarFallback>ML</AvatarFallback>
+                    </Avatar>
+                    <CardTitle className="text-2xl">Max Mustermann</CardTitle>
+                    <CardDescription className="font-medium text-primary">
+                      Gründer & Inhaber von MyLifeTips
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center max-w-2xl mx-auto">
+                    <p className="text-muted-foreground mb-4">
+                      Ich habe MyLifeTips 2018 mit der Vision gegründet, komplexe Themen verständlich zu machen und praktische Tipps 
+                      für den Alltag zu liefern. Mit meiner Erfahrung im Digital Publishing und Content Marketing 
+                      führe ich das Projekt mit Leidenschaft und Innovationsgeist.
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      Als leidenschaftlicher Blogger und Autor teile ich mein Wissen und meine Erfahrungen in den Bereichen 
+                      Finanzen, Business, Technologie und Lifestyle. Mein Ziel ist es, komplexe Themen so aufzubereiten, 
+                      dass sie für jeden verständlich und anwendbar sind.
+                    </p>
+                    <p className="text-muted-foreground">
+                      Wenn ich nicht gerade schreibe oder recherchiere, findet man mich beim Wandern in den Bergen, 
+                      beim Lesen eines guten Buches oder beim Experimentieren mit neuen Technologien.
+                    </p>
+                  </CardContent>
+                </Card>
               </TabsContent>
               
               <TabsContent value="history">
@@ -229,8 +194,8 @@ const UeberUns = () => {
           {/* Achievements Section */}
           <div className="my-20">
             <SectionHeading
-              title="Unsere Erfolge"
-              description="Was wir bisher erreicht haben"
+              title="Meine Erfolge"
+              description="Was ich bisher erreicht habe"
               align="center"
             />
             
@@ -258,8 +223,8 @@ const UeberUns = () => {
               
               <Card className="bg-card/60 backdrop-blur-sm border border-border/10 shadow-sm py-8">
                 <CardContent>
-                  <div className="text-4xl font-bold text-primary mb-2">15+</div>
-                  <p className="text-muted-foreground">Teammitglieder</p>
+                  <div className="text-4xl font-bold text-primary mb-2">10+</div>
+                  <p className="text-muted-foreground">Laufende Kooperationen</p>
                 </CardContent>
               </Card>
             </div>
@@ -270,4 +235,4 @@ const UeberUns = () => {
   );
 };
 
-export default UeberUns;
+export default UeberMich;

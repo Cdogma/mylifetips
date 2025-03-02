@@ -12,9 +12,8 @@ import Kontakt from "./pages/Kontakt";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
-import Karriere from "./pages/Karriere";
 import Ressourcen from "./pages/Ressourcen";
-import UeberUns from "./pages/UeberUns";
+import UeberMich from "./pages/UeberMich";
 
 const queryClient = new QueryClient();
 
@@ -32,9 +31,8 @@ const App = () => (
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
-            <Route path="/karriere" element={<Karriere />} />
             <Route path="/ressourcen" element={<Ressourcen />} />
-            <Route path="/ueber-uns" element={<UeberUns />} />
+            <Route path="/ueber-mich" element={<UeberMich />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
