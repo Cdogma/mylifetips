@@ -53,15 +53,11 @@ const Hero = ({
             </div>
           </div>
           <div className="relative">
-            {imageSrc ? (
-              <img
-                src={imageSrc}
-                alt="Hero illustration"
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
-            ) : (
-              <div className="aspect-video w-full bg-gradient-to-tr from-primary/10 to-primary/30 rounded-lg shadow-xl"></div>
-            )}
+            <img
+              src="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
+              alt="Arbeitsplatz mit Laptop, Kaffee und Notizbuch in hellem Ambiente"
+              className="w-full h-auto rounded-lg shadow-xl"
+            />
             <div className="absolute -bottom-4 -right-4 w-2/3 h-2/3 bg-secondary/50 rounded-lg -z-10"></div>
           </div>
         </div>
