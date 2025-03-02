@@ -7,56 +7,56 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const ETFs = () => {
-  const recommendedEtfs = [
+  const etfs = [
     {
-      title: "Vanguard FTSE All-World UCITS ETF",
-      description: "Der perfekte ETF für Einsteiger mit weltweiter Streuung und günstiger TER",
+      title: "Vanguard FTSE All-World",
+      description: "Der perfekte ETF für den Weltportfolio-Ansatz mit über 3.500 Unternehmen aus aller Welt",
       features: [
-        "Über 3.500 Unternehmen aus Industrie- und Schwellenländern",
-        "Sehr niedrige Gesamtkostenquote (TER) von 0,22%",
-        "Physisch replizierend mit vollständiger Replikation",
-        "Thesaurierend oder ausschüttend erhältlich",
-        "Hohe Liquidität und geringe Tracking Difference"
+        "Enthält über 3.500 Unternehmen aus Industrie- und Schwellenländern",
+        "Sehr breite Diversifikation über alle Branchen",
+        "Niedrige jährliche Gesamtkostenquote von 0,22%",
+        "Physisch replizierend (kauft die tatsächlichen Aktien)",
+        "Thesaurierend oder ausschüttend verfügbar"
       ],
-      isAffiliate: true,
+      isAffiliate: false,
       rating: 4.9,
       link: "/finanzen/etfs/vanguard-ftse-all-world"
     },
     {
-      title: "iShares Core MSCI World UCITS ETF",
-      description: "Solider ETF für Industrieländer mit hoher Marktkapitalisierung und niedrigen Kosten",
+      title: "iShares Core MSCI World",
+      description: "Der Klassiker für ein Investment in die Industrieländer weltweit",
       features: [
-        "Über 1.500 Unternehmen aus Industrieländern",
-        "Sehr günstige Gesamtkostenquote (TER) von 0,20%",
-        "Physisch replizierend mit optimierter Stichprobenbildung",
-        "Thesaurierend, ideal für langfristigen Vermögensaufbau",
-        "Sehr hohes Fondsvolumen mit über 40 Mrd. EUR"
+        "Bildet über 1.500 Unternehmen aus 23 Industrieländern ab",
+        "Fokus auf entwickelte Märkte mit hoher Stabilität",
+        "Sehr niedrige jährliche Gesamtkostenquote von 0,20%",
+        "Hohe Liquidität und enge Spreads",
+        "Ideal für einen langfristigen Vermögensaufbau"
       ],
-      isAffiliate: true,
+      isAffiliate: false,
       rating: 4.7,
       link: "/finanzen/etfs/ishares-core-msci-world"
     },
     {
-      title: "Xtrackers MSCI USA UCITS ETF",
-      description: "Fokussierter ETF auf den US-Markt für höhere Renditechancen",
+      title: "Xtrackers MSCI Emerging Markets",
+      description: "Der ETF für Anleger, die gezielt in Schwellenländer investieren möchten",
       features: [
-        "Über 600 US-amerikanische Unternehmen",
-        "Attraktive Gesamtkostenquote (TER) von 0,12%",
-        "Physisch replizierend für optimale Indexabbildung",
-        "Überdurchschnittliche historische Renditen",
-        "Ideal für Anleger mit Schwerpunkt auf US-Markt"
+        "Investiert in über 800 Unternehmen aus Schwellenländern",
+        "Höheres Wachstumspotenzial mit entsprechend höherem Risiko",
+        "Jährliche Gesamtkostenquote von 0,18%",
+        "Gute Ergänzung zu einem Industrieländer-ETF",
+        "Swap-basiert mit Performancevorteil in einigen Märkten"
       ],
       isAffiliate: false,
-      rating: 4.6,
-      link: "/finanzen/etfs/xtrackers-msci-usa"
+      rating: 4.4,
+      link: "/finanzen/etfs/xtrackers-msci-emerging-markets"
     }
   ];
 
   return (
     <Layout>
       <Hero
-        title="Die besten ETFs für langfristigen Vermögensaufbau"
-        subtitle="Meine persönlichen Empfehlungen für kostengünstige ETFs mit breiter Diversifikation - ideal für Einsteiger und langfristig orientierte Anleger."
+        title="Die besten ETFs 2024"
+        subtitle="Meine persönlichen Empfehlungen für langfristigen Vermögensaufbau mit ETFs - breit diversifiziert, kostengünstig und nachhaltig."
         ctaText="Zu den Empfehlungen"
         ctaLink="#empfehlungen"
       />
@@ -65,32 +65,22 @@ const ETFs = () => {
         <div className="container">
           <SectionHeading
             title="Warum ETFs die beste Wahl für die meisten Anleger sind"
-            description="ETFs (Exchange Traded Funds) bieten eine kostengünstige und einfache Möglichkeit, in breit gestreute Aktienkörbe zu investieren."
+            description="Exchange Traded Funds (ETFs) bieten einen kostengünstigen, transparenten und flexiblen Weg, um von der langfristigen Entwicklung der Finanzmärkte zu profitieren."
           />
 
           <div className="mt-12 prose max-w-none">
             <p>
-              ETFs haben in den letzten Jahren die Welt der Geldanlage revolutioniert. Sie ermöglichen auch Kleinanlegern mit geringem Budget, von den Renditen des Aktienmarktes zu profitieren und dabei breit diversifiziert zu sein.
+              Als ich vor über 15 Jahren mit dem Investieren begann, waren aktiv gemanagte Fonds noch der Standard. Heute investiere ich fast ausschließlich in ETFs, und das aus gutem Grund: Sie bieten die Möglichkeit, mit einem einzigen Produkt in Hunderte oder Tausende Unternehmen weltweit zu investieren – zu Kosten, die nur einen Bruchteil dessen betragen, was aktiv gemanagte Fonds verlangen.
             </p>
             <p>
-              Die wichtigsten Vorteile von ETFs sind:
+              Die wichtigsten Vorteile von ETFs im Überblick:
             </p>
             <ul>
-              <li><strong>Niedrige Kosten:</strong> ETFs haben deutlich geringere Gebühren als aktiv gemanagte Fonds</li>
-              <li><strong>Breite Diversifikation:</strong> Mit einem einzigen ETF kannst du in Hunderte oder Tausende von Unternehmen investieren</li>
-              <li><strong>Transparenz:</strong> Die Zusammensetzung von ETFs ist jederzeit einsehbar</li>
-              <li><strong>Flexibilität:</strong> ETFs können jederzeit zum aktuellen Kurs gehandelt werden</li>
-              <li><strong>Einfachheit:</strong> Keine komplexen Anlageentscheidungen notwendig</li>
-            </ul>
-            <p>
-              Bei der Auswahl des richtigen ETFs solltest du besonders auf folgende Faktoren achten:
-            </p>
-            <ul>
-              <li><strong>Kosten (TER):</strong> Je niedriger, desto besser für deine langfristige Rendite</li>
-              <li><strong>Indexauswahl:</strong> Weltweite Streuung oder gezielter Fokus je nach Anlagestrategie</li>
-              <li><strong>Replikationsmethode:</strong> Physisch ist meist vorzuziehen gegenüber synthetisch</li>
-              <li><strong>Fondsvolumen:</strong> Größere ETFs bieten mehr Sicherheit und Liquidität</li>
-              <li><strong>Ausschüttungsart:</strong> Thesaurierend für Vermögensaufbau, ausschüttend für Einkommen</li>
+              <li><strong>Breite Diversifikation:</strong> Mit einem ETF investierst du automatisch in viele verschiedene Unternehmen</li>
+              <li><strong>Niedrige Kosten:</strong> ETFs haben in der Regel sehr geringe laufende Kosten (TER)</li>
+              <li><strong>Hohe Transparenz:</strong> Die Zusammensetzung eines ETFs ist jederzeit einsehbar</li>
+              <li><strong>Flexibilität:</strong> ETFs können jederzeit während der Börsenöffnungszeiten gehandelt werden</li>
+              <li><strong>Einfachheit:</strong> Auch für Einsteiger leicht verständlich und zugänglich</li>
             </ul>
           </div>
         </div>
@@ -100,12 +90,12 @@ const ETFs = () => {
         <div className="container">
           <SectionHeading
             subtitle="Meine Top-Empfehlungen"
-            title="Die besten ETFs im Vergleich"
-            description="Basierend auf meinen persönlichen Erfahrungen und ausführlichen Analysen empfehle ich diese ETFs."
+            title="Die besten ETFs für langfristigen Vermögensaufbau"
+            description="Basierend auf meinen persönlichen Erfahrungen und ausführlichen Analysen empfehle ich diese ETFs für einen langfristigen Anlagehorizont."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recommendedEtfs.map((etf, index) => (
+            {etfs.map((etf, index) => (
               <Card key={etf.title} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
                   <div className="flex justify-between items-start">
@@ -133,7 +123,7 @@ const ETFs = () => {
                       to={etf.link}
                       className="group flex items-center text-primary hover:text-primary/80 font-medium"
                     >
-                      <span>Zum Testbericht</span>
+                      <span>Zum detaillierten Testbericht</span>
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </div>
@@ -141,61 +131,57 @@ const ETFs = () => {
               </Card>
             ))}
           </div>
-          
-          <div className="mt-12 bg-card rounded-lg p-6 border border-border/50 shadow-sm">
-            <p className="text-sm text-muted-foreground">
-              <strong>Hinweis:</strong> Mit * gekennzeichnete Links sind Affiliate-Links. Wenn du über diese Links ein Produkt kaufst oder einen Dienst abonnierst, erhalte ich eine kleine Provision. Für dich entstehen dabei keine zusätzlichen Kosten. Diese Provisionen helfen mir, diese Website zu betreiben und weiterhin kostenlose Inhalte zu erstellen.
-            </p>
-          </div>
         </div>
       </section>
 
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="ETF-Strategien für verschiedene Anlegertypen"
-            description="Je nach deinen persönlichen Zielen und deiner Risikobereitschaft gibt es unterschiedliche ETF-Strategien"
+            title="Häufig gestellte Fragen zu ETFs"
+            description="Antworten auf die wichtigsten Fragen rund um ETF-Investments"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             <Card>
               <CardHeader>
-                <CardTitle>Für Einsteiger: Der All-World ETF</CardTitle>
+                <CardTitle>Thesaurierend oder ausschüttend - was ist besser?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Ein einzelner global diversifizierter ETF wie der Vanguard FTSE All-World ist die perfekte Lösung für Einsteiger. Du investierst mit einem einzigen Produkt in über 3.500 Unternehmen weltweit und musst dich um nichts weiter kümmern.
-                </p>
                 <p className="text-muted-foreground">
-                  Diese Strategie ist extrem einfach, kostengünstig und hat historisch solide Renditen von etwa 7-8% pro Jahr geliefert.
+                  Bei thesaurierenden ETFs werden die Dividenden automatisch reinvestiert, was den Zinseszinseffekt maximiert. Ausschüttende ETFs zahlen die Dividenden regelmäßig aus, was einen passiven Einkommensstrom erzeugt. Die Entscheidung hängt von deinen persönlichen Präferenzen ab - für reinen Vermögensaufbau und maximale Rendite sind thesaurierende ETFs in der Regel die bessere Wahl.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Für Fortgeschrittene: Core-Satellite</CardTitle>
+                <CardTitle>Welt-ETF oder separate ETFs für verschiedene Regionen?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Bei der Core-Satellite-Strategie bildest du mit einem breit gestreuten Welt-ETF den Kern (Core) deines Portfolios, z.B. mit 70% deines Kapitals. Die restlichen 30% investierst du in Satelliten-ETFs für spezielle Länder, Branchen oder Themen.
-                </p>
                 <p className="text-muted-foreground">
-                  So kannst du deine persönlichen Überzeugungen abbilden, ohne das Gesamtrisiko zu stark zu erhöhen.
+                  Ein Welt-ETF wie der Vanguard FTSE All-World bietet mit einem einzigen Produkt eine globale Diversifikation. Separate ETFs für verschiedene Regionen (z.B. Industrieländer + Schwellenländer) ermöglichen mehr Flexibilität bei der Gewichtung. Für Einsteiger und bei kleineren Anlagebeträgen ist ein Welt-ETF oft die einfachere und kostengünstigere Lösung.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Für Risikoaverse: Mit Anleihen-ETFs</CardTitle>
+                <CardTitle>Physisch oder synthetisch replizierende ETFs?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Wenn dir das Risiko von 100% Aktien zu hoch ist, kannst du einen Teil deines Portfolios in Anleihen-ETFs investieren. Eine klassische Aufteilung wäre z.B. 60% Aktien-ETFs und 40% Anleihen-ETFs.
-                </p>
                 <p className="text-muted-foreground">
-                  Diese Strategie reduziert die Schwankungen deines Portfolios, allerdings auf Kosten der langfristigen Rendite.
+                  Physisch replizierende ETFs kaufen die tatsächlichen Aktien des zugrundeliegenden Index und sind für viele Anleger intuitiver verständlich. Synthetisch replizierende ETFs nutzen Swap-Verträge mit Banken, um die Indexperformance abzubilden, was in bestimmten Märkten Steuer- und Kostenvorteile bieten kann. Beide Ansätze sind legitim, aber für Einsteiger sind physisch replizierende ETFs oft die transparentere Wahl.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Wie viele ETFs sollte ich im Depot haben?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Weniger ist oft mehr: Ein breit diversifizierter Welt-ETF kann bereits ausreichen, um ein gut diversifiziertes Portfolio aufzubauen. Mit 2-3 ETFs (z.B. Industrieländer, Schwellenländer und eventuell ein Nischen-ETF) lässt sich bereits eine optimale Diversifikation erreichen. Zu viele ETFs führen oft zu Überschneidungen, höheren Kosten und einer komplizierteren Verwaltung, ohne die Diversifikation wesentlich zu verbessern.
                 </p>
               </CardContent>
             </Card>
@@ -206,54 +192,32 @@ const ETFs = () => {
       <section className="section-padding bg-muted/30">
         <div className="container">
           <SectionHeading
-            title="Häufig gestellte Fragen"
-            description="Antworten auf die wichtigsten Fragen rund um ETFs"
+            title="Meine ETF-Strategie"
+            description="So investiere ich persönlich in ETFs für langfristigen Vermögensaufbau"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <Card>
-              <CardHeader>
-                <CardTitle>Wie viel Rendite kann ich mit ETFs erwarten?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Historisch betrachtet haben globale Aktien-ETFs langfristig (15+ Jahre) eine durchschnittliche jährliche Rendite von etwa a7-8% erzielt. Diese Rendite ist jedoch nicht garantiert und kann von Jahr zu Jahr stark schwanken. Es gab Phasen mit deutlich höheren Renditen, aber auch Jahre mit negativen Ergebnissen. ETFs sind daher vor allem für langfristige Anlagezeiträume geeignet.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Thesaurierend oder ausschüttend wählen?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Thesaurierende ETFs reinvestieren die Dividenden automatisch, was den Zinseszinseffekt verstärkt und steuerlich effizienter ist. Ausschüttende ETFs zahlen die Dividenden regelmäßig aus, was für Anleger interessant sein kann, die regelmäßige Einnahmen wünschen. Für den langfristigen Vermögensaufbau sind thesaurierende ETFs in der Regel die bessere Wahl, es sei denn, du möchtest den Freibetrag von 1.000€ pro Jahr ausnutzen.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Was ist der ideale Sparplan-Rhythmus?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Aus Kostensicht ist ein monatlicher Sparrhythmus in der Regel optimal, da viele Broker kostenlose monatliche Ausführungen anbieten. Aus Rendite-Sicht haben Studien gezeigt, dass die Unterschiede zwischen monatlichen, vierteljährlichen oder jährlichen Sparplänen langfristig minimal sind. Wichtiger als der Rhythmus ist die Regelmäßigkeit und Disziplin beim Sparen. Wähle daher den Rhythmus, der am besten zu deinem Einkommensfluss und deiner persönlichen Präferenz passt.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Wie hoch sollte meine ETF-Sparrate sein?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Als Faustregel gilt: Versuche mindestens 10-15% deines Nettoeinkommens zu investieren. Starter können mit kleineren Beträgen beginnen und ihre Sparrate im Laufe der Zeit steigern. Wichtig ist, dass deine Sparrate zu deiner finanziellen Situation passt und du sie langfristig durchhalten kannst. Selbst kleine Beträge können dank des Zinseszinseffekts über Jahrzehnte zu beachtlichen Summen anwachsen. Bei den meisten Brokern kannst du bereits ab 25€ monatlich in ETFs investieren.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="bg-card rounded-xl shadow-sm border border-border/40 p-6 md:p-8 mt-8">
+            <div className="prose max-w-none">
+              <p>
+                Nach über 15 Jahren Erfahrung mit verschiedenen Anlagestrategien bin ich zu einem sehr einfachen Ansatz zurückgekehrt: Ich investiere den Großteil meines langfristigen Anlagevermögens (etwa 80%) in einen einzigen, breit diversifizierten Welt-ETF - den Vanguard FTSE All-World.
+              </p>
+              <p>
+                Dieser Ansatz bietet mehrere Vorteile:
+              </p>
+              <ul>
+                <li>Maximale Diversifikation über Regionen, Branchen und Unternehmen</li>
+                <li>Minimaler Verwaltungsaufwand</li>
+                <li>Niedrige Gesamtkosten</li>
+                <li>Keine Notwendigkeit für regelmäßige Anpassungen oder Rebalancing</li>
+                <li>Emotionale Ruhe durch Einfachheit und Transparenz</li>
+              </ul>
+              <p>
+                Die restlichen 20% meines Portfolios nutze ich für einzelne Aktien, thematische ETFs und andere Anlageklassen wie Kryptowährungen - hier spielt auch mein persönliches Interesse an bestimmten Unternehmen und Trends eine Rolle.
+              </p>
+              <p>
+                Wichtig ist mir vor allem die Kontinuität: Ich investiere jeden Monat einen festen Betrag per Sparplan, unabhängig von der aktuellen Marktlage. Diese Strategie des "Cost-Averaging" hat sich für mich bewährt und nimmt den Stress aus dem Timing des Marktes.
+              </p>
+            </div>
           </div>
         </div>
       </section>
