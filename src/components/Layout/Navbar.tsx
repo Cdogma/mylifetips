@@ -40,6 +40,9 @@ const Navbar = () => {
     { name: "Technik", href: "/technik" },
     { name: "Lifestyle", href: "/lifestyle" },
     { name: "Blog", href: "/blog" },
+    { name: "Ressourcen", href: "/ressourcen" },
+    { name: "Karriere", href: "/karriere" },
+    { name: "Über Uns", href: "/ueber-uns" },
     { name: "Kontakt", href: "/kontakt" },
   ];
 
@@ -54,7 +57,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-4 xl:space-x-6 overflow-x-auto">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href || 
                 (link.href !== "/" && location.pathname.startsWith(link.href));
@@ -63,7 +66,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative py-5 text-foreground hover:text-primary transition-colors ${
+                  className={`relative py-5 text-foreground hover:text-primary transition-colors text-sm whitespace-nowrap ${
                     isActive ? "text-primary font-medium" : ""
                   }`}
                 >
