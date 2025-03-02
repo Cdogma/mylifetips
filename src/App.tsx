@@ -14,6 +14,11 @@ import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 import Ressourcen from "./pages/Ressourcen";
 import UeberMich from "./pages/UeberMich";
+import Bankkonten from "./pages/Bankkonten";
+import Kreditkarten from "./pages/Kreditkarten";
+import Broker from "./pages/Broker";
+import ETFs from "./pages/ETFs";
+import Versicherungen from "./pages/Versicherungen";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +32,11 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/finanzen" element={<Finance />} />
+            <Route path="/finanzen/bankkonten" element={<Bankkonten />} />
+            <Route path="/finanzen/kreditkarten" element={<Kreditkarten />} />
+            <Route path="/finanzen/broker" element={<Broker />} />
+            <Route path="/finanzen/etfs" element={<ETFs />} />
+            <Route path="/finanzen/versicherungen" element={<Versicherungen />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
