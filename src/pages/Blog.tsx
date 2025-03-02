@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import SectionHeading from "../components/UI/SectionHeading";
 import BlogPostCard from "../components/UI/BlogPostCard";
@@ -7,6 +6,11 @@ import { Search } from "lucide-react";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Add effect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const blogPosts = [
     {
