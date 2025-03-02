@@ -52,13 +52,15 @@ const Hero = ({
               )}
             </div>
           </div>
-          <div className="relative">
-            <img
-              src="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
-              alt="Arbeitsplatz mit Laptop, Kaffee und Notizbuch in hellem Ambiente"
-              className="w-full h-auto rounded-lg shadow-xl"
-            />
-            <div className="absolute -bottom-4 -right-4 w-2/3 h-2/3 bg-secondary/50 rounded-lg -z-10"></div>
+          <div className="relative flex justify-center items-center">
+            <div className="w-full max-w-md aspect-video relative">
+              <img
+                src="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
+                alt="Arbeitsplatz mit Laptop, Kaffee und Notizbuch in hellem Ambiente"
+                className="w-full h-full object-cover rounded-lg shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4 w-2/3 h-2/3 bg-secondary/50 rounded-lg -z-10"></div>
+            </div>
           </div>
         </div>
       </div>
