@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
@@ -7,6 +8,11 @@ import BlogPostCard from "../components/UI/BlogPostCard";
 import SectionHeading from "../components/UI/SectionHeading";
 
 const Index = () => {
+  // Add effect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const categories = [
     {
       title: "Finanzen & Investitionen",
