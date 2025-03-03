@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
@@ -95,7 +96,7 @@ const Index = () => {
     <Layout>
       <Hero
         title="Ehrliche Tipps für ein besseres Leben"
-        subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen und ausführlichen Tests."
+        subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
         ctaText="Empfehlungen entdecken"
         ctaLink="/empfehlungen"
         secondaryCtaText="Mehr über mich"
