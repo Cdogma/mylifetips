@@ -1,5 +1,4 @@
-
-import { useEffect } from "react";
+<lov-codelov-code>
 import Layout from "../components/Layout/Layout";
 import SectionHeading from "../components/UI/SectionHeading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,11 +7,6 @@ import { Button } from "@/components/ui/button";
 import { BookOpenIcon, FileTextIcon, GlobeIcon, PlayCircleIcon, DownloadIcon, FilePlusIcon } from "lucide-react";
 
 const Ressourcen = () => {
-  // Scroll to top on page load
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
   const ebooks = [
     {
       title: "Finanzen für Einsteiger",
@@ -261,3 +255,4 @@ const Ressourcen = () => {
 };
 
 export default Ressourcen;
+</lov-code>
