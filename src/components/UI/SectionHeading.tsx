@@ -29,7 +29,7 @@ const SectionHeading = ({
           {subtitle}
         </span>
       )}
-      <h2 className={`${align === "left" ? "title-with-bar" : ""} text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent`}>{title}</h2>
+      <h2 className={`${align === "left" ? "title-with-bar" : ""} text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent pb-1`}>{title}</h2>
       {description && <p className="text-lg text-muted-foreground mt-4">{description}</p>}
       {children}
     </div>
