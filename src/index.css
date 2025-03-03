@@ -76,13 +76,14 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
-    line-height: 1.6; /* Increasing line height significantly for better text rendering */
+    line-height: 1.8; /* Increasing line height even more for better text rendering */
   }
   h1 {
     @apply text-3xl sm:text-4xl md:text-5xl;
   }
   h2 {
     @apply text-2xl sm:text-3xl md:text-4xl;
+    padding-bottom: 0.25rem; /* Add extra padding at the bottom */
   }
   h3 {
     @apply text-xl sm:text-2xl;
@@ -99,7 +100,7 @@
   }
   
   .title-with-bar {
-    @apply relative pb-2;
+    @apply relative pb-4; /* Increased padding */
   }
   
   .title-with-bar::after {
