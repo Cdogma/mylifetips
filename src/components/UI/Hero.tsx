@@ -54,7 +54,7 @@ const Hero = ({
       <div className={`relative ${containerClasses[size]}`}>
         <div className="container px-4">
           <div className={`max-w-3xl ${textAlignClasses[align]}`}>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-6 leading-tight break-words">
               {title}
             </h1>
             
