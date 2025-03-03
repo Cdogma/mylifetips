@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import SectionHeading from "../components/UI/SectionHeading";
@@ -7,6 +7,11 @@ import RecommendationCard from "../components/UI/RecommendationCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Lifestyle = () => {
+  // Add effect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const subcategories = [
     {
       title: "Haushalt",
