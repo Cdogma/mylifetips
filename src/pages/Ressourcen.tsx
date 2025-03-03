@@ -1,4 +1,4 @@
-<lov-codelov-code>
+
 import Layout from "../components/Layout/Layout";
 import SectionHeading from "../components/UI/SectionHeading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -255,4 +255,3 @@ const Ressourcen = () => {
 };
 
 export default Ressourcen;
-</lov-code>
