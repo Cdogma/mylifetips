@@ -92,8 +92,8 @@ const UeberMich = () => {
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 dark:border-white/10">
                 <img
-                  src="/placeholder.svg"
-                  alt="Profilbild"
+                  src="/lovable-uploads/292354a6-7f20-4b8d-af9f-b444a1d6ce38.png"
+                  alt="Person arbeitet mit Laptop bei Sonnenschein"
                   className="w-full h-full object-cover"
                   style={{ minHeight: '400px' }}
                 />
