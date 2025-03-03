@@ -13,28 +13,28 @@ const Ressourcen = () => {
       description: "Lerne die Grundlagen der persönlichen Finanzen und beginne deine Reise zur finanziellen Unabhängigkeit.",
       pages: 45,
       category: "Finanzen",
-      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800&auto=format&fit=crop",
+      image: "/placeholder.svg",
     },
     {
       title: "Produktivitätstechniken für den Alltag",
       description: "Entdecke bewährte Methoden zur Steigerung deiner täglichen Produktivität und Effizienz.",
       pages: 35,
       category: "Produktivität",
-      image: "https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?q=80&w=800&auto=format&fit=crop",
+      image: "/placeholder.svg",
     },
     {
       title: "Digital Detox Guide",
       description: "Ein umfassender Leitfaden, wie du deine Beziehung zu digitalen Geräten gesünder gestalten kannst.",
       pages: 28,
       category: "Lifestyle",
-      image: "https://images.unsplash.com/photo-1604403428907-673e7f4cd341?q=80&w=800&auto=format&fit=crop",
+      image: "/placeholder.svg",
     },
     {
       title: "Nachhaltig leben - Schritt für Schritt",
       description: "Praktische Tipps für einen nachhaltigeren Lebensstil ohne Verzicht auf Lebensqualität.",
       pages: 52,
       category: "Nachhaltigkeit",
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop",
+      image: "/placeholder.svg",
     }
   ];
 
