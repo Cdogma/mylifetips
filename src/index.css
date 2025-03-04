@@ -131,10 +131,6 @@
   .glass-card {
     @apply backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl;
   }
-  
-  .float-animation {
-    animation: float 5s ease-in-out infinite;
-  }
 }
 
 @keyframes fadeIn {
@@ -154,17 +150,5 @@
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0px);
   }
 }
