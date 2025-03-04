@@ -46,8 +46,8 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      scrolled ? "bg-background/90 backdrop-blur-lg shadow-sm" : "bg-background/80 backdrop-blur-md"
-    } border-b border-border`}>
+      scrolled ? "bg-background/60 backdrop-blur-lg shadow-sm" : "bg-background/40 backdrop-blur-md"
+    } border-b border-border/30`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
