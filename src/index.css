@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,23 +76,28 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    overflow: visible; /* Ensure text doesn't get clipped */
+    line-height: 1.5; /* Comfortable line height */
+    padding-bottom: 0.25em; /* Add some spacing below */
+    margin-bottom: 0.75em; /* Add margin below */
   }
   
   h1 {
     @apply text-3xl sm:text-4xl md:text-5xl;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1.2em;
   }
   
   h2 {
     @apply text-2xl sm:text-3xl md:text-4xl;
-    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: 1em;
   }
   
   h3 {
     @apply text-xl sm:text-2xl;
-    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    margin-bottom: 0.8em;
   }
 }
 

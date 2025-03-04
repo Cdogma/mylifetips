@@ -23,21 +23,19 @@ const SectionHeading = ({
   };
 
   return (
-    <div className={`max-w-3xl ${align === "center" ? "mx-auto" : ""} mb-16 ${textAlignment[align]}`}>
+    <div className={`max-w-3xl ${align === "center" ? "mx-auto" : ""} mb-20 ${textAlignment[align]}`}>
       {subtitle && (
-        <div className="mb-4">
+        <div className="mb-6">
           <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider">
             {subtitle}
           </span>
         </div>
       )}
       
-      <div className={`mb-8 ${align === "left" ? "relative pb-6" : ""}`}>
-        <div className="mb-2">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground normal-case">
-            {title}
-          </h2>
-        </div>
+      <div className={`mb-10 ${align === "left" ? "relative pb-10" : ""}`}>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={{ lineHeight: "1.5", overflow: "visible", paddingBottom: "0.5em" }}>
+          {title}
+        </h2>
         
         {align === "left" && (
           <div className="absolute bottom-0 left-0 h-1 w-16 bg-primary rounded-full"></div>
@@ -45,12 +43,12 @@ const SectionHeading = ({
       </div>
       
       {description && (
-        <div className="mb-8">
+        <div className="mb-10">
           <p className="text-lg text-muted-foreground">{description}</p>
         </div>
       )}
       
-      {children && <div className="mt-6">{children}</div>}
+      {children && <div className="mt-8">{children}</div>}
     </div>
   );
 };
