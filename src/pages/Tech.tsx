@@ -143,9 +143,9 @@ const Tech = () => {
           </div>
           
           <div className="mt-12 text-center">
-            <Link to="/technik/smart-home">
+            <Link to="/technik/gadgets">
               <Button variant="outline" className="group">
-                Smart Home Empfehlungen anzeigen
+                Gadget Empfehlungen anzeigen
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>

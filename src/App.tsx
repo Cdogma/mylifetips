@@ -24,6 +24,7 @@ import Gruendung from "./pages/Gruendung";
 import Tech from "./pages/Tech";
 import Lifestyle from "./pages/Lifestyle";
 import SmartHome from "./pages/SmartHome";
+import Gadgets from "./pages/Gadgets";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/business/gruendung" element={<Gruendung />} />
             <Route path="/technik" element={<Tech />} />
             <Route path="/technik/smart-home" element={<SmartHome />} />
+            <Route path="/technik/gadgets" element={<Gadgets />} />
             <Route path="/lifestyle" element={<Lifestyle />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/kontakt" element={<Kontakt />} />
