@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import CategoryCard from "../components/UI/CategoryCard";
@@ -104,59 +105,61 @@ const Index = () => {
         imageSrc="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
       />
 
-      {/* Features-Bereich */}
-      <section className="py-16 bg-gradient-to-b from-background to-secondary/5">
+      {/* Features-Bereich mit verbessertem Layout und Animation */}
+      <section className="py-20 bg-gradient-to-b from-background to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
+            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2 animate-fade-in">
               Was macht MyLifeTips besonders?
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Ehrliche Empfehlungen für dein Leben
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Bei uns findest du ausschließlich Empfehlungen, die wir selbst getestet und für gut befunden haben. Kein Marketing-Sprech, sondern ehrliche Erfahrungen.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Heart className="h-6 w-6 text-primary" />
+            <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300 animate-scale-in" style={{ animationDelay: "0.1s" }}>
+              <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                <Heart className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Persönlich getestet</h3>
+              <h3 className="text-xl font-semibold mb-3">Persönlich getestet</h3>
               <p className="text-muted-foreground">Wir empfehlen nur Produkte und Services, die wir selbst nutzen und lieben.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <ShieldCheck className="h-6 w-6 text-primary" />
+            <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300 animate-scale-in" style={{ animationDelay: "0.2s" }}>
+              <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                <ShieldCheck className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Unabhängige Bewertungen</h3>
+              <h3 className="text-xl font-semibold mb-3">Unabhängige Bewertungen</h3>
               <p className="text-muted-foreground">Unsere Bewertungen sind ehrlich und basieren auf realen Erfahrungen.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <BookOpen className="h-6 w-6 text-primary" />
+            <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300 animate-scale-in" style={{ animationDelay: "0.3s" }}>
+              <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                <BookOpen className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Tiefgehende Analysen</h3>
+              <h3 className="text-xl font-semibold mb-3">Tiefgehende Analysen</h3>
               <p className="text-muted-foreground">Wir testen gründlich und berichten detailliert über Vor- und Nachteile.</p>
             </div>
             
-            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <ScrollText className="h-6 w-6 text-primary" />
+            <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300 animate-scale-in" style={{ animationDelay: "0.4s" }}>
+              <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                <ScrollText className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Aktuelle Inhalte</h3>
+              <h3 className="text-xl font-semibold mb-3">Aktuelle Inhalte</h3>
               <p className="text-muted-foreground">Wir aktualisieren unsere Empfehlungen regelmäßig, um immer auf dem neuesten Stand zu sein.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-background">
-        <div className="container">
+      {/* Themenbereiche-Sektion mit verbessertem visuellen Effekt */}
+      <section className="section-padding bg-background relative">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="container relative z-10">
           <SectionHeading
             title="Entdecke meine Themenbereiche"
             description="Von Finanzen über Technik bis hin zu Lifestyle – hier findest du meine ehrlichen Erfahrungen und Empfehlungen in verschiedenen Lebensbereichen."
@@ -178,8 +181,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-muted/30">
-        <div className="container">
+      {/* Empfehlungen mit verbessertem visuellen Design */}
+      <section className="section-padding bg-muted/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/10 rounded-full filter blur-3xl"></div>
+        
+        <div className="container relative z-10">
           <SectionHeading
             subtitle="Das Beste für dich"
             title="Meine aktuellen Empfehlungen"
@@ -202,7 +209,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: "0.5s" }}>
             <Link
               to="/empfehlungen"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors group"
@@ -214,6 +221,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Rest des Codes bleibt gleich */}
       <section className="section-padding">
         <div className="container">
           <SectionHeading
@@ -249,20 +257,25 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-white to-primary/5 dark:from-background dark:to-primary/5 py-20">
-        <div className="container">
+      {/* Newsletter-Bereich mit verbesserten Effekten */}
+      <section className="bg-gradient-to-b from-white to-primary/5 dark:from-background dark:to-primary/5 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-20 right-20 w-40 h-40 bg-primary/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-40 h-40 bg-secondary/10 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }}></div>
+        
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
+            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2 animate-fade-in">
               Newsletter
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Bleibe auf dem Laufenden
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Abonniere meinen Newsletter und erhalte regelmäßig meine neuesten Tipps,
               Empfehlungen und exklusive Angebote direkt in dein Postfach.
             </p>
-            <div className="flex flex-col sm:flex-row max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row max-w-lg mx-auto animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <input
                 type="email"
                 placeholder="Deine E-Mail-Adresse"
@@ -272,7 +285,7 @@ const Index = () => {
                 Abonnieren
               </button>
             </div>
-            <p className="text-xs text-muted-foreground mt-4">
+            <p className="text-xs text-muted-foreground mt-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               Ich respektiere deine Privatsphäre. Du kannst dich jederzeit abmelden.
             </p>
           </div>
