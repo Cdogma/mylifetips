@@ -2,136 +2,92 @@
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import SectionHeading from "../components/UI/SectionHeading";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Shield } from "lucide-react";
+import RecommendationCard from "../components/UI/RecommendationCard";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion";
 
 const Versicherungen = () => {
-  const essentialInsurances = [
+  const topRecommendations = [
     {
-      title: "Private Haftpflichtversicherung",
-      description: "Der absolute Grundschutz, den jeder haben sollte",
-      features: [
-        "Schützt vor existenzbedrohenden Schadenersatzforderungen",
-        "Deckungssumme von mindestens 10 Millionen Euro empfehlenswert",
-        "Kostet nur etwa 50-60€ pro Jahr",
-        "Single-Tarife bereits ab ca. 30€ jährlich",
-        "Hohe Schadensummen bei Personenschäden möglich"
-      ],
-      isAffiliate: false,
+      title: "Haftpflichtversicherung",
+      category: "Basisschutz",
+      description: "Eine private Haftpflichtversicherung ist ein absolutes Muss für jeden. Sie schützt dich vor finanziellen Folgen, wenn du versehentlich jemandem Schaden zufügst.",
       rating: 4.9,
-      priority: "Sehr hoch",
-      link: "/finanzen/versicherungen/haftpflicht"
+      imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop",
+      link: "/finanzen/versicherungen/haftpflicht",
+      isAffiliate: true,
     },
     {
       title: "Berufsunfähigkeitsversicherung",
-      description: "Existenzieller Schutz für deine Arbeitskraft",
-      features: [
-        "Sichert dein Einkommen bei Krankheit oder Unfall",
-        "Idealerweise 70-80% deines Nettoeinkommens absichern",
-        "Früher Abschluss spart erheblich Beiträge",
-        "Besonders wichtig für Berufstätige ohne Vermögen",
-        "Genaue Prüfung der Bedingungen wichtig"
-      ],
-      isAffiliate: true,
+      category: "Existenzschutz",
+      description: "Die Berufsunfähigkeitsversicherung sichert deinen Lebensunterhalt, falls du aus gesundheitlichen Gründen nicht mehr arbeiten kannst - ein wichtiger Baustein für finanzielle Sicherheit.",
       rating: 4.8,
-      priority: "Hoch",
-      link: "/finanzen/versicherungen/berufsunfaehigkeit"
-    },
-    {
-      title: "Hausratversicherung",
-      description: "Schutz für dein persönliches Eigentum",
-      features: [
-        "Absicherung deines gesamten beweglichen Eigentums",
-        "Schutz bei Einbruch, Feuer, Leitungswasser, Sturm",
-        "Neuwerterstattung bei Schäden",
-        "Glasversicherung oft inkludierbar",
-        "Fahrraddiebstahl als sinnvolle Zusatzoption"
-      ],
+      imageSrc: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
+      link: "/finanzen/versicherungen/berufsunfaehigkeit",
       isAffiliate: true,
-      rating: 4.5,
-      priority: "Mittel",
-      link: "/finanzen/versicherungen/hausrat"
-    }
-  ];
-
-  const optionalInsurances = [
+    },
     {
       title: "Rechtsschutzversicherung",
-      description: "Für kostspielige rechtliche Auseinandersetzungen",
-      features: [
-        "Übernahme von Anwalts- und Gerichtskosten",
-        "Verschiedene Bausteine wählbar (z.B. Verkehr, Beruf, Privat)",
-        "Selbstbeteiligung senkt die Prämie deutlich",
-        "Wartezeiten bei Neuabschluss beachten",
-        "Sinnvoll für streitbare Charaktere"
-      ],
-      priority: "Individuell",
-      link: "/finanzen/versicherungen/rechtsschutz"
+      category: "Rechtssicherheit",
+      description: "Eine Rechtsschutzversicherung übernimmt Anwalts- und Gerichtskosten bei rechtlichen Auseinandersetzungen - ideal für alle, die ihre Rechte durchsetzen wollen, ohne Kostenrisiken einzugehen.",
+      rating: 4.6,
+      imageSrc: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&auto=format&fit=crop",
+      link: "/finanzen/versicherungen/rechtsschutz",
+      isAffiliate: true,
     },
-    {
-      title: "Wohngebäudeversicherung",
-      description: "Nur für Immobilienbesitzer relevant",
-      features: [
-        "Pflicht bei finanzierten Immobilien",
-        "Schutz vor Feuer-, Leitungswasser- und Sturmschäden",
-        "Elementarschadenversicherung als wichtige Ergänzung",
-        "Regelmäßige Anpassung an Baupreisindex empfehlenswert",
-        "Grobe Fahrlässigkeit sollte mitversichert sein"
-      ],
-      priority: "Hoch (für Eigentümer)",
-      link: "/finanzen/versicherungen/wohngebaeude"
-    }
   ];
 
-  const unnecessaryInsurances = [
+  const faqItems = [
     {
-      title: "Handy- und Elektronikversicherungen",
-      description: "Meist überteuert und mit vielen Ausschlüssen",
-      recommendation: "Lieber monatlich für Neuanschaffungen sparen"
+      question: "Welche Versicherungen brauche ich unbedingt?",
+      answer: "Die private Haftpflichtversicherung ist ein absolutes Muss für jeden, da sie existenzbedrohende Schäden abdeckt. Für Berufstätige ist zudem eine Berufsunfähigkeitsversicherung essentiell. Je nach persönlicher Situation können auch Hausrat-, Rechtsschutz- und Unfallversicherung sinnvoll sein."
     },
     {
-      title: "Reisegepäckversicherung",
-      description: "Geringe Leistungen bei vielen Ausschlüssen",
-      recommendation: "Wertvolle Gegenstände sind oft bereits in der Hausratversicherung abgedeckt"
+      question: "Lohnt sich eine Rechtsschutzversicherung wirklich?",
+      answer: "Eine Rechtsschutzversicherung lohnt sich besonders für Menschen, die ein erhöhtes Risiko für rechtliche Auseinandersetzungen haben, beispielsweise Vermieter, Personen in besonders verantwortungsvollen Berufen oder im Straßenverkehr. Die Kosten für Rechtsstreitigkeiten können schnell in die Tausende gehen, was die jährliche Prämie von 200-300€ relativiert."
     },
     {
-      title: "Krankenzusatzversicherung für Brillen",
-      description: "Hohe Prämien im Verhältnis zur Leistung",
-      recommendation: "Besser selbst für eine neue Brille alle paar Jahre ansparen"
+      question: "Ab wann sollte ich eine Berufsunfähigkeitsversicherung abschließen?",
+      answer: "Eine Berufsunfähigkeitsversicherung solltest du idealerweise so früh wie möglich abschließen – am besten direkt beim Berufseinstieg oder sogar während der Ausbildung oder des Studiums. Je jünger und gesünder du bist, desto günstiger sind die Beiträge und desto wahrscheinlicher ist eine Annahme ohne Ausschlüsse oder Risikozuschläge."
+    },
+    {
+      question: "Wie finde ich den besten Versicherungstarif?",
+      answer: "Den besten Versicherungstarif findest du durch einen sorgfältigen Vergleich der Leistungen und nicht nur der Preise. Nutze Vergleichsportale als ersten Überblick, lass dich aber anschließend unabhängig beraten. Achte besonders auf die genauen Leistungsbedingungen, Ausschlüsse und Deckungssummen. Ein günstiger Tarif kann im Schadensfall teuer werden, wenn wichtige Leistungen fehlen."
     }
   ];
 
   return (
     <Layout>
       <Hero
-        title="Versicherungen – Was du wirklich brauchst"
-        subtitle="Meine unabhängigen Empfehlungen zu sinnvollen und überflüssigen Versicherungen - ohne Verkaufsabsicht, dafür mit klaren Prioritäten."
-        ctaText="Zu den Empfehlungen"
+        title="Versicherungen"
+        subtitle="Wichtiger Schutz für alle Lebenslagen: Versicherungen richtig verstehen und optimal absichern."
+        ctaText="Top-Empfehlungen"
         ctaLink="#empfehlungen"
       />
 
       <section className="section-padding">
         <div className="container">
           <SectionHeading
-            title="Mein Ansatz zu Versicherungen"
-            description="Versicherungen sollen existenzielle Risiken absichern - und nicht jeden kleinen Schaden decken. Mit diesem Prinzip sparst du Geld und bist trotzdem optimal geschützt."
+            title="Richtig versichert sein"
+            description="Erfahre, welche Versicherungen du wirklich brauchst und wie du unnötige Kosten vermeidest."
           />
 
           <div className="mt-12 prose max-w-none">
             <p>
-              Versicherungen sind wichtig, aber nicht jede angebotene Police ist sinnvoll. Ich verfolge einen minimalistischen Ansatz: Absicherung existenzieller Risiken hat Priorität, alles andere ist optional oder sogar überflüssig.
+              Das Thema Versicherungen ist komplex und oft verwirrend. Viele Menschen sind entweder über- oder unterversichert. Auf dieser Seite helfe ich dir zu verstehen, welche Versicherungen wirklich wichtig sind und welche du getrost ignorieren kannst.
             </p>
             <p>
-              Meine Empfehlungen basieren auf folgenden Grundsätzen:
+              Ich analysiere regelmäßig Versicherungstarife und teile meine Erkenntnisse hier mit dir. Dabei lege ich besonderen Wert auf:
             </p>
             <ul>
-              <li><strong>Existenzielle Risiken absichern:</strong> Ereignisse, die dich finanziell ruinieren könnten, müssen unbedingt versichert werden</li>
-              <li><strong>Kleine Schäden selbst tragen:</strong> Für überschaubare Kosten brauchst du keine Versicherung - spare lieber dafür</li>
-              <li><strong>Doppelte Absicherungen vermeiden:</strong> Prüfe, was bereits durch andere Policen oder gesetzliche Versicherungen abgedeckt ist</li>
-              <li><strong>Bedingungen statt Preis vergleichen:</strong> Bei wichtigen Versicherungen sind die Leistungen und Bedingungen entscheidender als der Preis</li>
-              <li><strong>Regelmäßig überprüfen:</strong> Lebenssituationen ändern sich - und damit auch dein Versicherungsbedarf</li>
+              <li><strong>Bedarfsgerechten Schutz</strong> - nicht jeder braucht jede Versicherung</li>
+              <li><strong>Optimales Preis-Leistungs-Verhältnis</strong> - guter Schutz muss nicht teuer sein</li>
+              <li><strong>Transparente Bedingungen</strong> - damit du im Schadensfall nicht böse Überraschungen erlebst</li>
+              <li><strong>Servicequalität</strong> - wie schnell und unkompliziert werden Schäden reguliert?</li>
             </ul>
+            <p>
+              <strong>Hinweis:</strong> Bei einigen der vorgestellten Produkte handelt es sich um Affiliate-Links, erkennbar am *-Symbol. Das bedeutet, dass ich eine kleine Provision erhalte, wenn du über meinen Link eine Versicherung abschließt - für dich entstehen dabei keine zusätzlichen Kosten. Ich empfehle ausschließlich Produkte, die ich selbst nutzen würde oder bereits nutze.
+            </p>
           </div>
         </div>
       </section>
@@ -139,51 +95,24 @@ const Versicherungen = () => {
       <section id="empfehlungen" className="section-padding bg-muted/30">
         <div className="container">
           <SectionHeading
-            subtitle="Die wichtigsten Policen"
-            title="Diese Versicherungen sollte jeder haben"
-            description="Die folgenden Versicherungen bilden die Basis eines vernünftigen Versicherungsschutzes für die meisten Menschen."
+            subtitle="Meine Top-Empfehlungen"
+            title="Diese Versicherungen brauchst du wirklich"
+            description="Basierend auf meinen Recherchen und Erfahrungen kann ich diese Versicherungen uneingeschränkt empfehlen."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {essentialInsurances.map((insurance, index) => (
-              <Card key={insurance.title} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <span className="bg-primary/10 text-primary text-xs font-medium px-2.5 py-1 rounded-full mr-2">
-                          Priorität: {insurance.priority}
-                        </span>
-                      </div>
-                      <CardTitle>{insurance.title}{insurance.isAffiliate && "*"}</CardTitle>
-                      <CardDescription className="mt-2">{insurance.description}</CardDescription>
-                    </div>
-                    <div className="flex items-center bg-primary/10 px-2.5 py-1 rounded-full">
-                      <span className="text-primary font-semibold">{insurance.rating.toFixed(1)}</span>
-                      <span className="text-primary ml-1">/5</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-2">
-                    {insurance.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-primary shrink-0 mr-2 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6">
-                    <Link
-                      to={insurance.link}
-                      className="group flex items-center text-primary hover:text-primary/80 font-medium"
-                    >
-                      <span>Mehr erfahren</span>
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+            {topRecommendations.map((recommendation, index) => (
+              <RecommendationCard
+                key={recommendation.title}
+                title={recommendation.title}
+                category={recommendation.category}
+                description={recommendation.description}
+                rating={recommendation.rating}
+                imageSrc={recommendation.imageSrc}
+                link={recommendation.link}
+                isAffiliate={recommendation.isAffiliate}
+                delay={index}
+              />
             ))}
           </div>
         </div>
@@ -191,142 +120,96 @@ const Versicherungen = () => {
 
       <section className="section-padding">
         <div className="container">
-          <SectionHeading
-            subtitle="Individuell prüfen"
-            title="Diese Versicherungen können sinnvoll sein"
-            description="Je nach Lebenssituation können folgende Versicherungen eine sinnvolle Ergänzung darstellen."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {optionalInsurances.map((insurance, index) => (
-              <Card key={insurance.title} className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-1 rounded-full mr-2">
-                          Priorität: {insurance.priority}
-                        </span>
-                      </div>
-                      <CardTitle>{insurance.title}</CardTitle>
-                      <CardDescription className="mt-2">{insurance.description}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-2">
-                    {insurance.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-amber-600 shrink-0 mr-2 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6">
-                    <Link
-                      to={insurance.link}
-                      className="group flex items-center text-amber-700 hover:text-amber-600 font-medium"
-                    >
-                      <span>Mehr erfahren</span>
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <SectionHeading
+                title="Versicherungs-Check"
+                description="So überprüfst du deinen bestehenden Versicherungsschutz"
+              />
+              
+              <div className="space-y-6 mt-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>1. Bestandsaufnahme machen</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Liste alle deine bestehenden Versicherungen auf, inklusive monatlicher Kosten, Versicherungssummen und wichtiger Ausschlüsse. Oft haben Menschen Versicherungen, von denen sie gar nicht mehr wissen oder die sich überschneiden.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle>2. Lebenssituation analysieren</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Überlege, welche Risiken für dich tatsächlich relevant sind. Eine Eigenheimversicherung ist für Mieter unnötig, während Familien mit Kindern andere Absicherungsbedürfnisse haben als Singles.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle>3. Prioritäten setzen</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Teile Versicherungen in drei Kategorien ein: Muss-Versicherungen (z.B. Haftpflicht), Kann-Versicherungen (z.B. Hausrat) und unnötige Versicherungen (z.B. Handyversicherung). Beginne mit dem notwendigen Schutz, bevor du Extras abschließt.</p>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle>4. Tarife vergleichen</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Vergleiche nicht nur die Preise, sondern vor allem die Leistungen. Ein günstiger Tarif kann teuer werden, wenn im Schadensfall wichtige Leistungen fehlen. Nutze Vergleichsportale, aber lass dich anschließend unabhängig beraten.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+            
+            <div>
+              <SectionHeading
+                title="Häufig gestellte Fragen"
+                description="Antworten auf wichtige Versicherungsfragen"
+              />
+              
+              <div className="mt-8">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqItems.map((item, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger>{item.question}</AccordionTrigger>
+                      <AccordionContent>
+                        {item.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-muted/30">
+      <section className="bg-primary/5 py-16">
         <div className="container">
-          <SectionHeading
-            subtitle="Geldverschwendung vermeiden"
-            title="Diese Versicherungen brauchst du nicht"
-            description="Meine Erfahrung zeigt: Folgende Versicherungen haben ein schlechtes Preis-Leistungs-Verhältnis und sind für die meisten Menschen überflüssig."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            {unnecessaryInsurances.map((insurance, index) => (
-              <Card key={insurance.title} className="h-full hover:bg-red-50/30 transition-colors duration-300 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="flex items-center mb-2">
-                    <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-1 rounded-full mr-2">
-                      Nicht empfohlen
-                    </span>
-                  </div>
-                  <CardTitle className="text-xl">{insurance.title}</CardTitle>
-                  <CardDescription>{insurance.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-start">
-                    <Shield className="h-5 w-5 text-red-500 shrink-0 mr-2 mt-0.5" />
-                    <span className="text-sm font-medium text-red-800">{insurance.recommendation}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="mt-12 bg-card rounded-lg p-6 border border-border/50 shadow-sm">
-            <p className="text-sm text-muted-foreground">
-              <strong>Hinweis:</strong> Mit * gekennzeichnete Links sind Affiliate-Links. Wenn du über diese Links ein Produkt kaufst oder einen Dienst abonnierst, erhalte ich eine kleine Provision. Für dich entstehen dabei keine zusätzlichen Kosten. Diese Provisionen helfen mir, diese Website zu betreiben und weiterhin kostenlose Inhalte zu erstellen.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container">
-          <SectionHeading
-            title="Häufig gestellte Fragen"
-            description="Antworten auf die wichtigsten Fragen zum Thema Versicherungen"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <Card>
-              <CardHeader>
-                <CardTitle>Wie finde ich den besten Versicherungstarif?</CardTitle>
-              </CardHeader>
-              <CardContent>
+          <div className="bg-card rounded-lg p-8 shadow-sm border border-border">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-8">
+                <h3 className="text-2xl font-semibold mb-2">
+                  Brauchst du Hilfe bei deinem Versicherungsschutz?
+                </h3>
                 <p className="text-muted-foreground">
-                  Vergleichsportale bieten einen guten ersten Überblick, zeigen aber nicht alle Anbieter. Für wichtige Versicherungen wie die Berufsunfähigkeitsversicherung empfehle ich einen Honorarberater, der unabhängig und nicht provisionsgetrieben berät. Bei einfacheren Produkten wie Haftpflicht oder Hausrat reicht oft ein Online-Vergleich. Achte neben dem Preis vor allem auf die Bedingungen und Leistungen.
+                  Ich helfe dir gerne dabei, deinen Versicherungsschutz zu optimieren. Kontaktiere mich für eine individuelle Beratung.
                 </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Sollte ich alle Versicherungen bei einem Anbieter bündeln?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Bündelrabatte sind verlockend, aber selten der beste Weg. Jeder Versicherer hat Stärken und Schwächen in verschiedenen Sparten. Besser ist es, für jede wichtige Versicherung den individuell besten Anbieter zu wählen. Bei zusammenhängenden Versicherungen wie Privathaftpflicht und Hausrat kann eine Bündelung jedoch sinnvoll sein, um Deckungslücken oder Doppelversicherungen zu vermeiden.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Wann sollte ich meine Versicherungen überprüfen?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Überprüfe deine Versicherungen mindestens alle zwei bis drei Jahre oder bei wichtigen Lebensereignissen wie Heirat, Geburt eines Kindes, Hauskauf oder Berufswechsel. Diese Änderungen können neuen Versicherungsbedarf auslösen oder bestehende Policen überflüssig machen. Auch bei deutlichen Beitragserhöhungen lohnt sich ein Vergleich.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Wie kündige ich eine Versicherung richtig?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Die meisten Versicherungen haben eine Kündigungsfrist von drei Monaten zum Jahresende. Prüfe das genaue Datum in deiner Police. Die Kündigung sollte immer schriftlich per Einschreiben erfolgen und deine Versicherungsnummer enthalten. Wichtig: Kündige existenzielle Versicherungen wie die Haftpflicht oder Berufsunfähigkeitsversicherung nie, bevor du einen neuen, besseren Vertrag sicher abgeschlossen hast.
-                </p>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="md:col-span-4 flex justify-center md:justify-end">
+                <a
+                  href="/kontakt"
+                  className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors"
+                >
+                  Kontakt aufnehmen
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
