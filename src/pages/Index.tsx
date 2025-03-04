@@ -1,11 +1,11 @@
-
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import Hero from "../components/UI/Hero";
 import CategoryCard from "../components/UI/CategoryCard";
 import RecommendationCard from "../components/UI/RecommendationCard";
 import BlogPostCard from "../components/UI/BlogPostCard";
 import SectionHeading from "../components/UI/SectionHeading";
+import LandingHero from "../components/UI/LandingHero";
+import { ArrowRight, BookOpen, Heart, ScrollText, ShieldCheck } from "lucide-react";
 
 const Index = () => {
   const categories = [
@@ -94,14 +94,66 @@ const Index = () => {
 
   return (
     <Layout>
-      <Hero
-        title="Ehrliche Tipps für ein besseres Leben"
+      <LandingHero
+        title="Dein Leben. Bessere Entscheidungen."
         subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
         ctaText="Empfehlungen entdecken"
         ctaLink="/empfehlungen"
         secondaryCtaText="Mehr über mich"
         secondaryCtaLink="/ueber-mich"
+        imageSrc="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
       />
+
+      {/* Features-Bereich */}
+      <section className="py-16 bg-gradient-to-b from-background to-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
+              Was macht MyLifeTips besonders?
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ehrliche Empfehlungen für dein Leben
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Bei uns findest du ausschließlich Empfehlungen, die wir selbst getestet und für gut befunden haben. Kein Marketing-Sprech, sondern ehrliche Erfahrungen.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Heart className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Persönlich getestet</h3>
+              <p className="text-muted-foreground">Wir empfehlen nur Produkte und Services, die wir selbst nutzen und lieben.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <ShieldCheck className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Unabhängige Bewertungen</h3>
+              <p className="text-muted-foreground">Unsere Bewertungen sind ehrlich und basieren auf realen Erfahrungen.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <BookOpen className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Tiefgehende Analysen</h3>
+              <p className="text-muted-foreground">Wir testen gründlich und berichten detailliert über Vor- und Nachteile.</p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 duration-300">
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <ScrollText className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Aktuelle Inhalte</h3>
+              <p className="text-muted-foreground">Wir aktualisieren unsere Empfehlungen regelmäßig, um immer auf dem neuesten Stand zu sein.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section-padding bg-background">
         <div className="container">
@@ -153,9 +205,10 @@ const Index = () => {
           <div className="mt-12 text-center">
             <Link
               to="/empfehlungen"
-              className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors group"
             >
               Alle Empfehlungen ansehen
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
@@ -187,15 +240,16 @@ const Index = () => {
           <div className="mt-12 text-center">
             <Link
               to="/blog"
-              className="inline-flex items-center bg-secondary text-secondary-foreground px-6 py-3 rounded-md hover:bg-secondary/80 transition-colors"
+              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-md hover:bg-secondary/80 transition-colors group"
             >
               Zum Blog
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-primary/5 py-20">
+      <section className="bg-gradient-to-b from-white to-primary/5 dark:from-background dark:to-primary/5 py-20">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
