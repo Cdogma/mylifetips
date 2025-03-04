@@ -20,6 +20,7 @@ import Broker from "./pages/Broker";
 import ETFs from "./pages/ETFs";
 import Versicherungen from "./pages/Versicherungen";
 import Business from "./pages/Business";
+import Gruendung from "./pages/Gruendung";
 import Tech from "./pages/Tech";
 import Lifestyle from "./pages/Lifestyle";
 
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/finanzen/etfs" element={<ETFs />} />
             <Route path="/finanzen/versicherungen" element={<Versicherungen />} />
             <Route path="/business" element={<Business />} />
+            <Route path="/business/gruendung" element={<Gruendung />} />
             <Route path="/technik" element={<Tech />} />
             <Route path="/lifestyle" element={<Lifestyle />} />
             <Route path="/blog" element={<Blog />} />

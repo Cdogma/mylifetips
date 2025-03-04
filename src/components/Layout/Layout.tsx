@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useScrollToTop } from "../../hooks/useScrollToTop";
+import CookieConsent from "../UI/CookieConsent";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Navbar />
       <main className="flex-grow pt-24">{children}</main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 };
