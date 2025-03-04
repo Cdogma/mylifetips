@@ -25,6 +25,7 @@ import Tech from "./pages/Tech";
 import Lifestyle from "./pages/Lifestyle";
 import SmartHome from "./pages/SmartHome";
 import Gadgets from "./pages/Gadgets";
+import C24BankAccount from "./pages/C24BankAccount";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/finanzen" element={<Finance />} />
             <Route path="/finanzen/bankkonten" element={<Bankkonten />} />
+            <Route path="/finanzen/bankkonten/c24" element={<C24BankAccount />} />
             <Route path="/finanzen/kreditkarten" element={<Kreditkarten />} />
             <Route path="/finanzen/broker" element={<Broker />} />
             <Route path="/finanzen/etfs" element={<ETFs />} />
