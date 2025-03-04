@@ -75,20 +75,27 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
-    line-height: 2; /* Significantly increased line height */
+    line-height: 2.5; /* Extremely increased line height to prevent text clipping */
+    margin-top: 0.75rem; /* Added top margin */
+    margin-bottom: 0.75rem; /* Added bottom margin */
+    padding-top: 0.5rem; /* Added top padding */
+    padding-bottom: 0.5rem; /* Added bottom padding */
   }
   h1 {
     @apply text-3xl sm:text-4xl md:text-5xl;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 3; /* Extra spacing for h1 */
   }
   h2 {
     @apply text-2xl sm:text-3xl md:text-4xl;
-    padding-bottom: 0.5rem; /* Increased bottom padding */
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem; /* Increased bottom padding */
+    line-height: 2.75; /* Extra spacing for h2 */
   }
   h3 {
     @apply text-xl sm:text-2xl;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 
