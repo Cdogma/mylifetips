@@ -1,4 +1,3 @@
-
 import Layout from "../components/Layout/Layout";
 import SectionHeading from "../components/UI/SectionHeading";
 import { Shield, Info, Lock, FileCheck, AlertCircle } from "lucide-react";
@@ -179,8 +178,7 @@ const Datenschutz = () => {
                 <div className="flex items-center mb-2">
                   <Info className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
                   <div>
-                    <Badge variant="destructive" className="mb-1">Bitte ergänzen</Badge>
-                    <p className="font-medium text-foreground">Stand: [Monat, Jahr]</p>
+                    <p className="font-medium text-foreground">Stand: 03, 2025</p>
                   </div>
                 </div>
                 <p className="text-sm">
