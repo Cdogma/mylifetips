@@ -14,18 +14,21 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    // Lokalen Speicher beim Laden überprüfen
+    // Check local storage on load
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(savedTheme);
     } else {
-      // Als Standard dunkel verwenden, anstatt System-Präferenz zu prüfen
+      // Use dark as default
       setTheme("dark");
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
   useEffect(() => {
-    // Theme auf das HTML-Element anwenden
+    // Apply theme to HTML element
     document.documentElement.classList.remove("light", "dark");
     document.documentElement.classList.add(theme);
     localStorage.setItem("theme", theme);

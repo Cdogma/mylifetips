@@ -43,6 +43,9 @@ const ModernFooter = () => {
                 <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[15px] max-w-md mb-5">
                   Ehrliche Tipps und Empfehlungen für ein besseres Leben – mit Fokus auf Finanzen, Business, Technik und Lifestyle.
                 </p>
+                <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[14px] max-w-md mb-5 italic">
+                  * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
+                </p>
               </div>
               
               <div className="footer-newsletter mt-4">
@@ -69,35 +72,35 @@ const ModernFooter = () => {
             </div>
             
             {/* Legal Section */}
-            <div className="footer-section flex flex-col gap-5 animate-fade-in-up animation-delay-200">
-              <h3 className="footer-heading text-lg font-semibold mb-1 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
+            <div className="footer-section animate-fade-in-up animation-delay-200">
+              <h3 className="footer-heading text-lg font-semibold mb-4 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
               </h3>
-              <ul className="footer-links list-none flex flex-col gap-3">
-                <li className="transition-all hover:translate-x-1">
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-x-8 gap-y-3">
+                <div className="transition-all hover:translate-x-1">
                   <Link to="/impressum" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Impressum
                   </Link>
-                </li>
-                <li className="transition-all hover:translate-x-1">
+                </div>
+                <div className="transition-all hover:translate-x-1">
                   <Link to="/datenschutz" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Datenschutz
                   </Link>
-                </li>
-                <li className="transition-all hover:translate-x-1">
+                </div>
+                <div className="transition-all hover:translate-x-1">
                   <Link to="/kontakt" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Kontakt
                   </Link>
-                </li>
-                <li className="transition-all hover:translate-x-1">
+                </div>
+                <div className="transition-all hover:translate-x-1">
                   <Link to="/ueber-mich" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Über mich
                   </Link>
-                </li>
-              </ul>
+                </div>
+              </div>
               
               {/* Social Links */}
-              <div className="social-links flex gap-3 mt-5">
+              <div className="social-links flex gap-3 mt-8">
                 <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
                   <Facebook className="h-5 w-5" />
                 </a>
@@ -117,11 +120,6 @@ const ModernFooter = () => {
           <div className="footer-bottom flex flex-col sm:flex-row items-start sm:items-center justify-between pt-8 border-t border-white/10 gap-5">
             <div className="copyright text-[#94A3B8] text-sm">
               © {currentYear} <span className="text-primary">MyLifeTips</span>. Alle Rechte vorbehalten.
-            </div>
-            
-            {/* Affiliate Notice */}
-            <div className="affiliate-notice text-[#94A3B8] text-sm max-w-md">
-              * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
             </div>
           </div>
         </footer>
