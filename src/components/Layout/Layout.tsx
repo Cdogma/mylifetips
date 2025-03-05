@@ -1,7 +1,7 @@
 
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+import ModernFooter from "./ModernFooter";
 import { useScrollToTop } from "../../hooks/useScrollToTop";
 import CookieConsent from "../UI/CookieConsent";
 
@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-24">{children}</main>
-      <Footer />
+      <ModernFooter />
       <CookieConsent />
     </div>
   );
