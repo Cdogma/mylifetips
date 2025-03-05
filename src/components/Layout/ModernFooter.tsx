@@ -49,8 +49,8 @@ const ModernFooter = () => {
               </div>
             </div>
             
-            {/* Legal Section - centered with left-aligned links */}
-            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col items-center justify-center">
+            {/* Legal Section - left-aligned both heading and links */}
+            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col items-start justify-center">
               <h3 className="footer-heading text-lg font-semibold mb-5 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
               </h3>
