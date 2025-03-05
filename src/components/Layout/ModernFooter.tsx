@@ -37,7 +37,7 @@ const ModernFooter = () => {
         <footer className="relative z-[5] py-16 px-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
             {/* Brand Section */}
-            <div className="md:col-span-7 footer-brand flex flex-col gap-5 animate-fade-in-up">
+            <div className="md:col-span-6 footer-brand flex flex-col gap-5 animate-fade-in-up">
               <div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text mb-3 inline-block">MyLifeTips</div>
                 <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[15px] max-w-md mb-4">
@@ -47,36 +47,14 @@ const ModernFooter = () => {
                   * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
                 </p>
               </div>
-              
-              <div className="newsletter-form flex flex-col space-y-3 max-w-sm">
-                <div className="text-base font-semibold">Bleiben Sie auf dem Laufenden</div>
-                <div className="relative flex">
-                  <input 
-                    type="email" 
-                    className="bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-[#F1F5F9] w-full text-sm focus:border-white/20 focus:bg-white/[0.07] transition-all outline-none" 
-                    placeholder="Ihre E-Mail-Adresse"
-                  />
-                  <button className="absolute right-1 top-1 bottom-1 border-none bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg px-4 font-medium cursor-pointer text-sm transition-all hover:opacity-90 hover:-translate-y-0.5">
-                    Anmelden
-                  </button>
-                </div>
-              </div>
-              
-              {/* Theme Switch */}
-              <div className="theme-switch flex items-center mt-1 cursor-pointer" onClick={toggleTheme}>
-                <div className={`relative w-[50px] h-[26px] rounded-[13px] bg-white/[0.06] transition-all ${theme === 'dark' ? 'bg-primary' : ''}`}>
-                  <div className={`absolute w-[20px] h-[20px] rounded-full bg-primary top-[3px] left-[3px] transition-all ${theme === 'dark' ? 'transform translate-x-[24px] bg-[#0F172A]' : ''}`}></div>
-                </div>
-                <span className="text-[#94A3B8] text-[14px] ml-[10px]">Dark Mode</span>
-              </div>
             </div>
             
-            {/* Legal Section */}
-            <div className="md:col-span-5 footer-section animate-fade-in-up animation-delay-200">
+            {/* Legal Section - Now centered vertically */}
+            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col items-center justify-center">
               <h3 className="footer-heading text-lg font-semibold mb-5 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-x-8 gap-y-3">
+              <div className="flex flex-col items-center gap-y-3">
                 <div className="transition-all hover:translate-x-1">
                   <Link to="/impressum" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Impressum
@@ -98,21 +76,49 @@ const ModernFooter = () => {
                   </Link>
                 </div>
               </div>
+            </div>
+            
+            {/* Newsletter and Social Media Section */}
+            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-300">
+              <div className="newsletter-form flex flex-col space-y-3 mb-6">
+                <div className="text-base font-semibold">Bleiben Sie auf dem Laufenden</div>
+                <div className="relative flex">
+                  <input 
+                    type="email" 
+                    className="bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-[#F1F5F9] w-full text-sm focus:border-white/20 focus:bg-white/[0.07] transition-all outline-none" 
+                    placeholder="Ihre E-Mail-Adresse"
+                  />
+                  <button className="absolute right-1 top-1 bottom-1 border-none bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg px-4 font-medium cursor-pointer text-sm transition-all hover:opacity-90 hover:-translate-y-0.5">
+                    Anmelden
+                  </button>
+                </div>
+              </div>
               
-              {/* Social Links */}
-              <div className="social-links flex gap-3 mt-8">
-                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                  <Linkedin className="h-5 w-5" />
-                </a>
+              {/* Social Links and Theme Switch in one row */}
+              <div className="flex items-center justify-between">
+                {/* Social Links */}
+                <div className="social-links flex gap-2">
+                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
+                
+                {/* Theme Switch */}
+                <div className="theme-switch flex items-center cursor-pointer" onClick={toggleTheme}>
+                  <div className={`relative w-[50px] h-[26px] rounded-[13px] bg-white/[0.06] transition-all ${theme === 'dark' ? 'bg-primary' : ''}`}>
+                    <div className={`absolute w-[20px] h-[20px] rounded-full bg-primary top-[3px] left-[3px] transition-all ${theme === 'dark' ? 'transform translate-x-[24px] bg-[#0F172A]' : ''}`}></div>
+                  </div>
+                  <span className="text-[#94A3B8] text-[14px] ml-[10px]">Dark Mode</span>
+                </div>
               </div>
             </div>
           </div>
