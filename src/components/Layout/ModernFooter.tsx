@@ -1,9 +1,8 @@
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ArrowUp, Mail, MapPin, Phone, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { ArrowUp, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Button } from "@/components/ui/button";
 
 const ModernFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -36,13 +35,13 @@ const ModernFooter = () => {
         <div className="footer-blur blur-3 absolute w-[25%] h-[60%] rounded-full blur-[80px] opacity-15 z-[2] animate-color-shift animation-delay-10000 bg-destructive top-[40%] right-[25%]"></div>
         
         <footer className="relative z-[5] py-20 px-6 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             {/* Brand Section */}
             <div className="footer-brand flex flex-col gap-5 animate-fade-in-up">
               <div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text mb-1 inline-block">MyLifeTips</div>
-                <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[15px] max-w-xs mb-5">
-                  Ehrliche Tipps und Empfehlungen für ein besseres Leben, von Finanzen bis Lifestyle.
+                <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[15px] max-w-md mb-5">
+                  Ehrliche Tipps und Empfehlungen für ein besseres Leben – mit Fokus auf Finanzen, Business, Technik und Lifestyle.
                 </p>
               </div>
               
@@ -96,47 +95,9 @@ const ModernFooter = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
-            
-            {/* Contact Section */}
-            <div className="footer-section flex flex-col gap-5 animate-fade-in-up animation-delay-300">
-              <h3 className="footer-heading text-lg font-semibold mb-1 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
-                Kontakt
-              </h3>
-              
-              <div className="contact-item flex items-start gap-3 mb-3">
-                <div className="contact-icon bg-white/[0.06] w-9 h-9 rounded-full flex items-center justify-center text-sm text-primary flex-shrink-0">
-                  <MapPin className="h-4 w-4" />
-                </div>
-                <div className="contact-info text-[15px] text-[#94A3B8]">
-                  Berlin, Deutschland
-                </div>
-              </div>
-              
-              <div className="contact-item flex items-center gap-3 mb-3">
-                <div className="contact-icon bg-white/[0.06] w-9 h-9 rounded-full flex items-center justify-center text-sm text-primary flex-shrink-0">
-                  <Mail className="h-4 w-4" />
-                </div>
-                <div className="contact-info text-[15px] text-[#94A3B8]">
-                  <a href="mailto:info@mylifetips.de" className="text-[#94A3B8] no-underline transition-all hover:text-[#F1F5F9]">
-                    info@mylifetips.de
-                  </a>
-                </div>
-              </div>
-              
-              <div className="contact-item flex items-center gap-3 mb-3">
-                <div className="contact-icon bg-white/[0.06] w-9 h-9 rounded-full flex items-center justify-center text-sm text-primary flex-shrink-0">
-                  <Phone className="h-4 w-4" />
-                </div>
-                <div className="contact-info text-[15px] text-[#94A3B8]">
-                  <a href="tel:+491234567890" className="text-[#94A3B8] no-underline transition-all hover:text-[#F1F5F9]">
-                    +49 (0) 123 456 7890
-                  </a>
-                </div>
-              </div>
               
               {/* Social Links */}
-              <div className="social-links flex gap-3 mt-3">
+              <div className="social-links flex gap-3 mt-5">
                 <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
                   <Facebook className="h-5 w-5" />
                 </a>
@@ -153,26 +114,14 @@ const ModernFooter = () => {
             </div>
           </div>
           
-          <div className="footer-bottom flex items-center justify-between pt-8 border-t border-white/10 flex-wrap gap-5">
+          <div className="footer-bottom flex flex-col sm:flex-row items-start sm:items-center justify-between pt-8 border-t border-white/10 gap-5">
             <div className="copyright text-[#94A3B8] text-sm">
               © {currentYear} <span className="text-primary">MyLifeTips</span>. Alle Rechte vorbehalten.
             </div>
             
             {/* Affiliate Notice */}
-            <div className="affiliate-notice text-[#94A3B8] text-sm">
-              * Einige Links auf dieser Seite sind Affiliate-Links. Wir erhalten möglicherweise eine Provision, wenn Sie über diese Links etwas kaufen.
-            </div>
-            
-            <div className="legal-links flex gap-6 flex-wrap">
-              <Link to="/datenschutz" className="text-[#94A3B8] no-underline text-sm transition-all hover:text-[#F1F5F9]">
-                Datenschutz
-              </Link>
-              <Link to="/impressum" className="text-[#94A3B8] no-underline text-sm transition-all hover:text-[#F1F5F9]">
-                Impressum
-              </Link>
-              <Link to="/kontakt" className="text-[#94A3B8] no-underline text-sm transition-all hover:text-[#F1F5F9]">
-                Kontakt
-              </Link>
+            <div className="affiliate-notice text-[#94A3B8] text-sm max-w-md">
+              * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
             </div>
           </div>
         </footer>
