@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -52,29 +51,20 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-xl md:text-2xl font-bold relative transition-all duration-500 ease-in-out
-              bg-gradient-to-r from-primary via-primary/90 to-primary/70 
-              dark:from-primary dark:via-primary/90 dark:to-sky-400
-              bg-clip-text text-transparent 
-              group-hover:tracking-wider group-hover:bg-gradient-to-r group-hover:from-primary/90 group-hover:via-primary group-hover:to-blue-500
-              relative overflow-hidden
-              drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)]
-              dark:drop-shadow-[0_1.2px_1.2px_rgba(150,150,255,0.2)]">
-              <span className="relative inline-block transform transition-transform duration-300 group-hover:translate-y-[-2px]">
-                MyLife
-              </span>
-              <span className="relative z-10 inline-block bg-gradient-to-br from-primary to-blue-500 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-primary transform transition-transform duration-300 group-hover:translate-y-[-2px]">
-                Tips
-              </span>
+            <span className="text-xl md:text-2xl font-bold relative group-hover:scale-[1.02] transition-all duration-300">
+              <span className="bg-gradient-to-r from-primary to-primary/80 dark:from-primary dark:to-blue-400 
+                bg-clip-text text-transparent">MyLife</span>
+              <span className="bg-gradient-to-r from-blue-500 to-primary bg-clip-text text-transparent 
+                relative ml-0.5">Tips</span>
               
-              {/* Glaseffekt-Hintergrund (nur sichtbar bei Hover) */}
-              <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm shadow-[0_8px_16px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_16px_rgba(0,0,0,0.2),0_4px_6px_rgba(0,0,0,0.1)] scale-105 transition-all duration-300"></span>
+              {/* Subtle bottom border that appears on hover */}
+              <span className="absolute -bottom-1 left-0 w-full h-[2px] rounded-full
+                bg-gradient-to-r from-transparent via-primary to-transparent 
+                transform scale-x-0 group-hover:scale-x-100 transition-all duration-500"></span>
               
-              {/* Subtile Reflexion/Glanz-Effekt */}
-              <span className="absolute inset-0 -z-5 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 dark:from-white/0 dark:via-white/10 dark:to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></span>
-              
-              {/* Animierter Unterstrich */}
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+              {/* Subtle shadow for depth */}
+              <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 blur-[2px]
+                bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-lg transition-opacity duration-300"></span>
             </span>
           </Link>
 
