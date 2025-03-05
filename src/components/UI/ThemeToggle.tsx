@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative p-2 rounded-full hover:bg-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
+      className={`relative p-2 rounded-full ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/10'} transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50`}
       aria-label={theme === "light" ? "Dunkelmodus aktivieren" : "Hellmodus aktivieren"}
     >
       <div className="transition-opacity duration-300">
