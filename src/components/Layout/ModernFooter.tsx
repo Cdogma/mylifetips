@@ -44,7 +44,7 @@ const ModernFooter = () => {
                   Ehrliche Tipps und Empfehlungen für ein besseres Leben – mit Fokus auf Finanzen, Business, Technik und Lifestyle.
                 </p>
                 <p className={`${theme === 'dark' ? 'text-[#94A3B8]' : 'text-[#475569]'} text-[14px] max-w-md mb-5 italic border-l-2 border-primary/30 pl-3`}>
-                  * Transparenzhinweis: Einige Links auf dieser Seite sind Affiliate-Links. Wenn du über sie kaufst, erhalte ich eine kleine Provision – für dich bleibt der Preis gleich. Damit unterstützt du meine Arbeit und hilfst, die Seite weiter auszubauen. Vielen Dank! 😊
+                  * Transparenzhinweis: Einige Links auf dieser Seite sind Affiliate-Links. Wenn du über sie kaufst, erhalte ich eine kleine Provision – für dich bleibt der Preis gleich. Damit unterstützt du meine Arbeit und hilfst, die Seite weiter auszubauen. Vielen Dank!<span className="not-italic"> 😊</span>
                 </p>
               </div>
             </div>
