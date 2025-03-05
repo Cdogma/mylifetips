@@ -1,6 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -132,24 +130,6 @@
     @apply backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl;
   }
   
-  /* Logo with animated gradient and 3D effect */
-  .logo-mylifetips {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(-45deg, #3B82F6, #60A5FA, #2563EB, #1D4ED8);
-    background-size: 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-animation 7s ease infinite;
-    text-shadow: 
-      3px 3px 0px rgba(0, 0, 0, 0.2),
-      6px 6px 10px rgba(0, 0, 0, 0.15);
-    letter-spacing: 1px;
-  }
-  
   /* Footer specific styles */
   .footer-container {
     @apply bg-[#0F172A] relative overflow-hidden text-[#F1F5F9];
@@ -202,13 +182,6 @@
     opacity: 1;
     transform: scale(1);
   }
-}
-
-/* Gradient animation for the logo */
-@keyframes gradient-animation {
-  0% { background-position: 0% 50% }
-  50% { background-position: 100% 50% }
-  100% { background-position: 0% 50% }
 }
 
 /* New animations for the footer */
