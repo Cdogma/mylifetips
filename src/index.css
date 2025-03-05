@@ -110,8 +110,6 @@
     @apply py-12 md:py-16 lg:py-20;
   }
   
-  /* Removed .title-with-bar class since we're now handling it directly in the component */
-  
   .hover-card {
     @apply transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-md;
   }
@@ -130,6 +128,39 @@
   
   .glass-card {
     @apply backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl;
+  }
+  
+  /* Footer specific styles */
+  .footer-container {
+    @apply bg-[#0F172A] relative overflow-hidden text-[#F1F5F9];
+  }
+  
+  .footer-backdrop {
+    @apply absolute top-0 left-0 w-full h-full bg-[#020617] z-[1];
+  }
+  
+  .footer-blur {
+    @apply absolute rounded-full blur-[80px] opacity-15 z-[2];
+  }
+  
+  .blur-1 {
+    @apply bg-primary top-[-20%] left-[-10%] w-[40%] h-[80%] animate-color-shift;
+  }
+  
+  .blur-2 {
+    @apply bg-[#10B981] bottom-[-30%] right-[-10%] w-[40%] h-[80%] animate-color-shift animation-delay-5000;
+  }
+  
+  .blur-3 {
+    @apply bg-destructive top-[40%] right-[25%] w-[25%] h-[60%] animate-color-shift animation-delay-10000;
+  }
+  
+  .social-link {
+    @apply flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white;
+  }
+  
+  .scroll-top {
+    @apply fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-primary to-primary/80 text-white rounded-full flex items-center justify-center cursor-pointer z-50 shadow-lg shadow-primary/30 transition-all;
   }
 }
 
@@ -180,7 +211,7 @@
   }
 }
 
-.animate-colorShift {
+.animate-color-shift {
   animation: colorShift 15s infinite alternate;
 }
 
@@ -204,6 +235,6 @@
   animation-delay: 10s;
 }
 
-.animate-fadeInUp {
+.animate-fade-in-up {
   animation: fadeInUp 0.5s ease forwards;
 }

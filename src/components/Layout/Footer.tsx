@@ -1,11 +1,12 @@
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ArrowUp, ChevronRight, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowUp, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
   
   useEffect(() => {
@@ -29,19 +30,19 @@ const Footer = () => {
       <div className="footer-container bg-[#0F172A] relative overflow-hidden text-[#F1F5F9]">
         {/* Animated background elements */}
         <div className="footer-backdrop absolute top-0 left-0 w-full h-full bg-[#020617] z-[1]"></div>
-        <div className="footer-blur blur-1 absolute w-[40%] h-[80%] rounded-full blur-[80px] opacity-15 z-[2] animate-colorShift bg-primary top-[-20%] left-[-10%]"></div>
-        <div className="footer-blur blur-2 absolute w-[40%] h-[80%] rounded-full blur-[80px] opacity-15 z-[2] animate-colorShift animation-delay-5000 bg-[#10B981] bottom-[-30%] right-[-10%]"></div>
-        <div className="footer-blur blur-3 absolute w-[25%] h-[60%] rounded-full blur-[80px] opacity-15 z-[2] animate-colorShift animation-delay-10000 bg-destructive top-[40%] right-[25%]"></div>
+        <div className="footer-blur blur-1 absolute w-[40%] h-[80%] rounded-full blur-[80px] opacity-15 z-[2] animate-color-shift bg-primary top-[-20%] left-[-10%]"></div>
+        <div className="footer-blur blur-2 absolute w-[40%] h-[80%] rounded-full blur-[80px] opacity-15 z-[2] animate-color-shift animation-delay-5000 bg-[#10B981] bottom-[-30%] right-[-10%]"></div>
+        <div className="footer-blur blur-3 absolute w-[25%] h-[60%] rounded-full blur-[80px] opacity-15 z-[2] animate-color-shift animation-delay-10000 bg-destructive top-[40%] right-[25%]"></div>
         
-        {/* Wave shape divider - optional, can be uncommented if needed */}
-        {/* <svg className="footer-wave absolute top-[-2px] left-0 w-full z-[4]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        {/* Wave shape divider */}
+        <svg className="absolute top-[-2px] left-0 w-full z-[4]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
           <path fill="hsl(var(--background))" fillOpacity="1" d="M0,50L48,45C96,40,192,30,288,36.7C384,43,480,67,576,70C672,73,768,57,864,45C960,33,1056,27,1152,31.7C1248,37,1344,53,1392,61.7L1440,70L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-        </svg> */}
+        </svg>
         
         <footer className="relative z-[5] py-20 px-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
             {/* Brand Section */}
-            <div className="footer-brand flex flex-col gap-5 animate-fadeInUp">
+            <div className="footer-brand flex flex-col gap-5 animate-fade-in-up">
               <div>
                 <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text mb-1 inline-block">MyLifeTips</div>
                 <p className="text-[#94A3B8] text-[15px] max-w-xs mb-5">
@@ -54,7 +55,7 @@ const Footer = () => {
                 <div className="newsletter-form relative flex max-w-xs">
                   <input 
                     type="email" 
-                    className="bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-[#F1F5F9] flex-grow transition-all outline-none w-full text-sm focus:border-white/20 focus:bg-white/[0.07]" 
+                    className="bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-[#F1F5F9] w-full text-sm focus:border-white/20 focus:bg-white/[0.07] transition-all outline-none" 
                     placeholder="Ihre E-Mail-Adresse"
                   />
                   <button className="absolute right-1 top-1 bottom-1 border-none bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg px-4 font-medium cursor-pointer text-sm transition-all hover:opacity-90 hover:-translate-y-0.5">
@@ -63,11 +64,17 @@ const Footer = () => {
                 </div>
               </div>
               
-              {/* Theme Switch - already implemented in ThemeToggle component, not duplicating here */}
+              {/* Theme Switch */}
+              <div className="theme-switch flex items-center mt-5 cursor-pointer" onClick={toggleTheme}>
+                <div className={`relative w-[50px] h-[26px] rounded-[13px] bg-white/[0.06] transition-all ${theme === 'dark' ? 'bg-primary' : ''}`}>
+                  <div className={`absolute w-[20px] h-[20px] rounded-full bg-primary top-[3px] left-[3px] transition-all ${theme === 'dark' ? 'transform translate-x-[24px] bg-[#0F172A]' : ''}`}></div>
+                </div>
+                <span className="text-[#94A3B8] text-[14px] ml-[10px]">Dark Mode</span>
+              </div>
             </div>
             
             {/* Links Section 1 */}
-            <div className="footer-section flex flex-col gap-5 animate-fadeInUp animation-delay-100">
+            <div className="footer-section flex flex-col gap-5 animate-fade-in-up animation-delay-100">
               <h3 className="footer-heading text-lg font-semibold mb-1 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Kategorien
               </h3>
@@ -106,7 +113,7 @@ const Footer = () => {
             </div>
             
             {/* Links Section 2 */}
-            <div className="footer-section flex flex-col gap-5 animate-fadeInUp animation-delay-200">
+            <div className="footer-section flex flex-col gap-5 animate-fade-in-up animation-delay-200">
               <h3 className="footer-heading text-lg font-semibold mb-1 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
               </h3>
@@ -135,7 +142,7 @@ const Footer = () => {
             </div>
             
             {/* Contact Section */}
-            <div className="footer-section flex flex-col gap-5 animate-fadeInUp animation-delay-300">
+            <div className="footer-section flex flex-col gap-5 animate-fade-in-up animation-delay-300">
               <h3 className="footer-heading text-lg font-semibold mb-1 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Kontakt
               </h3>
@@ -160,7 +167,6 @@ const Footer = () => {
                 </div>
               </div>
               
-              {/* Optional Phone
               <div className="contact-item flex items-center gap-3 mb-3">
                 <div className="contact-icon bg-white/[0.06] w-9 h-9 rounded-full flex items-center justify-center text-sm text-primary flex-shrink-0">
                   <Phone className="h-4 w-4" />
@@ -171,9 +177,8 @@ const Footer = () => {
                   </a>
                 </div>
               </div>
-              */}
               
-              {/* Social Links Section - keeping these for future use, but commented out for now
+              {/* Social Links */}
               <div className="social-links flex gap-3 mt-3">
                 <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
                   <i className="fab fa-facebook-f"></i>
@@ -188,7 +193,6 @@ const Footer = () => {
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </div>
-              */}
             </div>
           </div>
           
