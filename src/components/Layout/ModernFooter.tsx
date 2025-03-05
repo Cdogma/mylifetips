@@ -44,17 +44,17 @@ const ModernFooter = () => {
                   Ehrliche Tipps und Empfehlungen für ein besseres Leben – mit Fokus auf Finanzen, Business, Technik und Lifestyle.
                 </p>
                 <p className="text-[#94A3B8] dark:text-[#94A3B8] text-[14px] max-w-md mb-5 italic border-l-2 border-primary/30 pl-3">
-                  * Bei gekennzeichneten Links handelt es sich um Affiliate-Links. Wenn du darüber etwas kaufst, erhalte ich möglicherweise eine kleine Provision – für dich entstehen keine zusätzlichen Kosten.
+                  * Transparenzhinweis: Einige Links auf dieser Seite sind Affiliate-Links. Wenn du über sie kaufst, erhalte ich eine kleine Provision – für dich bleibt der Preis gleich. Damit unterstützt du meine Arbeit und hilfst, die Seite weiter auszubauen. Vielen Dank! 😊
                 </p>
               </div>
             </div>
             
-            {/* Legal Section - Now centered vertically */}
-            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col items-center justify-center">
+            {/* Legal Section - Now left-aligned */}
+            <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col justify-center">
               <h3 className="footer-heading text-lg font-semibold mb-5 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
               </h3>
-              <div className="flex flex-col items-center gap-y-3">
+              <div className="flex flex-col gap-y-3">
                 <div className="transition-all hover:translate-x-1">
                   <Link to="/impressum" className="text-[#94A3B8] no-underline text-[15px] transition-all flex items-center gap-2 hover:text-[#F1F5F9]">
                     Impressum
@@ -94,31 +94,28 @@ const ModernFooter = () => {
                 </div>
               </div>
               
-              {/* Social Links and Theme Switch in one row */}
-              <div className="flex items-center justify-between">
-                {/* Social Links */}
-                <div className="social-links flex gap-2">
-                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
+              {/* Social Links */}
+              <div className="social-links flex gap-2 mb-4">
+                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="#" className="social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-white/5 text-[#F1F5F9] no-underline transition-all hover:-translate-y-1 hover:bg-primary hover:text-white">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+              
+              {/* Theme Switch - Now below social media buttons */}
+              <div className="theme-switch flex items-center cursor-pointer" onClick={toggleTheme}>
+                <div className={`relative w-[50px] h-[26px] rounded-[13px] bg-white/[0.06] transition-all ${theme === 'dark' ? 'bg-primary' : ''}`}>
+                  <div className={`absolute w-[20px] h-[20px] rounded-full bg-primary top-[3px] left-[3px] transition-all ${theme === 'dark' ? 'transform translate-x-[24px] bg-[#0F172A]' : ''}`}></div>
                 </div>
-                
-                {/* Theme Switch */}
-                <div className="theme-switch flex items-center cursor-pointer" onClick={toggleTheme}>
-                  <div className={`relative w-[50px] h-[26px] rounded-[13px] bg-white/[0.06] transition-all ${theme === 'dark' ? 'bg-primary' : ''}`}>
-                    <div className={`absolute w-[20px] h-[20px] rounded-full bg-primary top-[3px] left-[3px] transition-all ${theme === 'dark' ? 'transform translate-x-[24px] bg-[#0F172A]' : ''}`}></div>
-                  </div>
-                  <span className="text-[#94A3B8] text-[14px] ml-[10px]">Dark Mode</span>
-                </div>
+                <span className="text-[#94A3B8] text-[14px] ml-[10px]">Dark Mode</span>
               </div>
             </div>
           </div>
