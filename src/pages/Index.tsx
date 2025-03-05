@@ -79,7 +79,7 @@ const Index = () => {
       excerpt: "Ein Einsteigerguide für alle, die ihr Zuhause mit Smart-Home-Technologie ausstatten möchten.",
       date: "3. Juni 2023",
       category: "Technik",
-      imageSrc: "https://images.unsplash.com/photo-1558002038-bb0401c95e8c?q=80&w=800&auto=format&fit=crop",
+      imageSrc: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
       slug: "smart-home-fuer-anfaenger",
     },
     {
