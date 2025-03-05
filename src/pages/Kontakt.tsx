@@ -2,7 +2,7 @@
 import Layout from "../components/Layout/Layout";
 import SectionHeading from "../components/UI/SectionHeading";
 import ContactForm from "../components/UI/ContactForm";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 const Kontakt = () => {
   return (
@@ -39,19 +39,6 @@ const Kontakt = () => {
                     <div>
                       <h4 className="text-lg font-medium mb-1">Telefon</h4>
                       <a href="tel:+491234567890" className="text-primary hover:underline">+49 (0) 123 456 7890</a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-primary/10 p-3 rounded-full mr-4">
-                      <MapPin className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium mb-1">Adresse</h4>
-                      <p className="text-muted-foreground">
-                        Musterstraße 123<br />
-                        12345 Musterstadt
-                      </p>
                     </div>
                   </div>
                 </div>
