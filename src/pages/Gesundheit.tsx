@@ -1,71 +1,111 @@
+
+import React from 'react';
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
-import GesundheitOverview from "../components/Gesundheit/GesundheitOverview";
-import GesundheitTabs from "../components/Gesundheit/GesundheitTabs";
-import ContactBanner from "../components/Lifestyle/ContactBanner";
-import ArticleSection from "../components/Lifestyle/ArticleSection";
 import Breadcrumbs from "../components/UI/Breadcrumbs";
+import GesundheitTabs from "../components/Gesundheit/GesundheitTabs";
+import GesundheitOverview from "../components/Gesundheit/GesundheitOverview";
+import ContactBanner from "../components/Lifestyle/ContactBanner";
 
 const Gesundheit = () => {
-  const featuredPosts = [
-    {
-      title: "Mentale Gesundheit: Wie du dein Wohlbefinden stärkst",
-      excerpt: "Praktische Übungen und Routinen für den Alltag, die deine mentale Gesundheit verbessern können.",
-      date: "15. Mai 2024",
-      category: "Gesundheit",
-      imageSrc: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop",
-      slug: "mentale-gesundheit-staerken",
-    },
-    {
-      title: "Die besten Entspannungstechniken für den stressigen Alltag",
-      excerpt: "Einfache Methoden, um Stress abzubauen und mehr Gelassenheit in deinen Alltag zu bringen.",
-      date: "2. Mai 2024",
-      category: "Gesundheit",
-      imageSrc: "https://images.unsplash.com/photo-1506126279646-a697353d3166?q=80&w=800&auto=format&fit=crop",
-      slug: "entspannungstechniken-stressiger-alltag",
-    },
-    {
-      title: "Ausgewogene Ernährung ohne Verzicht: So geht's",
-      excerpt: "Wie du dich gesund ernähren kannst, ohne auf Genuss zu verzichten - mit praktischen Tipps und leckeren Rezeptideen.",
-      date: "20. April 2024",
-      category: "Gesundheit",
-      imageSrc: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop",
-      slug: "ausgewogene-ernaehrung-ohne-verzicht",
-    },
+  const breadcrumbItems = [
+    { label: "Home", path: "/" },
+    { label: "Lifestyle", path: "/lifestyle" },
+    { label: "Gesundheit", path: "/lifestyle/gesundheit" },
   ];
 
-  const breadcrumbs = [
-    { label: "Lifestyle", link: "/lifestyle" },
-    { label: "Gesundheit & Wellness" }
+  const tabs = [
+    {
+      value: "ernaehrung",
+      label: "Ernährung",
+      title: "Gesunde Ernährung",
+      content: (
+        <div className="space-y-4">
+          <p>
+            Eine ausgewogene Ernährung ist die Basis für ein gesundes Leben. Hier findest du Tipps und Empfehlungen für eine nachhaltige und gesunde Ernährungsweise ohne Verzicht auf Genuss.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Vollwertige Lebensmittel statt hochverarbeiteter Produkte</li>
+            <li>Saisonale und regionale Ernährung</li>
+            <li>Ausgewogene Nährstoffzufuhr</li>
+            <li>Nachhaltige Ernährungskonzepte</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      value: "bewegung",
+      label: "Bewegung",
+      title: "Regelmäßige Bewegung",
+      content: (
+        <div className="space-y-4">
+          <p>
+            Bewegung ist ein Schlüssel zu körperlichem und mentalem Wohlbefinden. Entdecke Wege, mehr Bewegung in deinen Alltag zu integrieren und finde Sportarten, die zu dir passen.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Integration von Bewegung in den Alltag</li>
+            <li>Sportarten für Einsteiger</li>
+            <li>Trainingsroutinen für zu Hause</li>
+            <li>Motivation und Durchhaltevermögen</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      value: "mental",
+      label: "Mentale Gesundheit",
+      title: "Mentale Balance",
+      content: (
+        <div className="space-y-4">
+          <p>
+            Mentale Gesundheit ist genauso wichtig wie körperliche. Hier findest du Strategien für mehr Achtsamkeit, Stressreduktion und emotionales Wohlbefinden im Alltag.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Achtsamkeitsübungen für den Alltag</li>
+            <li>Stressbewältigungsstrategien</li>
+            <li>Work-Life-Balance verbessern</li>
+            <li>Digitale Entgiftung und Medienkompetenz</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      value: "vorsorge",
+      label: "Vorsorge",
+      title: "Präventive Gesundheitsvorsorge",
+      content: (
+        <div className="space-y-4">
+          <p>
+            Vorsorge ist besser als Nachsorge. Informiere dich über wichtige Vorsorgemaßnahmen und wie du langfristig deine Gesundheit schützen kannst.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Wichtige Vorsorgeuntersuchungen</li>
+            <li>Impfungen und Gesundheitschecks</li>
+            <li>Langfristige Gesundheitsplanung</li>
+            <li>Präventive Lebensgewohnheiten</li>
+          </ul>
+        </div>
+      ),
+    },
   ];
 
   return (
     <Layout>
-      <Breadcrumbs items={breadcrumbs} />
-      
       <Hero
-        title="Gesundheit & Wellness"
-        subtitle="Tipps für ein gesundes und ausgewogenes Leben, Fitness und mentales Wohlbefinden."
-        ctaText="Zu den Tipps"
-        ctaLink="#gesundheits-tipps"
-        imageSrc="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop"
+        title="Gesundheit & Wohlbefinden"
+        subtitle="Entdecke Tipps und Empfehlungen für ein gesundes und ausgeglichenes Leben."
+        imageSrc="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop"
       />
+
+      <div className="container my-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       <GesundheitOverview />
       
-      <GesundheitTabs />
-      
-      <ArticleSection 
-        title="Gesundheits-Artikel"
-        description="Aktuelle Beiträge zum Thema Gesundheit & Wellness"
-        articles={featuredPosts}
-        viewAllLabel="Alle Gesundheitsartikel anzeigen"
-      />
+      <GesundheitTabs tabs={tabs} defaultValue="ernaehrung" />
 
-      <ContactBanner 
-        title="Fragen zu Gesundheitsthemen?"
-        description="Ich freue mich über deine Nachricht und beantworte gerne deine Fragen zum Thema Gesundheit."
-      />
+      <ContactBanner />
     </Layout>
   );
 };
