@@ -6,6 +6,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import BlogPostCard from "../components/UI/BlogPostCard";
 import { Link } from "react-router-dom";
+import ContactBanner from "../components/Lifestyle/ContactBanner";
 
 const Gesundheit = () => {
   const featuredPosts = [
@@ -184,30 +185,10 @@ const Gesundheit = () => {
         </div>
       </section>
 
-      <section className="bg-primary/5 py-16">
-        <div className="container">
-          <div className="bg-card rounded-lg p-8 shadow-sm border border-border">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-8">
-                <h3 className="text-2xl font-semibold mb-2">
-                  Fragen zu Gesundheitsthemen?
-                </h3>
-                <p className="text-muted-foreground">
-                  Ich freue mich über deine Nachricht und beantworte gerne deine Fragen zum Thema Gesundheit.
-                </p>
-              </div>
-              <div className="md:col-span-4 flex justify-center md:justify-end">
-                <Link
-                  to="/kontakt"
-                  className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors"
-                >
-                  Kontakt aufnehmen
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactBanner 
+        title="Fragen zu Gesundheitsthemen?"
+        description="Ich freue mich über deine Nachricht und beantworte gerne deine Fragen zum Thema Gesundheit."
+      />
     </Layout>
   );
 };
