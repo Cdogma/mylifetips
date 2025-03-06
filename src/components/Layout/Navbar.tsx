@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -51,11 +52,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2 group">
-          <span className="animated-title">
-            <span>MyLife</span>
-            <span>Tips</span>
-          </span>
-        </Link>
+            <span className="logo-mylifetips relative overflow-visible font-bold">
+              MyLife
+              <span className="relative z-10">Tips</span>
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-4 xl:space-x-6 overflow-x-auto">
