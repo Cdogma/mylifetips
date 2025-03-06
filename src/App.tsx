@@ -37,15 +37,15 @@ import Gadgets from "./pages/Gadgets";
 
 // Lifestyle
 import Lifestyle from "./pages/Lifestyle";
+import Gesundheit from "./pages/Gesundheit";
+import Hobbys from "./pages/Hobbys";
+import Reisen from "./pages/Reisen";
+import Mode from "./pages/Mode";
 
 // Für zukünftige Routen
 // import Marketing from "./pages/Marketing";
 // import Steuern from "./pages/Steuern";
 // import Software from "./pages/Software";
-// import Gesundheit from "./pages/Gesundheit";
-// import Hobbys from "./pages/Hobbys";
-// import Reisen from "./pages/Reisen";
-// import Mode from "./pages/Mode";
 
 const queryClient = new QueryClient();
 
@@ -92,11 +92,10 @@ const App = () => (
             
             {/* Lifestyle */}
             <Route path="/lifestyle" element={<Lifestyle />} />
-            {/* Zukünftige Routen */}
-            {/* <Route path="/lifestyle/gesundheit" element={<Gesundheit />} /> */}
-            {/* <Route path="/lifestyle/hobbys" element={<Hobbys />} /> */}
-            {/* <Route path="/lifestyle/reisen" element={<Reisen />} /> */}
-            {/* <Route path="/lifestyle/mode" element={<Mode />} /> */}
+            <Route path="/lifestyle/gesundheit" element={<Gesundheit />} />
+            <Route path="/lifestyle/hobbys" element={<Hobbys />} />
+            <Route path="/lifestyle/reisen" element={<Reisen />} />
+            <Route path="/lifestyle/mode" element={<Mode />} />
             
             {/* 404 - Seite nicht gefunden */}
             <Route path="*" element={<NotFound />} />
