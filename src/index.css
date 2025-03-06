@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -237,4 +236,29 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease forwards;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+@layer components {
+  .animated-title {
+    @apply font-['Inter'] font-bold relative transition-transform duration-300;
+    font-size: 2rem;
+    background: linear-gradient(-45deg, #3B82F6, #60A5FA, #2563EB, #1D4ED8);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-animation 7s ease infinite;
+    text-shadow: 
+      3px 3px 0px rgba(0, 0, 0, 0.2),
+      6px 6px 10px rgba(0, 0, 0, 0.15);
+    letter-spacing: 1px;
+  }
 }

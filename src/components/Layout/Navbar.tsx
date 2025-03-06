@@ -51,22 +51,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-xl md:text-2xl font-bold relative group-hover:scale-[1.02] transition-all duration-300">
-              <span className="bg-gradient-to-r from-primary to-primary/80 dark:from-primary dark:to-blue-400 
-                bg-clip-text text-transparent">MyLife</span>
-              <span className="bg-gradient-to-r from-blue-500 to-primary bg-clip-text text-transparent 
-                relative ml-0.5">Tips</span>
-              
-              {/* Subtle bottom border that appears on hover */}
-              <span className="absolute -bottom-1 left-0 w-full h-[2px] rounded-full
-                bg-gradient-to-r from-transparent via-primary to-transparent 
-                transform scale-x-0 group-hover:scale-x-100 transition-all duration-500"></span>
-              
-              {/* Subtle shadow for depth */}
-              <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 blur-[2px]
-                bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-lg transition-opacity duration-300"></span>
-            </span>
-          </Link>
+          <span className="animated-title">
+            <span>MyLife</span>
+            <span>Tips</span>
+          </span>
+        </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-4 xl:space-x-6 overflow-x-auto">
