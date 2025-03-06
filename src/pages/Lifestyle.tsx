@@ -5,6 +5,7 @@ import SectionHeading from "../components/UI/SectionHeading";
 import { Card, CardContent } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import BlogPostCard from "../components/UI/BlogPostCard";
+import CategoryCard from "../components/UI/CategoryCard";
 import { Link } from "react-router-dom";
 
 const Lifestyle = () => {
@@ -35,6 +36,33 @@ const Lifestyle = () => {
     },
   ];
 
+  const subcategories = [
+    {
+      title: "Gesundheit & Wellness",
+      description: "Tipps für ein gesundes und ausgewogenes Leben, Fitness und mentales Wohlbefinden.",
+      link: "/lifestyle/gesundheit",
+      imageSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      title: "Hobbys & Freizeit",
+      description: "Inspirationen für sinnvolle Freizeitgestaltung und persönliche Interessen.",
+      link: "/lifestyle/hobbys",
+      imageSrc: "https://images.unsplash.com/photo-1511649475669-e288648b2339?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      title: "Reisen & Abenteuer",
+      description: "Reiseziele, Tipps und Erfahrungsberichte für unvergessliche Erlebnisse.",
+      link: "/lifestyle/reisen",
+      imageSrc: "https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      title: "Mode & Stil",
+      description: "Zeitlose Stilempfehlungen und nachhaltige Mode für jeden Anlass.",
+      link: "/lifestyle/mode",
+      imageSrc: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=800&auto=format&fit=crop",
+    },
+  ];
+
   return (
     <Layout>
       <Hero
@@ -62,7 +90,30 @@ const Lifestyle = () => {
         </div>
       </section>
 
-      <section id="lifestyle-tipps" className="section-padding bg-muted/30">
+      <section className="section-padding bg-muted/30">
+        <div className="container">
+          <SectionHeading
+            title="Lifestyle-Kategorien"
+            description="Entdecke alle Bereiche rund um moderne Lebensgestaltung."
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            {subcategories.map((category, index) => (
+              <CategoryCard
+                key={category.title}
+                title={category.title}
+                description={category.description}
+                imageSrc={category.imageSrc}
+                link={category.link}
+                delay={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="lifestyle-tipps" className="section-padding">
         <div className="container">
           <SectionHeading
             title="Meine Lifestyle-Tipps"
