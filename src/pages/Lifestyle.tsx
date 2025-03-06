@@ -1,4 +1,3 @@
-
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import LifestyleOverview from "../components/Lifestyle/LifestyleOverview";
@@ -6,6 +5,7 @@ import LifestyleCategories from "../components/Lifestyle/LifestyleCategories";
 import LifestyleTips from "../components/Lifestyle/LifestyleTips";
 import LifestyleArticles from "../components/Lifestyle/LifestyleArticles";
 import ContactBanner from "../components/Lifestyle/ContactBanner";
+import Breadcrumbs from "../components/UI/Breadcrumbs";
 
 const Lifestyle = () => {
   const featuredPosts = [
@@ -39,7 +39,7 @@ const Lifestyle = () => {
     {
       title: "Gesundheit & Wellness",
       description: "Tipps für ein gesundes und ausgewogenes Leben, Fitness und mentales Wohlbefinden.",
-      link: "/lifestyle/gesundheit",
+      link: "/gesundheit",
       imageSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
     },
     {
@@ -51,19 +51,25 @@ const Lifestyle = () => {
     {
       title: "Reisen & Abenteuer",
       description: "Reiseziele, Tipps und Erfahrungsberichte für unvergessliche Erlebnisse.",
-      link: "/lifestyle/reisen",
+      link: "/reisen",
       imageSrc: "https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800&auto=format&fit=crop",
     },
     {
       title: "Mode & Stil",
       description: "Zeitlose Stilempfehlungen und nachhaltige Mode für jeden Anlass.",
-      link: "/lifestyle/mode",
+      link: "/mode",
       imageSrc: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=800&auto=format&fit=crop",
     },
   ];
 
+  const breadcrumbs = [
+    { label: "Lifestyle" }
+  ];
+
   return (
     <Layout>
+      <Breadcrumbs items={breadcrumbs} />
+      
       <Hero
         title="Lifestyle"
         subtitle="Inspiration und praktische Tipps für ein bewussteres, ausgewogeneres und erfüllteres Leben."
