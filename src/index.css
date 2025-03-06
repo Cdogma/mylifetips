@@ -147,6 +147,8 @@
       3px 3px 0px rgba(0, 0, 0, 0.2),
       6px 6px 10px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
+    white-space: nowrap;
+    display: inline-block;
   }
   
   /* Footer specific styles */
