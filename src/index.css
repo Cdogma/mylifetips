@@ -149,6 +149,8 @@
     letter-spacing: 1px;
     white-space: nowrap;
     display: inline-block;
+    width: auto;
+    overflow: visible;
   }
   
   /* Footer specific styles */
