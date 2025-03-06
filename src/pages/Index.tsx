@@ -16,12 +16,6 @@ const Index = () => {
       imageSrc: "/lovable-uploads/32cc1446-9ced-4253-8ce3-7716b72254a9.png", // Aktualisiert auf das hellere Bild mit Pflanze und Münzen
     },
     {
-      title: "Business & Unternehmertum",
-      description: "Gründungs-Tipps, Buchhaltung, Konten und Projektmanagement-Tools für dein Business.",
-      link: "/business",
-      imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
-    },
-    {
       title: "Technik & Gadgets",
       description: "Smartphones, Smart Home, Wearables, Computer und Software für deinen digitalen Alltag.",
       link: "/technik",
@@ -32,6 +26,12 @@ const Index = () => {
       description: "Haushalt, Reisen, Mobilität und mehr für ein besseres und einfacheres Leben.",
       link: "/lifestyle",
       imageSrc: "https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=800&auto=format&fit=crop",
+    },
+    {
+      title: "Business & Unternehmertum",
+      description: "Gründungs-Tipps, Buchhaltung, Konten und Projektmanagement-Tools für dein Business.",
+      link: "/business",
+      imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
     },
   ];
 

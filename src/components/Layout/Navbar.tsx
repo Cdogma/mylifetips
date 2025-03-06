@@ -39,7 +39,7 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Hauptkategorien mit Unterkategorien
+  // Hauptkategorien mit Unterkategorien - Reihenfolge geändert: Finanzen, Technik, Lifestyle, Business
   const mainCategories = [
     { 
       name: "Finanzen", 
@@ -50,15 +50,6 @@ const Navbar = () => {
         { name: "Broker", href: "/finanzen/broker" },
         { name: "ETFs", href: "/finanzen/etfs" },
         { name: "Versicherungen", href: "/finanzen/versicherungen" }
-      ]
-    },
-    { 
-      name: "Business", 
-      href: "/business",
-      subcategories: [
-        { name: "Gründung", href: "/business/gruendung" },
-        { name: "Marketing", href: "/business/marketing" },
-        { name: "Steuern", href: "/business/steuern" }
       ]
     },
     { 
@@ -78,6 +69,15 @@ const Navbar = () => {
         { name: "Hobbys", href: "/lifestyle/hobbys" },
         { name: "Reisen", href: "/lifestyle/reisen" },
         { name: "Mode", href: "/lifestyle/mode" }
+      ]
+    },
+    { 
+      name: "Business", 
+      href: "/business",
+      subcategories: [
+        { name: "Gründung", href: "/business/gruendung" },
+        { name: "Marketing", href: "/business/marketing" },
+        { name: "Steuern", href: "/business/steuern" }
       ]
     }
   ];
