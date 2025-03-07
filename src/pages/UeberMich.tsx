@@ -23,8 +23,8 @@ const UeberMich = () => {
             <div className="md:col-span-5">
               <div className="rounded-xl overflow-hidden shadow-md">
                 <img
-                  src="/lovable-uploads/e68cda6d-da6f-426f-98a6-69e0a669bae1.png"
-                  alt="Profilbild"
+                  src="/lovable-uploads/59ceeefe-23a2-4d41-9921-b18dcc993ed9.png"
+                  alt="Arbeitsplatz mit Ausblick"
                   className="w-full h-auto object-cover"
                 />
               </div>
