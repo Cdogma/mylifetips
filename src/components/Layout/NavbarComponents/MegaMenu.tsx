@@ -10,30 +10,41 @@ interface MegaMenuProps {
 }
 
 const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
-  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const closeMegaMenu = () => {
-    setActiveMegaMenu(null);
+  const handleMouseEnter = () => {
+    setIsMenuOpen(true);
   };
 
-  const toggleMegaMenu = (category: string) => {
-    setActiveMegaMenu(activeMegaMenu === category ? null : category);
+  const handleMouseLeave = () => {
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
-    <div className="relative group" onMouseLeave={closeMegaMenu}>
+    <div 
+      className="relative group" 
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
         className={`relative py-5 px-3 text-sm xl:text-base hover:text-primary transition-colors whitespace-nowrap flex items-center gap-1.5 group ${
           isActive ? "text-primary font-medium" : "text-foreground"
         }`}
-        onClick={() => toggleMegaMenu(category.name)}
-        onMouseEnter={() => setActiveMegaMenu(category.name)}
-        aria-expanded={activeMegaMenu === category.name}
+        onClick={toggleMenu}
+        aria-expanded={isMenuOpen}
       >
         {category.name}
         <ChevronDown
           className={`h-4 w-4 transition-transform duration-300 ${
-            activeMegaMenu === category.name ? "rotate-180" : ""
+            isMenuOpen ? "rotate-180" : ""
           }`}
         />
         {isActive && (
@@ -42,10 +53,9 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
       </button>
 
       {/* Mega-Menu Dropdown */}
-      {activeMegaMenu === category.name && (
+      {isMenuOpen && (
         <div
           className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen max-w-5xl bg-background/95 backdrop-blur-xl shadow-lg rounded-xl border border-border/40 overflow-hidden z-50 animate-fade-in"
-          onMouseLeave={closeMegaMenu}
         >
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
             {/* Main Info and Icon */}
@@ -60,7 +70,7 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
               <Link
                 to={category.href}
                 className="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-300 ease-in-out hover:shadow-md hover:shadow-primary/10 mt-auto hover:-translate-y-0.5 flex justify-center items-center"
-                onClick={closeMegaMenu}
+                onClick={closeMenu}
               >
                 Alle {category.name} anzeigen
               </Link>
@@ -77,7 +87,7 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
                     key={subCategory.name}
                     to={subCategory.href}
                     className="group flex flex-col p-3 rounded-lg hover:bg-muted/70 transition-all duration-300 ease-in-out hover:shadow-sm border border-transparent hover:border-border/30"
-                    onClick={closeMegaMenu}
+                    onClick={closeMenu}
                   >
                     <span className="font-medium group-hover:text-primary transition-colors group-hover:translate-x-0.5 transform duration-300 inline-block">
                       {subCategory.name}
@@ -101,7 +111,7 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
                     key={item.name}
                     to={item.href}
                     className="block group"
-                    onClick={closeMegaMenu}
+                    onClick={closeMenu}
                   >
                     <div className="flex items-center justify-between p-2 rounded-md hover:bg-primary/5 transition-all duration-300">
                       <span className="font-medium group-hover:text-primary transition-colors group-hover:translate-x-0.5 transform duration-300 inline-block">
