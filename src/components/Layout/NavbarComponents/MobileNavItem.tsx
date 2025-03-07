@@ -41,7 +41,7 @@ const MobileNavItem = ({ category, index, isActive, setIsOpen }: MobileNavItemPr
         <button
           onClick={toggleSubMenu}
           className="p-3 hover:bg-muted/50 rounded-md"
-          aria-label="Toggle submenu"
+          aria-label="Untermenü umschalten"
         >
           <ChevronDown
             className={`h-4 w-4 transition-transform duration-200 ${
@@ -51,7 +51,7 @@ const MobileNavItem = ({ category, index, isActive, setIsOpen }: MobileNavItemPr
         </button>
       </div>
 
-      {/* Subcategories */}
+      {/* Unterkategorien */}
       <div
         className={`overflow-hidden transition-all duration-300 pl-4 ${
           isSubMenuOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0"
