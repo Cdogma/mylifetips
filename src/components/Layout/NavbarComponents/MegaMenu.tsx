@@ -12,6 +12,14 @@ interface MegaMenuProps {
 const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const isMobile = window.innerWidth < 768;
+  
+  const location = useLocation();
+  
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
   
   // Close menu when clicking outside
   useEffect(() => {
@@ -27,24 +35,25 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
     };
   }, []);
 
-  // Desktop - using CSS hover state
+  // Handle mouse events and click events differently
   const handleMouseEnter = () => {
-    if (window.innerWidth >= 768) {
+    if (!isMobile) {
       setIsMenuOpen(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (window.innerWidth >= 768) {
+    if (!isMobile) {
       setIsMenuOpen(false);
     }
   };
 
-  // Mobile - toggle on click
+  // Toggle on click (primarily for mobile)
   const toggleMenu = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
+    if (isMobile) {
+      e.preventDefault();
+      setIsMenuOpen(!isMenuOpen);
+    }
   };
 
   const closeMenu = () => {
