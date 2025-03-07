@@ -2,19 +2,22 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import GlobalSearch from "../UI/GlobalSearch";
 
 interface NavigationWrapperProps {
   children: ReactNode;
-  showSearch?: boolean;
 }
 
-const NavigationWrapper = ({ children, showSearch = true }: NavigationWrapperProps) => {
+const NavigationWrapper = ({ children }: NavigationWrapperProps) => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar showSearch={showSearch} />
-      <main className="flex-grow pt-16">{children}</main>
+    <>
+      <div className="flex justify-end px-4 py-2 bg-muted/20 border-b border-border">
+        <GlobalSearch />
+      </div>
+      <Navbar />
+      {children}
       <Footer />
-    </div>
+    </>
   );
 };
 

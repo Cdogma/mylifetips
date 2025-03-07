@@ -14,8 +14,10 @@ const LayoutWithSearch = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <NavigationWrapper showSearch={true}>
-        {children}
+      <NavigationWrapper>
+        <main>
+          {children}
+        </main>
       </NavigationWrapper>
       <CookieConsent />
     </>

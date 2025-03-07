@@ -5,8 +5,7 @@ import BlogPostPage from "../components/Blog/BlogPostPage";
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   
-  // Pass the slug to the BlogPostPage component
-  return <BlogPostPage useSearchLayout={true} slug={slug} />;
+  return <BlogPostPage useSearchLayout={true} />;
 };
 
 export default BlogPost;
