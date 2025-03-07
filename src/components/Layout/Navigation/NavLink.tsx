@@ -5,9 +5,10 @@ interface NavLinkProps {
   href: string;
   name: string;
   isActive: boolean;
+  onClick?: () => void;
 }
 
-const NavLink = ({ href, name, isActive }: NavLinkProps) => {
+const NavLink = ({ href, name, isActive, onClick }: NavLinkProps) => {
   return (
     <Link
       to={href}
@@ -16,6 +17,7 @@ const NavLink = ({ href, name, isActive }: NavLinkProps) => {
           ? "text-primary font-medium" 
           : "text-foreground"
       }`}
+      onClick={onClick}
     >
       {name}
       {isActive && (

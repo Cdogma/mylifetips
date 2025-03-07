@@ -1,3 +1,4 @@
+
 import Layout from "../components/Layout/Layout";
 import Hero from "../components/UI/Hero";
 import ReisenOverview from "../components/Reisen/ReisenOverview";
@@ -5,6 +6,8 @@ import ReisenTabs from "../components/Reisen/ReisenTabs";
 import ArticleSection from "../components/Lifestyle/ArticleSection";
 import ContactBanner from "../components/Lifestyle/ContactBanner";
 import Breadcrumbs from "../components/UI/Breadcrumbs";
+import SectionHeading from "../components/UI/SectionHeading";
+import RecommendationCard from "../components/UI/RecommendationCard";
 
 const Reisen = () => {
   const featuredPosts = [
@@ -38,6 +41,36 @@ const Reisen = () => {
     { label: "Lifestyle", link: "/lifestyle" },
     { label: "Reisen & Abenteuer" }
   ];
+  
+  const travelRecommendations = [
+    {
+      title: "Ultraleichter Reiserucksack",
+      category: "Reiseausrüstung",
+      description: "Dieser praktische Reiserucksack ist ultraleicht, wasserabweisend und ideal für Wochenendtrips oder als Handgepäck.",
+      rating: 4.8,
+      imageSrc: "https://images.unsplash.com/photo-1622560480654-d96214fdc887?q=80&w=800&auto=format&fit=crop",
+      link: "/empfehlungen/ultraleichter-rucksack",
+      isAffiliate: true,
+    },
+    {
+      title: "Kompakte Reiseapotheke",
+      category: "Reisezubehör",
+      description: "Diese gut sortierte Reiseapotheke enthält alles Wichtige für kleine Notfälle unterwegs, kompakt verpackt.",
+      rating: 4.7,
+      imageSrc: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=800&auto=format&fit=crop",
+      link: "/empfehlungen/reiseapotheke",
+      isAffiliate: true,
+    },
+    {
+      title: "Noise-Cancelling Kopfhörer",
+      category: "Technik",
+      description: "Diese kabellosen Kopfhörer mit aktiver Geräuschunterdrückung sind perfekt für lange Flüge und Zugreisen.",
+      rating: 4.9,
+      imageSrc: "https://images.unsplash.com/photo-1505236273555-eda46635d3a5?q=80&w=800&auto=format&fit=crop",
+      link: "/empfehlungen/noise-cancelling-kopfhoerer",
+      isAffiliate: true,
+    }
+  ];
 
   return (
     <Layout>
@@ -52,8 +85,117 @@ const Reisen = () => {
       />
 
       <ReisenOverview />
+
+      <section className="py-16 bg-muted/30" id="reise-kategorien">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            title="Reise-Kategorien"
+            description="Von Städtetrips bis Backpacking - entdecke verschiedene Reisearten"
+            align="center"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Städtereisen</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Kulturelle Highlights</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Lokale Gastronomie</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Architektur & Design</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Museen & Galerien</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Stadttouren</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Naturerlebnisse</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Nationalparks</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Wanderrouten</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Camping & Glamping</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Wassersport</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Tierbeobachtungen</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Fernreisen</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Kultureller Austausch</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Rundreisen</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Backpacking</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Einzigartige Unterkünfte</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  <span>Lokale Küche entdecken</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <ReisenTabs />
+      
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            title="Empfohlene Reiseprodukte"
+            description="Qualitativ hochwertige Produkte, die ich selbst auf Reisen nutze"
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+            {travelRecommendations.map((recommendation, index) => (
+              <RecommendationCard 
+                key={recommendation.title}
+                {...recommendation}
+                delay={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
       
       <ArticleSection 
         title="Reise-Artikel"
