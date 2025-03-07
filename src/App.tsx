@@ -16,6 +16,7 @@ import Kontakt from "./pages/Kontakt";
 import Ressourcen from "./pages/Ressourcen";
 import UeberMich from "./pages/UeberMich";
 import Recommendations from "./pages/Recommendations";
+import ProductRecommendations from "./pages/ProductRecommendations";
 
 // Finanzen
 import Finance from "./pages/Finance";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/empfehlungen" element={<Recommendations />} />
+            <Route path="/produkt-empfehlungen" element={<ProductRecommendations />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />

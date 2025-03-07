@@ -1,6 +1,7 @@
 
-import { Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink, ThumbsUp, ThumbsDown, PlusCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 interface RecommendationCardProps {
   title: string;
@@ -11,6 +12,9 @@ interface RecommendationCardProps {
   link: string;
   isAffiliate?: boolean;
   delay?: number;
+  price?: string;
+  pros?: string[];
+  cons?: string[];
 }
 
 const RecommendationCard = ({
@@ -22,7 +26,12 @@ const RecommendationCard = ({
   link,
   isAffiliate = false,
   delay = 0,
+  price,
+  pros,
+  cons,
 }: RecommendationCardProps) => {
+  const [expanded, setExpanded] = useState(false);
+  
   return (
     <div 
       className="group bg-card rounded-xl overflow-hidden shadow-sm border border-border/10 hover:shadow-md hover:-translate-y-1 transition-all duration-300 animate-scale-in"
@@ -42,10 +51,15 @@ const RecommendationCard = ({
             <span className="text-muted-foreground">Kein Bild verfügbar</span>
           </div>
         )}
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 left-3 right-3 flex justify-between">
           <span className="inline-block bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
             {category}{isAffiliate && "*"}
           </span>
+          {price && (
+            <span className="inline-block bg-black/60 text-white backdrop-blur-sm text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
+              {price}
+            </span>
+          )}
         </div>
       </div>
       <div className="p-6">
@@ -57,7 +71,11 @@ const RecommendationCard = ({
             <Star
               key={i}
               className={`h-4 w-4 ${
-                i < rating ? "text-yellow-500 fill-yellow-500" : "text-muted-foreground/30"
+                i < Math.floor(rating) 
+                  ? "text-yellow-500 fill-yellow-500" 
+                  : i < rating 
+                    ? "text-yellow-500 fill-yellow-500 opacity-50" 
+                    : "text-muted-foreground/30"
               } transition-colors duration-300`}
             />
           ))}
@@ -65,7 +83,56 @@ const RecommendationCard = ({
             {rating.toFixed(1)}/5
           </span>
         </div>
-        <p className="text-muted-foreground text-sm line-clamp-3 mb-5">{description}</p>
+        <p className={`text-muted-foreground text-sm ${expanded ? "" : "line-clamp-3"} mb-5`}>{description}</p>
+        
+        {(pros || cons) && (
+          <button 
+            onClick={() => setExpanded(!expanded)} 
+            className="text-sm text-primary flex items-center gap-1 hover:underline mb-4"
+          >
+            <PlusCircle className="h-3.5 w-3.5" />
+            {expanded ? "Weniger anzeigen" : "Mehr Details"}
+          </button>
+        )}
+        
+        {expanded && (pros || cons) && (
+          <div className="space-y-3 mb-5 bg-muted/30 p-3 rounded-lg">
+            {pros && pros.length > 0 && (
+              <div>
+                <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-green-600">
+                  <ThumbsUp className="h-3.5 w-3.5" />
+                  Vorteile
+                </h4>
+                <ul className="space-y-1">
+                  {pros.map((pro, index) => (
+                    <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
+                      <span className="text-green-500 mt-0.5">•</span>
+                      {pro}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {cons && cons.length > 0 && (
+              <div>
+                <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-red-600">
+                  <ThumbsDown className="h-3.5 w-3.5" />
+                  Nachteile
+                </h4>
+                <ul className="space-y-1">
+                  {cons.map((con, index) => (
+                    <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
+                      <span className="text-red-500 mt-0.5">•</span>
+                      {con}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+        
         <Link
           to={link}
           className="inline-flex items-center bg-primary/10 hover:bg-primary/15 text-primary font-medium px-4 py-2 rounded-lg text-sm transition-all duration-300 group-hover:translate-x-0.5"
