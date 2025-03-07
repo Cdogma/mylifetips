@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Kontakt from "./pages/Kontakt";
 import Ressourcen from "./pages/Ressourcen";
 import UeberMich from "./pages/UeberMich";
@@ -61,6 +62,7 @@ const App = () => (
             {/* Hauptseiten */}
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/empfehlungen" element={<Recommendations />} />
             <Route path="/produkt-empfehlungen" element={<ProductRecommendations />} />
             <Route path="/kontakt" element={<Kontakt />} />
