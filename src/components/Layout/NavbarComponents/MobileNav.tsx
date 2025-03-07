@@ -15,7 +15,7 @@ const MobileNav = ({ isOpen, setIsOpen, mainCategories, standardNavLinks }: Mobi
   const location = useLocation();
 
   // Funktion zur Prüfung, ob Link oder seine Unterkategorien aktiv sind
-  const isActiveLink = (href, subcategories?) => {
+  const isActiveLink = (href: string, subcategories?: { href: string }[]) => {
     const isDirectMatch =
       location.pathname === href || (href !== "/" && location.pathname.startsWith(href));
 
@@ -50,7 +50,7 @@ const MobileNav = ({ isOpen, setIsOpen, mainCategories, standardNavLinks }: Mobi
           })}
 
           {/* Standardeinträge */}
-          {standardNavLinks.map((link, index) => {
+          {standardNavLinks.map((link) => {
             const isActive =
               location.pathname === link.href ||
               (link.href !== "/" && location.pathname.startsWith(link.href));
@@ -64,12 +64,10 @@ const MobileNav = ({ isOpen, setIsOpen, mainCategories, standardNavLinks }: Mobi
                     ? "bg-primary/10 text-primary font-medium"
                     : "hover:bg-muted/50"
                 }`}
-                style={{
-                  animationDelay: `${(mainCategories.length + index) * 50}ms`,
-                }}
                 onClick={() => setIsOpen(false)}
               >
-                <div className="flex items-center">
+                <div className="flex items-center gap-2">
+                  <link.icon className="h-4 w-4" />
                   <span>{link.name}</span>
                   {isActive && (
                     <span className="ml-2 h-1.5 w-1.5 rounded-full bg-primary"></span>
