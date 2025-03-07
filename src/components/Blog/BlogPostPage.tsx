@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import LayoutWithSearch from "../Layout/LayoutWithSearch";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
@@ -11,10 +10,10 @@ import { Button } from "@/components/ui/button";
 
 interface BlogPostProps {
   useSearchLayout?: boolean;
+  slug?: string;
 }
 
-const BlogPostPage = ({ useSearchLayout = true }: BlogPostProps) => {
-  const { slug } = useParams<{ slug: string }>();
+const BlogPostPage = ({ useSearchLayout = true, slug }: BlogPostProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   

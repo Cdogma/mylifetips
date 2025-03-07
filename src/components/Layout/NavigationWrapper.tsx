@@ -6,15 +6,13 @@ import GlobalSearch from "../UI/GlobalSearch";
 
 interface NavigationWrapperProps {
   children: ReactNode;
+  showSearch?: boolean;
 }
 
-const NavigationWrapper = ({ children }: NavigationWrapperProps) => {
+const NavigationWrapper = ({ children, showSearch = false }: NavigationWrapperProps) => {
   return (
     <>
-      <div className="flex justify-end px-4 py-2 bg-muted/20 border-b border-border">
-        <GlobalSearch />
-      </div>
-      <Navbar />
+      <Navbar showSearch={showSearch} />
       {children}
       <Footer />
     </>

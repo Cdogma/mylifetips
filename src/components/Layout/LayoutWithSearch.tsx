@@ -14,7 +14,7 @@ const LayoutWithSearch = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <NavigationWrapper>
+      <NavigationWrapper showSearch={true}>
         <main>
           {children}
         </main>
