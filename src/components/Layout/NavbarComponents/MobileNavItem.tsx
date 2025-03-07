@@ -14,6 +14,16 @@ interface MobileNavItemProps {
 const MobileNavItem = ({ category, index, isActive, setIsOpen }: MobileNavItemProps) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(isActive);
 
+  const toggleSubMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsSubMenuOpen(!isSubMenuOpen);
+  };
+
+  const closeMainMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="border-b border-border/30 pb-2 mb-2">
       <div className="flex justify-between items-center">
@@ -24,15 +34,14 @@ const MobileNavItem = ({ category, index, isActive, setIsOpen }: MobileNavItemPr
               ? "bg-primary/10 text-primary font-medium"
               : "hover:bg-muted/50"
           }`}
-          style={{
-            animationDelay: `${index * 50}ms`,
-          }}
+          onClick={closeMainMenu}
         >
           {category.name}
         </Link>
         <button
-          onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+          onClick={toggleSubMenu}
           className="p-3 hover:bg-muted/50 rounded-md"
+          aria-label="Toggle submenu"
         >
           <ChevronDown
             className={`h-4 w-4 transition-transform duration-200 ${
@@ -42,33 +51,22 @@ const MobileNavItem = ({ category, index, isActive, setIsOpen }: MobileNavItemPr
         </button>
       </div>
 
-      {/* Unterkategorien */}
+      {/* Subcategories */}
       <div
         className={`overflow-hidden transition-all duration-300 pl-4 ${
           isSubMenuOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0"
         }`}
       >
-        {category.subcategories.map((subCategory, subIndex) => {
-          const isSubActive = location.pathname === subCategory.href;
-
-          return (
-            <Link
-              key={subCategory.name}
-              to={subCategory.href}
-              className={`block py-2 px-4 rounded-md my-1 text-sm ${
-                isSubActive
-                  ? "bg-primary/5 text-primary font-medium"
-                  : "hover:bg-muted/30 text-muted-foreground hover:text-foreground"
-              }`}
-              style={{
-                animationDelay: `${index * 50 + subIndex * 30}ms`,
-              }}
-              onClick={() => setIsOpen(false)}
-            >
-              {subCategory.name}
-            </Link>
-          );
-        })}
+        {category.subcategories.map((subCategory) => (
+          <Link
+            key={subCategory.name}
+            to={subCategory.href}
+            className="block py-2 px-4 rounded-md my-1 text-sm hover:bg-muted/30 text-muted-foreground hover:text-foreground"
+            onClick={closeMainMenu}
+          >
+            {subCategory.name}
+          </Link>
+        ))}
       </div>
     </div>
   );

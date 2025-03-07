@@ -12,12 +12,12 @@ interface DesktopNavProps {
 const DesktopNav = ({ mainCategories, standardNavLinks }: DesktopNavProps) => {
   const location = useLocation();
 
-  // Funktion zur Prüfung, ob Link oder seine Unterkategorien aktiv sind
-  const isActiveLink = (href, subcategories?) => {
+  // Function to check if a link or its subcategories are active
+  const isActiveLink = (href: string, subcategories?: { href: string }[]) => {
     const isDirectMatch =
       location.pathname === href || (href !== "/" && location.pathname.startsWith(href));
 
-    // Auch Unterkategorien prüfen
+    // Also check subcategories
     if (subcategories && !isDirectMatch) {
       return subcategories.some((sub) => location.pathname.startsWith(sub.href));
     }
@@ -27,13 +27,13 @@ const DesktopNav = ({ mainCategories, standardNavLinks }: DesktopNavProps) => {
 
   return (
     <nav className="hidden md:flex space-x-1 xl:space-x-2 overflow-x-auto">
-      {/* Hauptkategorien mit Mega-Menü */}
+      {/* Main categories with mega menu */}
       {mainCategories.map((category) => {
         const isActive = isActiveLink(category.href, category.subcategories);
         return <MegaMenu key={category.name} category={category} isActive={isActive} />;
       })}
 
-      {/* Standardeinträge ohne Mega-Menü */}
+      {/* Standard links without mega menu */}
       {standardNavLinks.map((link) => (
         <StandardNavLink key={link.name} link={link} />
       ))}
