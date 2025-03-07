@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { CategoryType } from "./types";
@@ -11,16 +11,39 @@ interface MegaMenuProps {
 
 const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
+  // Desktop - using CSS hover state
   const handleMouseEnter = () => {
-    setIsMenuOpen(true);
+    if (window.innerWidth >= 768) {
+      setIsMenuOpen(true);
+    }
   };
 
   const handleMouseLeave = () => {
-    setIsMenuOpen(false);
+    if (window.innerWidth >= 768) {
+      setIsMenuOpen(false);
+    }
   };
 
-  const toggleMenu = () => {
+  // Mobile - toggle on click
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsMenuOpen(!isMenuOpen);
   };
 
@@ -31,6 +54,7 @@ const MegaMenu = ({ category, isActive }: MegaMenuProps) => {
   return (
     <div 
       className="relative group" 
+      ref={menuRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
