@@ -6,8 +6,9 @@ import LifestyleTips from "../components/Lifestyle/LifestyleTips";
 import ArticleSection from "../components/Lifestyle/ArticleSection";
 import ContactBanner from "../components/Lifestyle/ContactBanner";
 import Breadcrumbs from "../components/UI/Breadcrumbs";
-import SectionHeading from "../components/UI/SectionHeading";
-import CategoryCard from "../components/UI/CategoryCard";
+import LifestyleCategories from "../components/Lifestyle/LifestyleCategories";
+import RecommendationsSection from "../components/Recommendations/RecommendationsSection";
+import { Recommendation } from "@/types/recommendations";
 
 const Lifestyle = () => {
   const featuredPosts = [
@@ -68,10 +69,11 @@ const Lifestyle = () => {
     { label: "Lifestyle" }
   ];
 
-  const lifestyleRecommendations = [
+  const lifestyleRecommendations: Recommendation[] = [
     {
       title: "Mind Journal - Das Achtsamkeits-Tagebuch",
-      category: "Wellness",
+      category: "Lifestyle",
+      subcategory: "Wellness",
       description: "Dieses strukturierte Tagebuch unterstützt dich dabei, mehr Achtsamkeit und Dankbarkeit in deinen Alltag zu integrieren.",
       rating: 4.8,
       imageSrc: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800&auto=format&fit=crop",
@@ -80,7 +82,8 @@ const Lifestyle = () => {
     },
     {
       title: "Minimalistischer Wochenplaner",
-      category: "Organisation",
+      category: "Lifestyle",
+      subcategory: "Organisation",
       description: "Dieser schlichte, aber effektive Wochenplaner hilft dir, den Überblick zu behalten ohne dich zu überfordern.",
       rating: 4.6,
       imageSrc: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=800&auto=format&fit=crop",
@@ -89,7 +92,8 @@ const Lifestyle = () => {
     },
     {
       title: "Nachhaltiges Starter-Set",
-      category: "Nachhaltigkeit",
+      category: "Lifestyle",
+      subcategory: "Nachhaltigkeit",
       description: "Das perfekte Set für alle, die ihren Alltag umweltfreundlicher gestalten möchten, mit wiederverwendbaren Basics.",
       rating: 4.7,
       imageSrc: "https://images.unsplash.com/photo-1610024062303-e355e94e6483?q=80&w=800&auto=format&fit=crop",
@@ -112,81 +116,15 @@ const Lifestyle = () => {
 
       <LifestyleOverview />
       
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            title="Lifestyle-Kategorien"
-            description="Entdecke alle Bereiche rund um moderne Lebensgestaltung"
-            align="center"
-          />
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8">
-            {subcategories.map((category, index) => (
-              <CategoryCard
-                key={category.title}
-                title={category.title}
-                description={category.description}
-                imageSrc={category.imageSrc}
-                link={category.link}
-                delay={index}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <LifestyleCategories categories={subcategories} />
       
       <LifestyleTips />
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            title="Empfohlene Produkte für deinen Lifestyle"
-            description="Qualitativ hochwertige Produkte, die ich persönlich getestet habe"
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-            {lifestyleRecommendations.map((recommendation, index) => (
-              <div 
-                key={recommendation.title}
-                className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow"
-                style={{
-                  animation: "fadeIn 0.5s ease-out forwards",
-                  animationDelay: `${index * 0.1}s`,
-                  opacity: 0,
-                }}
-              >
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img 
-                    src={recommendation.imageSrc} 
-                    alt={recommendation.title}
-                    className="w-full h-full object-cover transition-transform hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded">
-                      {recommendation.category}
-                    </span>
-                    <div className="flex items-center">
-                      <span className="text-amber-500 mr-1">★</span>
-                      <span className="text-sm">{recommendation.rating}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{recommendation.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">{recommendation.description}</p>
-                  <a 
-                    href={recommendation.link} 
-                    className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    Mehr erfahren
-                    {recommendation.isAffiliate && <span className="ml-1 text-xs">*</span>}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RecommendationsSection
+        title="Empfohlene Produkte für deinen Lifestyle"
+        description="Qualitativ hochwertige Produkte, die ich persönlich getestet habe"
+        recommendations={lifestyleRecommendations}
+      />
       
       <ArticleSection 
         title="Aktuelle Lifestyle-Artikel"
