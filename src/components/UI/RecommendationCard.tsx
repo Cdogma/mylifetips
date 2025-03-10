@@ -39,6 +39,7 @@ const RecommendationCard = ({
         animationDelay: `${delay * 0.1}s`,
       }}
     >
+      {/* Card Image */}
       <div className="h-52 relative overflow-hidden">
         {imageSrc ? (
           <img
@@ -51,6 +52,7 @@ const RecommendationCard = ({
             <span className="text-muted-foreground">Kein Bild verfügbar</span>
           </div>
         )}
+        {/* Card badges */}
         <div className="absolute top-3 left-3 right-3 flex justify-between">
           <span className="inline-block bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">
             {category}{isAffiliate && "*"}
@@ -62,29 +64,20 @@ const RecommendationCard = ({
           )}
         </div>
       </div>
+      
+      {/* Card Content */}
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-foreground to-foreground/80 group-hover:from-primary group-hover:to-primary/80 bg-clip-text text-transparent transition-colors duration-300">
           {title}{isAffiliate && "*"}
         </h3>
-        <div className="flex items-center mb-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              className={`h-4 w-4 ${
-                i < Math.floor(rating) 
-                  ? "text-yellow-500 fill-yellow-500" 
-                  : i < rating 
-                    ? "text-yellow-500 fill-yellow-500 opacity-50" 
-                    : "text-muted-foreground/30"
-              } transition-colors duration-300`}
-            />
-          ))}
-          <span className="ml-2 text-sm text-muted-foreground">
-            {rating.toFixed(1)}/5
-          </span>
-        </div>
+        
+        {/* Rating Stars */}
+        <RatingStars rating={rating} />
+        
+        {/* Description */}
         <p className={`text-muted-foreground text-sm ${expanded ? "" : "line-clamp-3"} mb-5`}>{description}</p>
         
+        {/* Toggle Details Button */}
         {(pros || cons) && (
           <button 
             onClick={() => setExpanded(!expanded)} 
@@ -95,44 +88,10 @@ const RecommendationCard = ({
           </button>
         )}
         
-        {expanded && (pros || cons) && (
-          <div className="space-y-3 mb-5 bg-muted/30 p-3 rounded-lg">
-            {pros && pros.length > 0 && (
-              <div>
-                <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-green-600">
-                  <ThumbsUp className="h-3.5 w-3.5" />
-                  Vorteile
-                </h4>
-                <ul className="space-y-1">
-                  {pros.map((pro, index) => (
-                    <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
-                      <span className="text-green-500 mt-0.5">•</span>
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            
-            {cons && cons.length > 0 && (
-              <div>
-                <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-red-600">
-                  <ThumbsDown className="h-3.5 w-3.5" />
-                  Nachteile
-                </h4>
-                <ul className="space-y-1">
-                  {cons.map((con, index) => (
-                    <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
-                      <span className="text-red-500 mt-0.5">•</span>
-                      {con}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        )}
+        {/* Expanded Details */}
+        {expanded && <ProsAndCons pros={pros} cons={cons} />}
         
+        {/* CTA Button */}
         <Link
           to={link}
           className="inline-flex items-center bg-primary/10 hover:bg-primary/15 text-primary font-medium px-4 py-2 rounded-lg text-sm transition-all duration-300 group-hover:translate-x-0.5"
@@ -144,5 +103,65 @@ const RecommendationCard = ({
     </div>
   );
 };
+
+// Extracted Rating Stars component
+const RatingStars = ({ rating }: { rating: number }) => (
+  <div className="flex items-center mb-4">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star
+        key={i}
+        className={`h-4 w-4 ${
+          i < Math.floor(rating) 
+            ? "text-yellow-500 fill-yellow-500" 
+            : i < rating 
+              ? "text-yellow-500 fill-yellow-500 opacity-50" 
+              : "text-muted-foreground/30"
+        } transition-colors duration-300`}
+      />
+    ))}
+    <span className="ml-2 text-sm text-muted-foreground">
+      {rating.toFixed(1)}/5
+    </span>
+  </div>
+);
+
+// Extracted Pros and Cons component
+const ProsAndCons = ({ pros, cons }: { pros?: string[], cons?: string[] }) => (
+  <div className="space-y-3 mb-5 bg-muted/30 p-3 rounded-lg">
+    {pros && pros.length > 0 && (
+      <div>
+        <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-green-600">
+          <ThumbsUp className="h-3.5 w-3.5" />
+          Vorteile
+        </h4>
+        <ul className="space-y-1">
+          {pros.map((pro, index) => (
+            <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
+              <span className="text-green-500 mt-0.5">•</span>
+              {pro}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {cons && cons.length > 0 && (
+      <div>
+        <h4 className="text-sm font-medium flex items-center gap-1.5 mb-1.5 text-red-600">
+          <ThumbsDown className="h-3.5 w-3.5" />
+          Nachteile
+        </h4>
+        <ul className="space-y-1">
+          {cons.map((con, index) => (
+            <li key={index} className="text-sm text-muted-foreground flex items-start gap-1.5">
+              <span className="text-red-500 mt-0.5">•</span>
+              {con}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+);
 
 export default RecommendationCard;

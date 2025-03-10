@@ -12,7 +12,9 @@ const NavigationWrapper = ({ children }: NavigationWrapperProps) => {
   return (
     <>
       <div className="flex justify-end px-4 py-2 bg-muted/20 border-b border-border">
-        <GlobalSearch />
+        <div className="w-full max-w-md ml-auto">
+          <GlobalSearch />
+        </div>
       </div>
       <Navbar />
       {children}

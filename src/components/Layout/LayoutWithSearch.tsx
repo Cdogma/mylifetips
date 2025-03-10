@@ -13,14 +13,14 @@ const LayoutWithSearch = ({ children }: LayoutProps) => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <NavigationWrapper>
-        <main>
+        <main className="flex-grow pt-16 md:pt-20">
           {children}
         </main>
       </NavigationWrapper>
       <CookieConsent />
-    </>
+    </div>
   );
 };
 
