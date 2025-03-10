@@ -1,8 +1,8 @@
-
 import { Link } from "react-router-dom";
 import SectionHeading from "../UI/SectionHeading";
 import { Recommendation } from "@/types/recommendations";
 import RecommendationCard from "../UI/RecommendationCard";
+import Disclaimer from "../UI/Disclaimer";
 
 interface RecommendationsSectionProps {
   title: string;
@@ -19,6 +19,8 @@ const RecommendationsSection = ({
   viewAllLink,
   viewAllLabel,
 }: RecommendationsSectionProps) => {
+  const hasAffiliateLinks = recommendations.some((rec) => rec.isAffiliate);
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -54,6 +56,15 @@ const RecommendationsSection = ({
           </div>
         )}
       </div>
+
+      {hasAffiliateLinks && (
+        <div className="mt-12">
+          <Disclaimer 
+            variant="affiliate"
+            text="Mit * gekennzeichnete Links sind Affiliate-Links. Wenn du über diese Links ein Produkt kaufst oder einen Dienst abonnierst, erhalte ich eine kleine Provision. Für dich entstehen dabei keine zusätzlichen Kosten. Diese Provisionen helfen mir, diese Website zu betreiben und weiterhin kostenlose Inhalte zu erstellen."
+          />
+        </div>
+      )}
     </section>
   );
 };
