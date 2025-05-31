@@ -2,6 +2,14 @@
 import { useEffect } from 'react';
 import { getFeatureFlags } from '@/config/environment';
 
+// Extend the Window interface to include Google Analytics properties
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 const Analytics = () => {
   useEffect(() => {
     const flags = getFeatureFlags();
@@ -33,7 +41,7 @@ const Analytics = () => {
     });
     
     // Make gtag available globally for tracking events
-    (window as any).gtag = gtag;
+    window.gtag = gtag;
     
   }, []);
 
