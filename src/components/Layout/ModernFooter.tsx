@@ -1,13 +1,14 @@
-
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowUp, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { getFeatureFlags } from "@/config/environment";
 
 const ModernFooter = () => {
   const currentYear = new Date().getFullYear();
   const { theme, toggleTheme } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const flags = getFeatureFlags();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +50,7 @@ const ModernFooter = () => {
               </div>
             </div>
             
-            {/* Legal Section - left-aligned both heading and links */}
+            {/* Legal Section */}
             <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-200 flex flex-col items-start justify-center">
               <h3 className="footer-heading text-lg font-semibold mb-5 relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[3px] after:w-10 after:bg-gradient-to-r after:from-primary after:to-primary/80 after:rounded-sm">
                 Rechtliches
@@ -80,37 +81,45 @@ const ModernFooter = () => {
             
             {/* Newsletter and Social Media Section */}
             <div className="md:col-span-3 footer-section animate-fade-in-up animation-delay-300">
-              <div className="newsletter-form flex flex-col space-y-3 mb-6">
-                <div className="text-base font-semibold">Bleiben Sie auf dem Laufenden</div>
-                <div className="relative flex">
-                  <input 
-                    type="email" 
-                    className={`${theme === 'dark' ? 'bg-white/5 border-white/10 text-[#F1F5F9] focus:border-white/20 focus:bg-white/[0.07]' : 'bg-black/5 border-black/10 text-[#0F172A] focus:border-black/20 focus:bg-black/[0.07]'} border rounded-xl py-3 px-4 w-full text-sm transition-all outline-none`} 
-                    placeholder="Ihre E-Mail-Adresse"
-                  />
-                  <button className="absolute right-1 top-1 bottom-1 border-none bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg px-4 font-medium cursor-pointer text-sm transition-all hover:opacity-90 hover:-translate-y-0.5">
-                    Anmelden
-                  </button>
+              {flags.showNewsletterSignup && (
+                <div className="newsletter-form flex flex-col space-y-3 mb-6">
+                  <div className="text-base font-semibold">Bleiben Sie auf dem Laufenden</div>
+                  <div className="relative flex">
+                    <input 
+                      type="email" 
+                      className={`${theme === 'dark' ? 'bg-white/5 border-white/10 text-[#F1F5F9] focus:border-white/20 focus:bg-white/[0.07]' : 'bg-black/5 border-black/10 text-[#0F172A] focus:border-black/20 focus:bg-black/[0.07]'} border rounded-xl py-3 px-4 w-full text-sm transition-all outline-none`} 
+                      placeholder="Ihre E-Mail-Adresse"
+                    />
+                    <button className="absolute right-1 top-1 bottom-1 border-none bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg px-4 font-medium cursor-pointer text-sm transition-all hover:opacity-90 hover:-translate-y-0.5">
+                      Anmelden
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
               
               {/* Social Links */}
-              <div className="social-links flex gap-2 mb-4">
-                <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </div>
+              {flags.showSocialMedia && (
+                <div className="social-links flex gap-2 mb-4">
+                  {flags.showFacebookLink && (
+                    <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
+                      <Facebook className="h-5 w-5" />
+                    </a>
+                  )}
+                  <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                  {flags.showInstagramLink && (
+                    <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
+                      <Instagram className="h-5 w-5" />
+                    </a>
+                  )}
+                  <a href="#" className={`social-link flex items-center justify-center w-[38px] h-[38px] rounded-lg ${theme === 'dark' ? 'bg-white/5 text-[#F1F5F9] hover:bg-primary hover:text-white' : 'bg-black/5 text-[#0F172A] hover:bg-primary hover:text-white'} no-underline transition-all hover:-translate-y-1`}>
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
+              )}
               
-              {/* Theme Switch - Now below social media buttons */}
+              {/* Theme Switch */}
               <div className="theme-switch flex items-center cursor-pointer mt-4" onClick={toggleTheme}>
                 <div className={`relative w-[50px] h-[26px] rounded-[13px] ${theme === 'dark' ? 'bg-primary' : 'bg-black/10'} transition-all`}>
                   <div className={`absolute w-[20px] h-[20px] rounded-full ${theme === 'dark' ? 'bg-[#0F172A] translate-x-[24px]' : 'bg-primary translate-x-[3px]'} top-[3px] transition-all`}></div>

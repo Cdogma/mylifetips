@@ -9,7 +9,10 @@ import NewsletterSection from "../components/Home/NewsletterSection";
 
 const Index = () => {
   return (
-    <Layout>
+    <Layout
+      title="MyLifeTips - Ehrliche Empfehlungen und Tipps"
+      description="Ehrliche Tipps und Empfehlungen für ein besseres Leben – von Finanzen über Business und Technik bis hin zu Lifestyle"
+    >
       <LandingHero
         title="Dein Leben. Bessere Entscheidungen."
         subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
