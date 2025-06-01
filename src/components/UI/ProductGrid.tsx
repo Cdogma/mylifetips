@@ -17,7 +17,8 @@ const ProductGrid = () => {
       rating: 4.8,
       category: "Banking",
       link: "/finanzen/bankkonten/c24",
-      isAffiliate: true
+      isAffiliate: true,
+      isPlaceholder: false
     }
   ];
 
