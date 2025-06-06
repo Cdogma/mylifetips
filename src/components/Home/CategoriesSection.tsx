@@ -1,6 +1,7 @@
 
 import SectionHeading from "../UI/SectionHeading";
 import CategoryCard from "../UI/CategoryCard";
+import AnimatedSection from "../UI/AnimatedSection";
 
 const CategoriesSection = () => {
   const categories = [
@@ -33,22 +34,29 @@ const CategoriesSection = () => {
   return (
     <section className="section-padding bg-background">
       <div className="container">
-        <SectionHeading
-          title="Entdecke meine Themenbereiche"
-          description="Von Finanzen über Technik bis hin zu Lifestyle – hier findest du meine ehrlichen Erfahrungen und Empfehlungen in verschiedenen Lebensbereichen."
-          align="center"
-        />
+        <AnimatedSection direction="up" delay={0.1}>
+          <SectionHeading
+            title="Entdecke meine Themenbereiche"
+            description="Von Finanzen über Technik bis hin zu Lifestyle – hier findest du meine ehrlichen Erfahrungen und Empfehlungen in verschiedenen Lebensbereichen."
+            align="center"
+          />
+        </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
-            <CategoryCard
+            <AnimatedSection 
               key={category.title}
-              title={category.title}
-              description={category.description}
-              imageSrc={category.imageSrc}
-              link={category.link}
-              delay={index}
-            />
+              direction="up"
+              delay={0.2 + (index * 0.1)}
+            >
+              <CategoryCard
+                title={category.title}
+                description={category.description}
+                imageSrc={category.imageSrc}
+                link={category.link}
+                delay={0}
+              />
+            </AnimatedSection>
           ))}
         </div>
       </div>

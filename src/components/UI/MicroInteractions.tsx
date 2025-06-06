@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface MicroInteractionProps {
@@ -16,52 +17,64 @@ const MicroInteractions = ({
   intensity = 'normal'
 }: MicroInteractionProps) => {
   
-  const getInteractionClasses = () => {
+  const getHoverAnimation = () => {
     const intensityMap = {
       subtle: {
-        hover: 'hover:scale-101 hover:-translate-y-0.5',
-        click: 'active:scale-98',
-        magnetic: 'hover:scale-102 hover:-translate-y-1',
-        tilt: 'hover:rotate-1',
-        float: 'animate-float',
-        glow: 'hover:shadow-lg hover:shadow-primary/20'
+        hover: { scale: 1.02, y: -2 },
+        click: { scale: 0.98 },
+        magnetic: { scale: 1.05, y: -4 },
+        tilt: { rotate: 1 },
+        float: { y: [-2, 2, -2] },
+        glow: { scale: 1.02, boxShadow: "0 10px 25px rgba(59, 130, 246, 0.2)" }
       },
       normal: {
-        hover: 'hover:scale-105 hover:-translate-y-1',
-        click: 'active:scale-95',
-        magnetic: 'hover:scale-110 hover:-translate-y-2',
-        tilt: 'hover:rotate-2',
-        float: 'animate-float',
-        glow: 'hover:shadow-xl hover:shadow-primary/30 animate-glow'
+        hover: { scale: 1.05, y: -4 },
+        click: { scale: 0.95 },
+        magnetic: { scale: 1.1, y: -8 },
+        tilt: { rotate: 2 },
+        float: { y: [-4, 4, -4] },
+        glow: { scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }
       },
       strong: {
-        hover: 'hover:scale-110 hover:-translate-y-2',
-        click: 'active:scale-90',
-        magnetic: 'hover:scale-125 hover:-translate-y-3',
-        tilt: 'hover:rotate-3',
-        float: 'animate-float',
-        glow: 'hover:shadow-2xl hover:shadow-primary/40 animate-glow'
+        hover: { scale: 1.1, y: -8 },
+        click: { scale: 0.9 },
+        magnetic: { scale: 1.25, y: -12 },
+        tilt: { rotate: 3 },
+        float: { y: [-6, 6, -6] },
+        glow: { scale: 1.1, boxShadow: "0 25px 50px rgba(59, 130, 246, 0.4)" }
       }
     };
 
     return intensityMap[intensity][type];
   };
 
-  const baseClasses = 'transition-all duration-300 ease-bounce-soft transform-gpu';
-  
+  const getTransition = () => {
+    if (type === 'float') {
+      return {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      };
+    }
+    return {
+      duration: 0.3,
+      ease: [0.25, 0.25, 0, 1]
+    };
+  };
+
   return (
-    <div 
-      className={cn(
-        baseClasses, 
-        getInteractionClasses(),
-        className
-      )}
+    <motion.div 
+      className={cn('transform-gpu', className)}
+      whileHover={type !== 'float' ? getHoverAnimation() : undefined}
+      whileTap={type === 'click' ? getHoverAnimation() : undefined}
+      animate={type === 'float' ? getHoverAnimation() : undefined}
+      transition={getTransition()}
       style={{
         transformStyle: 'preserve-3d',
       }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
