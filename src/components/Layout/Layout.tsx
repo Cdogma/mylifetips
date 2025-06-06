@@ -1,3 +1,4 @@
+
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import ModernFooter from "./ModernFooter";
@@ -6,7 +7,6 @@ import CookieConsent from "../UI/CookieConsent";
 import SEOManager from "../SEO/SEOManager";
 import Analytics from "../Analytics/Analytics";
 import EnvironmentBadge from "../UI/EnvironmentBadge";
-import ChatBot from "../AI/ChatBot";
 import { getEnvironment } from "@/config/environment";
 
 interface LayoutProps {
@@ -33,7 +33,6 @@ const Layout = ({ children, title, description }: LayoutProps) => {
       </main>
       <ModernFooter />
       <CookieConsent />
-      <ChatBot />
     </div>
   );
 };

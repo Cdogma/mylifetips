@@ -30,5 +30,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: 'esnext',
     minify: 'esbuild'
+  },
+  define: {
+    __WS_TOKEN__: JSON.stringify(process.env.WS_TOKEN || ''),
   }
 }));

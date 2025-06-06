@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "../UI/SectionHeading";
 import BlogPostCard from "../UI/BlogPostCard";
-import AnimatedSection from "../UI/AnimatedSection";
-import MicroInteractions from "../UI/MicroInteractions";
 
 const BlogSection = () => {
   const blogPosts = [
@@ -37,44 +35,36 @@ const BlogSection = () => {
   return (
     <section className="section-padding">
       <div className="container">
-        <AnimatedSection direction="up" delay={0.1}>
-          <SectionHeading
-            subtitle="Blog & News"
-            title="Aktuelle Artikel"
-            description="Entdecke meine neuesten Artikel zu Finanzen, Business, Technik und Lifestyle."
-          />
-        </AnimatedSection>
+        <SectionHeading
+          subtitle="Blog & News"
+          title="Aktuelle Artikel"
+          description="Entdecke meine neuesten Artikel zu Finanzen, Business, Technik und Lifestyle."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <AnimatedSection key={post.slug} direction="up" delay={0.2 + index * 0.1}>
-              <MicroInteractions type="hover">
-                <BlogPostCard
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  date={post.date}
-                  category={post.category}
-                  imageSrc={post.imageSrc}
-                  slug={post.slug}
-                />
-              </MicroInteractions>
-            </AnimatedSection>
+            <BlogPostCard
+              key={post.slug}
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.date}
+              category={post.category}
+              imageSrc={post.imageSrc}
+              slug={post.slug}
+              delay={index}
+            />
           ))}
         </div>
 
-        <AnimatedSection direction="up" delay={0.5}>
-          <div className="mt-12 text-center">
-            <MicroInteractions type="pulse">
-              <Link
-                to="/blog"
-                className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-md hover:bg-secondary/80 transition-colors group"
-              >
-                Zum Blog
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </MicroInteractions>
-          </div>
-        </AnimatedSection>
+        <div className="mt-12 text-center">
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-md hover:bg-secondary/80 transition-colors group"
+          >
+            Zum Blog
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );

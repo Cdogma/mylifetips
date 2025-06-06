@@ -1,88 +1,19 @@
 
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const NavLogo = () => {
   return (
-    <Link to="/" className="flex items-center space-x-2 group relative">
-      {/* Holographic glow background */}
-      <motion.div 
-        className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: "linear-gradient(135deg, rgba(255, 154, 0, 0.1), rgba(255, 105, 180, 0.1), rgba(0, 255, 255, 0.1))",
-          boxShadow: "0 0 30px rgba(255, 105, 180, 0.3)"
-        }}
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      
-      <motion.span 
-        className="text-2xl md:text-3xl font-black transition-all duration-500 ease-in-out relative z-10"
-        style={{
-          background: "linear-gradient(135deg, #ff9a00, #ff69b4, #00ffff, #8a2be2)",
-          backgroundSize: "300% 300%",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          filter: "drop-shadow(0 0 20px rgba(255, 105, 180, 0.5))"
-        }}
-        animate={{
-          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        whileHover={{
-          scale: 1.05,
-          filter: "drop-shadow(0 0 30px rgba(255, 105, 180, 0.8))"
-        }}
-      >
+    <Link to="/" className="flex items-center space-x-2 group">
+      <span className="text-xl md:text-2xl font-bold transition-all duration-500 ease-in-out
+        bg-gradient-to-r from-primary via-primary/90 to-primary/70 
+        dark:from-primary dark:via-primary/90 dark:to-sky-400
+        bg-clip-text text-transparent 
+        group-hover:tracking-wider group-hover:bg-gradient-to-r group-hover:from-primary/90 group-hover:via-primary group-hover:to-blue-500
+        relative overflow-hidden">
         MyLife
-        <motion.span 
-          className="relative"
-          whileHover={{ rotateY: 15 }}
-          transition={{ duration: 0.3 }}
-        >
-          Tips
-        </motion.span>
-        
-        {/* Quantum particles around logo */}
-        <motion.div 
-          className="absolute -top-2 -right-2 w-2 h-2 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.5, 1, 0.5],
-            rotate: [0, 180, 360]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.8, 0.3],
-            rotate: [360, 180, 0]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-      </motion.span>
+        <span className="relative z-10 bg-gradient-to-br from-primary to-blue-500 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-primary">Tips</span>
+        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+      </span>
     </Link>
   );
 };

@@ -20,7 +20,7 @@ const DesktopNavigation = ({
   const location = useLocation();
 
   return (
-    <nav className="hidden md:flex items-center space-x-1 xl:space-x-2 overflow-x-auto">
+    <nav className="hidden md:flex space-x-1 xl:space-x-2 overflow-x-auto">
       {/* Hauptkategorien mit Dropdown */}
       {mainCategories.map((category) => {
         const isActive = isActiveLink(category.href, category.subcategories);
