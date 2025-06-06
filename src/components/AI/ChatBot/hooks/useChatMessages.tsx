@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Message } from '../types';
 
-const useChatMessages = () => {
+const useChatMessages = (apiKeyParam?: string) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -11,16 +11,11 @@ const useChatMessages = () => {
       timestamp: new Date()
     }
   ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey] = useState(localStorage.getItem('perplexity_api_key') || '');
+  const [loading, setLoading] = useState(false);
+  const [apiKey, setApiKey] = useState(apiKeyParam || localStorage.getItem('perplexity_api_key') || '');
 
-  const saveApiKey = () => {
-    localStorage.setItem('perplexity_api_key', apiKey);
-  };
-
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+  const addMessage = async (content: string) => {
+    if (!content.trim() || loading) return;
 
     if (!apiKey) {
       return;
@@ -28,14 +23,13 @@ const useChatMessages = () => {
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: input,
+      content,
       role: 'user',
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setIsLoading(true);
+    setLoading(true);
 
     try {
       const response = await fetch('https://api.perplexity.ai/chat/completions', {
@@ -57,7 +51,7 @@ const useChatMessages = () => {
             })),
             {
               role: 'user',
-              content: input
+              content
             }
           ],
           temperature: 0.2,
@@ -93,19 +87,16 @@ const useChatMessages = () => {
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return {
     messages,
-    input,
-    setInput,
-    isLoading,
-    sendMessage,
+    addMessage,
+    loading,
     apiKey,
     setApiKey,
-    saveApiKey
   };
 };
 

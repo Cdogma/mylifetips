@@ -13,8 +13,7 @@ const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [apiKey, setApiKey] = useState(localStorage.getItem('perplexity_api_key') || '');
-  const { messages, addMessage, loading } = useChatMessages(apiKey);
+  const { messages, addMessage, loading, apiKey, setApiKey } = useChatMessages();
 
   // Show the button after a delay
   useEffect(() => {
