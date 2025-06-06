@@ -1,5 +1,4 @@
 
-import Layout from "../components/Layout/Layout";
 import LandingHero from "../components/UI/LandingHero";
 import FeaturesSection from "../components/Home/FeaturesSection";
 import CategoriesSection from "../components/Home/CategoriesSection";
@@ -27,56 +26,51 @@ const Index = () => {
   };
 
   return (
-    <Layout
-      title="MyLifeTips - Ehrliche Empfehlungen und Tipps"
-      description="Ehrliche Tipps und Empfehlungen für ein besseres Leben – von Finanzen über Business und Technik bis hin zu Lifestyle"
-    >
-      <PageTransition>
-        <motion.div
-          variants={staggerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={childVariants}>
-            <LandingHero
-              title="Dein Leben. Bessere Entscheidungen."
-              subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
-              ctaText="Empfehlungen entdecken"
-              ctaLink="/empfehlungen"
-              secondaryCtaText="Mehr über mich"
-              secondaryCtaLink="/ueber-mich"
-              imageSrc="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
-            />
-          </motion.div>
-
-          <motion.div variants={childVariants}>
-            <FeaturesSection />
-          </motion.div>
-
-          <motion.div variants={childVariants}>
-            <CategoriesSection />
-          </motion.div>
-
-          <motion.div variants={childVariants}>
-            <AnimatedSection direction="up">
-              <RecommendationsSection />
-            </AnimatedSection>
-          </motion.div>
-
-          <motion.div variants={childVariants}>
-            <AnimatedSection direction="up">
-              <BlogSection />
-            </AnimatedSection>
-          </motion.div>
-
-          <motion.div variants={childVariants}>
-            <AnimatedSection direction="up">
-              <NewsletterSection />
-            </AnimatedSection>
-          </motion.div>
+    <PageTransition>
+      <motion.div
+        variants={staggerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={childVariants}>
+          <LandingHero
+            title="Dein Leben. Bessere Entscheidungen."
+            subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
+            ctaText="Empfehlungen entdecken"
+            ctaLink="/empfehlungen"
+            secondaryCtaText="Mehr über mich"
+            secondaryCtaLink="/ueber-mich"
+            imageSrc="/lovable-uploads/e20d1a22-a3ff-4bda-9092-5dc8d352f9e9.png"
+          />
         </motion.div>
-      </PageTransition>
-    </Layout>
+
+        <motion.div variants={childVariants}>
+          <FeaturesSection />
+        </motion.div>
+
+        <motion.div variants={childVariants}>
+          <CategoriesSection />
+        </motion.div>
+
+        <motion.div variants={childVariants}>
+          <AnimatedSection direction="up">
+            <RecommendationsSection />
+          </AnimatedSection>
+        </motion.div>
+
+        <motion.div variants={childVariants}>
+          <AnimatedSection direction="up">
+            <BlogSection />
+          </AnimatedSection>
+        </motion.div>
+
+        <motion.div variants={childVariants}>
+          <AnimatedSection direction="up">
+            <NewsletterSection />
+          </AnimatedSection>
+        </motion.div>
+      </motion.div>
+    </PageTransition>
   );
 };
 

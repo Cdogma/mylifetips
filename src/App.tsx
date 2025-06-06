@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Layout from "./components/Layout/Layout";
 
 // Hauptseiten
 import Index from "./pages/Index";
@@ -44,11 +45,6 @@ import Hobbys from "./pages/Hobbys";
 import Reisen from "./pages/Reisen";
 import Mode from "./pages/Mode";
 
-// Für zukünftige Routen
-// import Marketing from "./pages/Marketing";
-// import Steuern from "./pages/Steuern";
-// import Software from "./pages/Software";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -58,52 +54,49 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            {/* Hauptseiten */}
-            <Route path="/" element={<Index />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/empfehlungen" element={<Recommendations />} />
-            <Route path="/produkt-empfehlungen" element={<ProductRecommendations />} />
-            <Route path="/kontakt" element={<Kontakt />} />
-            <Route path="/impressum" element={<Impressum />} />
-            <Route path="/datenschutz" element={<Datenschutz />} />
-            <Route path="/ressourcen" element={<Ressourcen />} />
-            <Route path="/ueber-mich" element={<UeberMich />} />
-            
-            {/* Finanzen */}
-            <Route path="/finanzen" element={<Finance />} />
-            <Route path="/finanzen/bankkonten" element={<Bankkonten />} />
-            <Route path="/finanzen/bankkonten/c24" element={<C24BankAccount />} />
-            <Route path="/finanzen/kreditkarten" element={<Kreditkarten />} />
-            <Route path="/finanzen/broker" element={<Broker />} />
-            <Route path="/finanzen/etfs" element={<ETFs />} />
-            <Route path="/finanzen/versicherungen" element={<Versicherungen />} />
-            
-            {/* Business */}
-            <Route path="/business" element={<Business />} />
-            <Route path="/business/gruendung" element={<Gruendung />} />
-            {/* Zukünftige Routen */}
-            {/* <Route path="/business/marketing" element={<Marketing />} /> */}
-            {/* <Route path="/business/steuern" element={<Steuern />} /> */}
-            
-            {/* Technik */}
-            <Route path="/technik" element={<Tech />} />
-            <Route path="/technik/smart-home" element={<SmartHome />} />
-            <Route path="/technik/gadgets" element={<Gadgets />} />
-            {/* Zukünftige Routen */}
-            {/* <Route path="/technik/software" element={<Software />} /> */}
-            
-            {/* Lifestyle */}
-            <Route path="/lifestyle" element={<Lifestyle />} />
-            <Route path="/lifestyle/gesundheit" element={<Gesundheit />} />
-            <Route path="/lifestyle/hobbys" element={<Hobbys />} />
-            <Route path="/lifestyle/reisen" element={<Reisen />} />
-            <Route path="/lifestyle/mode" element={<Mode />} />
-            
-            {/* 404 - Seite nicht gefunden */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              {/* Hauptseiten */}
+              <Route path="/" element={<Index />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/empfehlungen" element={<Recommendations />} />
+              <Route path="/produkt-empfehlungen" element={<ProductRecommendations />} />
+              <Route path="/kontakt" element={<Kontakt />} />
+              <Route path="/impressum" element={<Impressum />} />
+              <Route path="/datenschutz" element={<Datenschutz />} />
+              <Route path="/ressourcen" element={<Ressourcen />} />
+              <Route path="/ueber-mich" element={<UeberMich />} />
+              
+              {/* Finanzen */}
+              <Route path="/finanzen" element={<Finance />} />
+              <Route path="/finanzen/bankkonten" element={<Bankkonten />} />
+              <Route path="/finanzen/bankkonten/c24" element={<C24BankAccount />} />
+              <Route path="/finanzen/kreditkarten" element={<Kreditkarten />} />
+              <Route path="/finanzen/broker" element={<Broker />} />
+              <Route path="/finanzen/etfs" element={<ETFs />} />
+              <Route path="/finanzen/versicherungen" element={<Versicherungen />} />
+              
+              {/* Business */}
+              <Route path="/business" element={<Business />} />
+              <Route path="/business/gruendung" element={<Gruendung />} />
+              
+              {/* Technik */}
+              <Route path="/technik" element={<Tech />} />
+              <Route path="/technik/smart-home" element={<SmartHome />} />
+              <Route path="/technik/gadgets" element={<Gadgets />} />
+              
+              {/* Lifestyle */}
+              <Route path="/lifestyle" element={<Lifestyle />} />
+              <Route path="/lifestyle/gesundheit" element={<Gesundheit />} />
+              <Route path="/lifestyle/hobbys" element={<Hobbys />} />
+              <Route path="/lifestyle/reisen" element={<Reisen />} />
+              <Route path="/lifestyle/mode" element={<Mode />} />
+              
+              {/* 404 - Seite nicht gefunden */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
