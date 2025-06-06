@@ -30,10 +30,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = e.currentTarget?.getBoundingClientRect?.() || { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
       setMousePosition({
-        x: ((e.clientX - rect.left) / window.innerWidth) * 100,
-        y: ((e.clientY - rect.top) / 100) * 100
+        x: (clientX / innerWidth) * 100,
+        y: (clientY / innerHeight) * 100
       });
     };
 
