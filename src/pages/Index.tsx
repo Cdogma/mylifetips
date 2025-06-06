@@ -1,13 +1,14 @@
 
+import { motion } from "framer-motion";
+import PageTransition from "../components/UI/PageTransition";
 import LandingHero from "../components/UI/LandingHero";
 import FeaturesSection from "../components/Home/FeaturesSection";
 import CategoriesSection from "../components/Home/CategoriesSection";
 import RecommendationsSection from "../components/Home/RecommendationsSection";
 import BlogSection from "../components/Home/BlogSection";
 import NewsletterSection from "../components/Home/NewsletterSection";
-import PageTransition from "../components/UI/PageTransition";
-import { motion } from "framer-motion";
 import AnimatedSection from "../components/UI/AnimatedSection";
+import Hero from "../components/UI/Hero";
 
 const Index = () => {
   const staggerVariants = {
@@ -33,7 +34,7 @@ const Index = () => {
         animate="visible"
       >
         <motion.div variants={childVariants}>
-          <LandingHero
+          <Hero
             title="Dein Leben. Bessere Entscheidungen."
             subtitle="Willkommen bei MyLifeTips – deinem Portal für ehrliche Produkt- und Serviceempfehlungen basierend auf persönlichen Erfahrungen."
             ctaText="Empfehlungen entdecken"
@@ -49,23 +50,25 @@ const Index = () => {
         </motion.div>
 
         <motion.div variants={childVariants}>
-          <CategoriesSection />
+          <AnimatedSection direction="up" delay={0.2}>
+            <CategoriesSection />
+          </AnimatedSection>
         </motion.div>
 
         <motion.div variants={childVariants}>
-          <AnimatedSection direction="up">
+          <AnimatedSection direction="up" delay={0.3}>
             <RecommendationsSection />
           </AnimatedSection>
         </motion.div>
 
         <motion.div variants={childVariants}>
-          <AnimatedSection direction="up">
+          <AnimatedSection direction="up" delay={0.4}>
             <BlogSection />
           </AnimatedSection>
         </motion.div>
 
         <motion.div variants={childVariants}>
-          <AnimatedSection direction="up">
+          <AnimatedSection direction="up" delay={0.5}>
             <NewsletterSection />
           </AnimatedSection>
         </motion.div>

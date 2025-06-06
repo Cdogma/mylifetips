@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import AnimatedSection from "../UI/AnimatedSection";
+import MicroInteractions from "../UI/MicroInteractions";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
@@ -29,38 +31,47 @@ const NewsletterSection = () => {
   return (
     <section className="bg-gradient-to-b from-white to-primary/5 dark:from-background dark:to-primary/5 py-20">
       <div className="container">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
-            Newsletter
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Bleibe auf dem Laufenden
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Abonniere meinen Newsletter und erhalte regelmäßig meine neuesten Tipps,
-            Empfehlungen und exklusive Angebote direkt in dein Postfach.
-          </p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row max-w-lg mx-auto">
-            <Input
-              type="email"
-              placeholder="Deine E-Mail-Adresse"
-              className="flex-1 px-4 py-3 rounded-l-md sm:rounded-r-none mb-2 sm:mb-0 focus:outline-none focus:ring-2 focus:ring-primary"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Button 
-              type="submit" 
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-r-md sm:rounded-l-none hover:bg-primary/90 transition-colors"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Wird abonniert..." : "Abonnieren"}
-            </Button>
-          </form>
-          <p className="text-xs text-muted-foreground mt-4">
-            Ich respektiere deine Privatsphäre. Du kannst dich jederzeit abmelden.
-          </p>
-        </div>
+        <AnimatedSection direction="up">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-2">
+              Newsletter
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-primary/80 bg-clip-text text-transparent">
+              Bleibe auf dem Laufenden
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Abonniere meinen Newsletter und erhalte regelmäßig meine neuesten Tipps,
+              Empfehlungen und exklusive Angebote direkt in dein Postfach.
+            </p>
+            
+            <AnimatedSection direction="scale" delay={0.2}>
+              <div className="glass-card p-6 max-w-lg mx-auto">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row max-w-lg mx-auto">
+                  <Input
+                    type="email"
+                    placeholder="Deine E-Mail-Adresse"
+                    className="flex-1 px-4 py-3 rounded-l-md sm:rounded-r-none mb-2 sm:mb-0 focus:outline-none focus:ring-2 focus:ring-primary"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubmitting}
+                  />
+                  <MicroInteractions type="pulse">
+                    <Button 
+                      type="submit" 
+                      className="bg-primary text-primary-foreground px-6 py-3 rounded-r-md sm:rounded-l-none hover:bg-primary/90 transition-colors"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Wird abonniert..." : "Abonnieren"}
+                    </Button>
+                  </MicroInteractions>
+                </form>
+                <p className="text-xs text-muted-foreground mt-4">
+                  Ich respektiere deine Privatsphäre. Du kannst dich jederzeit abmelden.
+                </p>
+              </div>
+            </AnimatedSection>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

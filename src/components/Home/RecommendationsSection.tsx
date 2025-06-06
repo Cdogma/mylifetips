@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "../UI/SectionHeading";
 import RecommendationCard from "../UI/RecommendationCard";
+import AnimatedSection from "../UI/AnimatedSection";
+import MicroInteractions from "../UI/MicroInteractions";
 
 const RecommendationsSection = () => {
   const recommendations = [
@@ -38,37 +40,45 @@ const RecommendationsSection = () => {
   return (
     <section className="section-padding bg-muted/30">
       <div className="container">
-        <SectionHeading
-          subtitle="Das Beste für dich"
-          title="Meine aktuellen Empfehlungen"
-          description="Diese Produkte und Services nutze ich selbst täglich und kann sie daher aus voller Überzeugung empfehlen."
-        />
+        <AnimatedSection direction="up" delay={0.1}>
+          <SectionHeading
+            subtitle="Das Beste für dich"
+            title="Meine aktuellen Empfehlungen"
+            description="Diese Produkte und Services nutze ich selbst täglich und kann sie daher aus voller Überzeugung empfehlen."
+          />
+        </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recommendations.map((recommendation, index) => (
-            <RecommendationCard
-              key={recommendation.title}
-              title={recommendation.title}
-              category={recommendation.category}
-              description={recommendation.description}
-              rating={recommendation.rating}
-              imageSrc={recommendation.imageSrc}
-              link={recommendation.link}
-              isAffiliate={recommendation.isAffiliate}
-              delay={index}
-            />
+            <AnimatedSection key={recommendation.title} direction="up" delay={0.2 + index * 0.1}>
+              <MicroInteractions type="hover">
+                <RecommendationCard
+                  title={recommendation.title}
+                  category={recommendation.category}
+                  description={recommendation.description}
+                  rating={recommendation.rating}
+                  imageSrc={recommendation.imageSrc}
+                  link={recommendation.link}
+                  isAffiliate={recommendation.isAffiliate}
+                />
+              </MicroInteractions>
+            </AnimatedSection>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Link
-            to="/empfehlungen"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors group"
-          >
-            Alle Empfehlungen ansehen
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
+        <AnimatedSection direction="up" delay={0.5}>
+          <div className="mt-12 text-center">
+            <MicroInteractions type="pulse">
+              <Link
+                to="/empfehlungen"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md hover:bg-primary/90 transition-colors group"
+              >
+                Alle Empfehlungen ansehen
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </MicroInteractions>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
