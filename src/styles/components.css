@@ -1,0 +1,102 @@
+
+/* Component Styles */
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Enhanced Glassmorphism System */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--animation-normal) var(--ease-smooth);
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  }
+  
+  .glass-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2), var(--glass-shadow);
+  }
+  
+  .glass-navbar {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-button {
+    @apply glass-card px-6 py-3 font-medium transition-all duration-300;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .glass-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+  }
+  
+  /* Modern Navigation */
+  .nav-link {
+    @apply relative px-6 py-3 text-sm font-medium transition-all duration-300 rounded-2xl;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .nav-link.active {
+    background: var(--gradient-primary);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Enhanced Footer Styling */
+  .footer-glass {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+    backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(71, 85, 105, 0.3);
+  }
+  
+  /* Scroll Indicators */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform-origin: left;
+    z-index: 9999;
+  }
+}
