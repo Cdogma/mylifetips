@@ -1,9 +1,13 @@
-
 // Environment detection and configuration
 export type Environment = 'showcase' | 'main' | 'develop';
 
 export const getEnvironment = (): Environment => {
   const hostname = window.location.hostname;
+  
+  // Lovable development environment detection
+  if (hostname.includes('lovable.dev')) {
+    return 'develop';
+  }
   
   if (hostname.includes('showcase.')) {
     return 'showcase';
