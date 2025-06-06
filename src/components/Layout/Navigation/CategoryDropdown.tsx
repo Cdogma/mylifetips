@@ -25,15 +25,15 @@ const CategoryDropdown = ({ category, isActive }: CategoryDropdownProps) => {
       onMouseLeave={() => setIsOpen(false)}
     >
       <button
-        className={`group relative py-4 px-4 text-sm xl:text-base transition-all duration-300 ease-out whitespace-nowrap flex items-center gap-2 rounded-lg hover:bg-muted/50 ${
+        className={`group relative py-3 px-4 text-sm xl:text-base transition-all duration-300 ease-out whitespace-nowrap flex items-center gap-1 rounded-lg hover:bg-muted/60 ${
           isActive 
-            ? "text-primary font-medium bg-primary/5" 
+            ? "text-primary font-medium bg-primary/10" 
             : "text-foreground hover:text-primary"
         }`}
       >
         <span>{category.name}</span>
         <ChevronDown 
-          className={`h-4 w-4 transition-all duration-300 ${
+          className={`h-3 w-3 transition-all duration-300 ${
             isOpen ? 'rotate-180 text-primary' : 'group-hover:text-primary'
           }`} 
         />
@@ -53,16 +53,16 @@ const CategoryDropdown = ({ category, isActive }: CategoryDropdownProps) => {
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 z-50"
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-72 z-50"
           >
-            <div className="bg-background/95 backdrop-blur-xl border border-border/20 rounded-2xl shadow-2xl shadow-black/10 p-2">
+            <div className="bg-background/98 backdrop-blur-xl border border-border/30 rounded-xl shadow-2xl shadow-black/10 p-3 ring-1 ring-black/5">
               <div className="space-y-1">
                 <Link 
                   to={category.href}
-                  className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                  className="group flex items-center gap-3 p-3 rounded-lg hover:bg-primary/8 transition-all duration-200"
                 >
-                  <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-colors duration-200" />
+                  <div className="w-2 h-2 rounded-full bg-primary/30 group-hover:bg-primary transition-colors duration-200" />
                   <div>
                     <span className="font-medium text-foreground group-hover:text-primary transition-colors duration-200">
                       Alle {category.name}
@@ -75,13 +75,13 @@ const CategoryDropdown = ({ category, isActive }: CategoryDropdownProps) => {
                 
                 <div className="h-px bg-border/50 my-2" />
                 
-                {category.subcategories.map((subCategory, index) => (
+                {category.subcategories.map((subCategory) => (
                   <Link 
                     key={subCategory.name}
                     to={subCategory.href}
-                    className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-200"
+                    className="group flex items-center gap-3 p-2.5 rounded-lg hover:bg-muted/60 transition-all duration-200"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 group-hover:bg-primary transition-colors duration-200" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 group-hover:bg-primary transition-colors duration-200" />
                     <span className="text-sm text-foreground group-hover:text-primary transition-colors duration-200">
                       {subCategory.name}
                     </span>

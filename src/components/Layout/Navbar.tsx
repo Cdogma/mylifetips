@@ -58,8 +58,8 @@ const Navbar = () => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
         scrolled 
-          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/20" 
-          : "bg-background/20 backdrop-blur-md"
+          ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/30" 
+          : "bg-background/90 backdrop-blur-md"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -73,13 +73,11 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
-            <DesktopNavigation 
-              mainCategories={mainCategories} 
-              standardNavLinks={standardNavLinks}
-              isActiveLink={isActiveLink}
-            />
-          </div>
+          <DesktopNavigation 
+            mainCategories={mainCategories} 
+            standardNavLinks={standardNavLinks}
+            isActiveLink={isActiveLink}
+          />
 
           {/* Theme Toggle and Mobile Menu Toggle */}
           <div className="flex items-center space-x-2">
