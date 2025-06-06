@@ -13,6 +13,7 @@ import { mainCategories, standardNavLinks } from "./Navigation/NavData";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -25,6 +26,19 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = e.currentTarget?.getBoundingClientRect?.() || { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+      setMousePosition({
+        x: ((e.clientX - rect.left) / window.innerWidth) * 100,
+        y: ((e.clientY - rect.top) / 100) * 100
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
@@ -49,52 +63,62 @@ const Navbar = () => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? "glass-navbar shadow-2xl" 
-          : "backdrop-blur-md bg-slate-900/20"
+          ? "backdrop-blur-3xl" 
+          : "backdrop-blur-2xl"
       }`}
+      style={{
+        background: scrolled 
+          ? "rgba(15, 23, 42, 0.85)"
+          : "rgba(15, 23, 42, 0.75)"
+      }}
     >
-      {/* Enhanced background with animated gradients */}
-      <div className="absolute inset-0 overflow-hidden rounded-b-3xl">
+      {/* Aurora Background Effects */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div 
-          className="absolute inset-0 opacity-40"
-          animate={{
-            background: [
-              "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%)",
-              "linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(16, 185, 129, 0.1) 50%, rgba(59, 130, 246, 0.1) 100%)",
-              "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%)"
-            ],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
+                rgba(255, 154, 0, 0.15) 0%, 
+                rgba(255, 105, 180, 0.12) 25%, 
+                rgba(0, 255, 255, 0.08) 50%, 
+                transparent 70%
+              ),
+              radial-gradient(circle at ${100 - mousePosition.x}% ${100 - mousePosition.y}%, 
+                rgba(138, 43, 226, 0.15) 0%, 
+                rgba(255, 20, 147, 0.12) 30%, 
+                transparent 60%
+              )
+            `,
           }}
         />
         
-        {/* Floating orbs */}
-        <motion.div 
-          className="absolute top-2 left-1/4 w-20 h-20 bg-blue-500/10 rounded-full blur-2xl float-element"
+        {/* Floating Aurora Orbs */}
+        <motion.div
+          className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-radial from-orange-400/20 to-transparent rounded-full blur-2xl"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.3, 0.8, 1],
+            opacity: [0.3, 0.6, 0.2, 0.4],
+            x: [0, 50, -25, 0],
           }}
           transition={{
-            duration: 4,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
-        <motion.div 
-          className="absolute top-2 right-1/3 w-16 h-16 bg-purple-500/10 rounded-full blur-2xl float-element"
+        <motion.div
+          className="absolute top-0 right-1/4 w-24 h-24 bg-gradient-radial from-cyan-400/20 to-transparent rounded-full blur-2xl"
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.5, 0.2],
+            scale: [0.8, 1.4, 1, 0.9],
+            opacity: [0.2, 0.5, 0.3, 0.4],
+            x: [0, -40, 20, 0],
           }}
           transition={{
-            duration: 5,
+            duration: 18,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 3
           }}
         />
       </div>
@@ -102,23 +126,24 @@ const Navbar = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex justify-between items-center h-20">
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, rotateY: 10 }}
             whileTap={{ scale: 0.95 }}
-            className="micro-hover"
+            transition={{ type: "spring", stiffness: 400 }}
           >
             <NavLogo />
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-3">
-            {mainCategories.map((category) => {
+          <nav className="hidden md:flex items-center space-x-2">
+            {mainCategories.map((category, index) => {
               const isActive = isActiveLink(category.href, category.subcategories);
               return (
                 <motion.div
                   key={category.name}
-                  whileHover={{ y: -3 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="micro-hover"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.02 }}
                 >
                   <CategoryDropdown 
                     category={category} 
@@ -128,16 +153,17 @@ const Navbar = () => {
               );
             })}
 
-            {standardNavLinks.map((link) => {
+            {standardNavLinks.map((link, index) => {
               const isActive = location.pathname === link.href || 
                 (link.href !== "/" && location.pathname.startsWith(link.href));
               
               return (
                 <motion.div
                   key={link.name}
-                  whileHover={{ y: -3 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="micro-hover"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (mainCategories.length + index) * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.02 }}
                 >
                   <NavLink 
                     href={link.href} 
@@ -154,14 +180,19 @@ const Navbar = () => {
             <motion.div
               whileHover={{ scale: 1.1, rotateY: 15 }}
               whileTap={{ scale: 0.9 }}
-              className="micro-hover"
+              transition={{ type: "spring", stiffness: 400 }}
             >
               <ThemeToggle />
             </motion.div>
             
             <motion.button
               onClick={toggleMenu}
-              className="md:hidden p-3 rounded-2xl glass-card border border-white/20 hover:border-white/40 micro-hover"
+              className="md:hidden p-3 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "rgba(255, 255, 255, 0.05)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 8px 32px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+              }}
               aria-label="Toggle menu"
               whileHover={{ scale: 1.1, rotateY: 10 }}
               whileTap={{ scale: 0.9 }}
