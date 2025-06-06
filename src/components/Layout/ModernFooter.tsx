@@ -1,14 +1,19 @@
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowUp, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useTheme } from "next-themes";
 import { getFeatureFlags } from "@/config/environment";
 
 const ModernFooter = () => {
   const currentYear = new Date().getFullYear();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const flags = getFeatureFlags();
+  
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
   
   useEffect(() => {
     const handleScroll = () => {
