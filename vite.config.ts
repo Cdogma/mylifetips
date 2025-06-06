@@ -10,7 +10,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     hmr: {
-      overlay: false
+      overlay: false,
+      clientPort: 8080
     }
   },
   plugins: [
@@ -29,5 +30,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: 'esnext',
     minify: 'esbuild'
+  },
+  define: {
+    __WS_TOKEN__: JSON.stringify(process.env.WS_TOKEN || ''),
   }
 }));
