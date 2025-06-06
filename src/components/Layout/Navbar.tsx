@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 import ThemeToggle from "../UI/ThemeToggle";
 import NavLogo from "./Navigation/NavLogo";
 import DesktopNavigation from "./Navigation/DesktopNavigation";
@@ -51,53 +52,69 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-bounce-soft ${
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
         scrolled 
-          ? "glass-navbar shadow-lg shadow-black/5" 
+          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/20" 
           : "bg-background/20 backdrop-blur-md"
-      } border-b border-border/20`}
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="micro-hover">
+          <motion.div 
+            className="relative"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <NavLogo />
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <DesktopNavigation 
-            mainCategories={mainCategories} 
-            standardNavLinks={standardNavLinks}
-            isActiveLink={isActiveLink}
-          />
+          <div className="hidden md:flex items-center">
+            <DesktopNavigation 
+              mainCategories={mainCategories} 
+              standardNavLinks={standardNavLinks}
+              isActiveLink={isActiveLink}
+            />
+          </div>
 
           {/* Theme Toggle and Mobile Menu Toggle */}
           <div className="flex items-center space-x-2">
-            <div className="micro-hover">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <ThemeToggle />
-            </div>
+            </motion.div>
             
-            <button
+            <motion.button
               onClick={toggleMenu}
-              className="md:hidden p-2 hover:bg-muted rounded-xl transition-all duration-300 micro-hover micro-click glass-card"
+              className="md:hidden p-2 hover:bg-muted/50 rounded-xl transition-all duration-300 relative"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="relative w-6 h-6">
-                <Menu 
-                  size={24} 
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    isOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'
-                  }`} 
-                />
-                <X 
-                  size={24} 
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    isOpen ? 'rotate-0 opacity-100' : '-rotate-180 opacity-0'
-                  }`} 
-                />
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0, opacity: isOpen ? 0 : 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0"
+                >
+                  <Menu size={24} />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: isOpen ? 0 : -180, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0"
+                >
+                  <X size={24} />
+                </motion.div>
               </div>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -110,7 +127,7 @@ const Navbar = () => {
         isActiveLink={isActiveLink}
         toggleMenu={toggleMenu}
       />
-    </header>
+    </motion.header>
   );
 };
 

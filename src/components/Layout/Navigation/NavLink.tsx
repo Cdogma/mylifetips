@@ -1,28 +1,31 @@
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface NavLinkProps {
   href: string;
   name: string;
   isActive: boolean;
-  onClick?: () => void;
-  className?: string;
 }
 
-const NavLink = ({ href, name, isActive, onClick, className = "" }: NavLinkProps) => {
+const NavLink = ({ href, name, isActive }: NavLinkProps) => {
   return (
-    <Link
+    <Link 
       to={href}
-      className={`relative py-5 px-3 text-sm xl:text-base hover:text-primary transition-colors whitespace-nowrap ${
+      className={`group relative py-4 px-4 text-sm xl:text-base transition-all duration-300 ease-out whitespace-nowrap rounded-lg hover:bg-muted/50 ${
         isActive 
-          ? "text-primary font-medium" 
-          : "text-foreground"
-      } ${className}`}
-      onClick={onClick}
+          ? "text-primary font-medium bg-primary/5" 
+          : "text-foreground hover:text-primary"
+      }`}
     >
-      {name}
+      <span>{name}</span>
       {isActive && (
-        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full animate-fade-in"></span>
+        <motion.div
+          layoutId="activeIndicator"
+          className="absolute bottom-0 left-1/2 w-1 h-1 bg-primary rounded-full"
+          style={{ x: '-50%' }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
       )}
     </Link>
   );
