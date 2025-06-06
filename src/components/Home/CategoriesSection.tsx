@@ -2,6 +2,7 @@
 import SectionHeading from "../UI/SectionHeading";
 import CategoryCard from "../UI/CategoryCard";
 import AnimatedSection from "../UI/AnimatedSection";
+import { motion } from "framer-motion";
 
 const CategoriesSection = () => {
   const categories = [
@@ -42,23 +43,27 @@ const CategoriesSection = () => {
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <AnimatedSection 
-              key={category.title}
-              direction="up"
-              delay={0.2 + (index * 0.1)}
-            >
-              <CategoryCard
-                title={category.title}
-                description={category.description}
-                imageSrc={category.imageSrc}
-                link={category.link}
-                delay={0}
-              />
-            </AnimatedSection>
-          ))}
-        </div>
+        <AnimatedSection staggerChildren={true} staggerDelay={0.1}>
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category, index) => (
+              <motion.div 
+                key={category.title}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+              >
+                <CategoryCard
+                  title={category.title}
+                  description={category.description}
+                  imageSrc={category.imageSrc}
+                  link={category.link}
+                  delay={0}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );
