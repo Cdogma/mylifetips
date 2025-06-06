@@ -210,11 +210,11 @@ const Home2 = () => {
             >
               <Button
                 asChild
-                variant="gradient"
-                size="xl"
-                className="group relative overflow-hidden px-12 py-6 text-lg font-semibold"
+                variant="default"
+                size="lg"
+                className="group relative overflow-hidden px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90"
               >
-                <Link to="/empfehlungen">
+                <Link to="/empfehlungen" className="flex items-center">
                   <span className="relative z-10">Jetzt entdecken</span>
                   <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2 relative z-10" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -223,9 +223,9 @@ const Home2 = () => {
               
               <Button
                 asChild
-                variant="glass"
-                size="xl"
-                className="px-12 py-6 text-lg font-semibold"
+                variant="outline"
+                size="lg"
+                className="px-12 py-6 text-lg font-semibold bg-white/5 backdrop-blur-md border-white/20 hover:bg-white/10"
               >
                 <Link to="/ueber-mich">
                   Mehr erfahren
@@ -380,11 +380,11 @@ const Home2 = () => {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <Button
                     asChild
-                    variant="magnetic"
-                    size="xl"
-                    className="px-12 py-6 text-lg font-semibold"
+                    variant="default"
+                    size="lg"
+                    className="px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90"
                   >
-                    <Link to="/empfehlungen">
+                    <Link to="/empfehlungen" className="flex items-center">
                       Jetzt starten
                       <Rocket className="ml-3 w-6 h-6" />
                     </Link>
@@ -393,7 +393,7 @@ const Home2 = () => {
                   <Button
                     asChild
                     variant="outline"
-                    size="xl"
+                    size="lg"
                     className="px-12 py-6 text-lg font-semibold border-2 hover:bg-white/5"
                   >
                     <Link to="/kontakt">
