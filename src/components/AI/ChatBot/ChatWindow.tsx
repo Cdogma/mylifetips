@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Send, Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -10,20 +10,23 @@ import MessageItem from './MessageItem';
 
 interface ChatWindowProps {
   messages: Message[];
-  onSendMessage: (content: string) => Promise<void>;
-  loading: boolean;
+  input: string;
+  setInput: (input: string) => void;
+  sendMessage: () => Promise<void>;
+  isLoading: boolean;
   apiKeySet: boolean;
   onRequestSettings: () => void;
 }
 
 const ChatWindow: React.FC<ChatWindowProps> = ({
   messages,
-  onSendMessage,
-  loading,
+  input,
+  setInput,
+  sendMessage,
+  isLoading,
   apiKeySet,
   onRequestSettings
 }) => {
-  const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -42,15 +45,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   };
 
   const handleSendMessage = () => {
-    if (!input.trim() || loading) return;
+    if (!input.trim() || isLoading) return;
     
     if (!apiKeySet) {
       onRequestSettings();
       return;
     }
     
-    onSendMessage(input);
-    setInput('');
+    sendMessage();
   };
 
   return (
@@ -61,7 +63,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           <MessageItem key={message.id} message={message} />
         ))}
         
-        {loading && (
+        {isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -95,7 +97,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           />
           <Button
             onClick={handleSendMessage}
-            disabled={!input.trim() || loading}
+            disabled={!input.trim() || isLoading}
             size="icon"
             className="h-10 w-10"
           >

@@ -13,7 +13,7 @@ const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const { messages, addMessage, loading, apiKey, setApiKey } = useChatMessages();
+  const { messages, input, setInput, isLoading, sendMessage, apiKey, setApiKey, saveApiKey } = useChatMessages();
 
   // Show the button after a delay
   useEffect(() => {
@@ -24,8 +24,8 @@ const ChatBot: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const saveSettings = () => {
-    localStorage.setItem('perplexity_api_key', apiKey);
+  const handleSaveSettings = () => {
+    saveApiKey();
     setShowSettings(false);
   };
 
@@ -91,8 +91,10 @@ const ChatBot: React.FC = () => {
               
               <ChatWindow 
                 messages={messages} 
-                onSendMessage={addMessage} 
-                loading={loading} 
+                input={input}
+                setInput={setInput}
+                sendMessage={sendMessage} 
+                isLoading={isLoading} 
                 apiKeySet={!!apiKey}
                 onRequestSettings={() => setShowSettings(true)}
               />
@@ -107,7 +109,7 @@ const ChatBot: React.FC = () => {
           <SettingsModal
             apiKey={apiKey}
             setApiKey={setApiKey}
-            onSave={saveSettings}
+            onSave={handleSaveSettings}
             onClose={() => setShowSettings(false)}
           />
         )}

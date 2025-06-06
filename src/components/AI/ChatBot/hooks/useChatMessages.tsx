@@ -11,11 +11,12 @@ const useChatMessages = (apiKeyParam?: string) => {
       timestamp: new Date()
     }
   ]);
-  const [loading, setLoading] = useState(false);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState(apiKeyParam || localStorage.getItem('perplexity_api_key') || '');
 
-  const addMessage = async (content: string) => {
-    if (!content.trim() || loading) return;
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
 
     if (!apiKey) {
       return;
@@ -23,13 +24,14 @@ const useChatMessages = (apiKeyParam?: string) => {
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      content,
+      content: input,
       role: 'user',
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
-    setLoading(true);
+    setIsLoading(true);
+    setInput(""); // Clear input after sending
 
     try {
       const response = await fetch('https://api.perplexity.ai/chat/completions', {
@@ -51,7 +53,7 @@ const useChatMessages = (apiKeyParam?: string) => {
             })),
             {
               role: 'user',
-              content
+              content: input
             }
           ],
           temperature: 0.2,
@@ -87,16 +89,23 @@ const useChatMessages = (apiKeyParam?: string) => {
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
+  };
+
+  const saveApiKey = () => {
+    localStorage.setItem('perplexity_api_key', apiKey);
   };
 
   return {
     messages,
-    addMessage,
-    loading,
+    input,
+    setInput,
+    isLoading,
+    sendMessage,
     apiKey,
     setApiKey,
+    saveApiKey
   };
 };
 
