@@ -74,10 +74,17 @@ export default {
 				sans: ["Inter", "system-ui", "sans-serif"],
 				heading: ["Inter", "system-ui", "sans-serif"],
 			},
+			fontWeight: {
+				'variable': 'var(--font-weight)',
+			},
 			borderRadius: {
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)"
+			},
+			backdropBlur: {
+				xs: '2px',
+				'3xl': '64px',
 			},
 			keyframes: {
 				"accordion-down": {
@@ -117,6 +124,36 @@ export default {
 					"from": { opacity: "0", transform: "translateY(20px)" },
 					"to": { opacity: "1", transform: "translateY(0)" }
 				},
+				"micro-pulse": {
+					"0%, 100%": { opacity: "1", transform: "scale(1)" },
+					"50%": { opacity: "0.8", transform: "scale(1.02)" }
+				},
+				"shimmer": {
+					"0%": { backgroundPosition: "-200% 0" },
+					"100%": { backgroundPosition: "200% 0" }
+				},
+				"float": {
+					"0%, 100%": { 
+						transform: "translateY(0) rotate(0deg)", 
+						opacity: "0.15" 
+					},
+					"33%": { 
+						transform: "translateY(-10px) rotate(120deg)", 
+						opacity: "0.2" 
+					},
+					"66%": { 
+						transform: "translateY(5px) rotate(240deg)", 
+						opacity: "0.18" 
+					}
+				},
+				"magnetic": {
+					"0%": { transform: "translateX(-100%)" },
+					"100%": { transform: "translateX(100%)" }
+				},
+				"glow": {
+					"0%, 100%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.3)" },
+					"50%": { boxShadow: "0 0 40px rgba(59, 130, 246, 0.6)" }
+				}
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -127,7 +164,20 @@ export default {
 				"slide-in": "slide-in 0.6s ease-out forwards",
 				"color-shift": "color-shift 15s infinite alternate",
 				"fade-in-up": "fade-in-up 0.5s ease forwards",
+				"micro-pulse": "micro-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+				"shimmer": "shimmer 2s linear infinite",
+				"float": "float 6s ease-in-out infinite",
+				"magnetic": "magnetic 0.6s ease",
+				"glow": "glow 2s ease-in-out infinite alternate",
 			},
+			transitionTimingFunction: {
+				'bounce-soft': 'cubic-bezier(0.4, 0, 0.2, 1)',
+				'elastic': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+			},
+			scale: {
+				'102': '1.02',
+				'103': '1.03',
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

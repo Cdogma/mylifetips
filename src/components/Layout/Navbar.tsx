@@ -52,13 +52,17 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? "bg-background/60 backdrop-blur-lg shadow-sm" : "bg-background/40 backdrop-blur-md"
-      } border-b border-border/30`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-bounce-soft ${
+        scrolled 
+          ? "glass-navbar shadow-lg shadow-black/5" 
+          : "bg-background/20 backdrop-blur-md"
+      } border-b border-border/20`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <NavLogo />
+          <div className="micro-hover">
+            <NavLogo />
+          </div>
 
           {/* Desktop Navigation */}
           <DesktopNavigation 
@@ -69,15 +73,30 @@ const Navbar = () => {
 
           {/* Theme Toggle and Mobile Menu Toggle */}
           <div className="flex items-center space-x-2">
-            <ThemeToggle />
+            <div className="micro-hover">
+              <ThemeToggle />
+            </div>
             
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 hover:bg-muted rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-muted rounded-xl transition-all duration-300 micro-hover micro-click glass-card"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              <div className="relative w-6 h-6">
+                <Menu 
+                  size={24} 
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'
+                  }`} 
+                />
+                <X 
+                  size={24} 
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isOpen ? 'rotate-0 opacity-100' : '-rotate-180 opacity-0'
+                  }`} 
+                />
+              </div>
             </button>
           </div>
         </div>
