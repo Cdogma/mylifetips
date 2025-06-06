@@ -1,10 +1,8 @@
-
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, Sparkles, Zap, Heart, Star, Globe, Shield, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/UI/PageTransition";
-import { Button } from "../components/ui/button";
 
 const Home2 = () => {
   const { scrollYProgress } = useScroll();
@@ -208,29 +206,21 @@ const Home2 = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
-              <Button
-                asChild
-                variant="default"
-                size="lg"
-                className="group relative overflow-hidden px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90"
+              <Link
+                to="/empfehlungen"
+                className="group relative overflow-hidden px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground rounded-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center"
               >
-                <Link to="/empfehlungen" className="flex items-center">
-                  <span className="relative z-10">Jetzt entdecken</span>
-                  <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2 relative z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                </Link>
-              </Button>
+                <span className="relative z-10">Jetzt entdecken</span>
+                <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2 relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </Link>
               
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="px-12 py-6 text-lg font-semibold bg-white/5 backdrop-blur-md border-white/20 hover:bg-white/10"
+              <Link
+                to="/ueber-mich"
+                className="px-12 py-6 text-lg font-semibold bg-white/5 backdrop-blur-md border border-white/20 hover:bg-white/10 text-foreground rounded-md transition-all duration-300 inline-flex items-center"
               >
-                <Link to="/ueber-mich">
-                  Mehr erfahren
-                </Link>
-              </Button>
+                Mehr erfahren
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -378,28 +368,20 @@ const Home2 = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <Button
-                    asChild
-                    variant="default"
-                    size="lg"
-                    className="px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90"
+                  <Link
+                    to="/empfehlungen"
+                    className="px-12 py-6 text-lg font-semibold bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground rounded-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center"
                   >
-                    <Link to="/empfehlungen" className="flex items-center">
-                      Jetzt starten
-                      <Rocket className="ml-3 w-6 h-6" />
-                    </Link>
-                  </Button>
+                    Jetzt starten
+                    <Rocket className="ml-3 w-6 h-6" />
+                  </Link>
                   
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="px-12 py-6 text-lg font-semibold border-2 hover:bg-white/5"
+                  <Link
+                    to="/kontakt"
+                    className="px-12 py-6 text-lg font-semibold border-2 border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md transition-all duration-300 inline-flex items-center"
                   >
-                    <Link to="/kontakt">
-                      Kontakt aufnehmen
-                    </Link>
-                  </Button>
+                    Kontakt aufnehmen
+                  </Link>
                 </div>
               </div>
             </motion.div>
