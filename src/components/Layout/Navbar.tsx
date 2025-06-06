@@ -5,7 +5,8 @@ import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import ThemeToggle from "../UI/ThemeToggle";
 import NavLogo from "./Navigation/NavLogo";
-import DesktopNavigation from "./Navigation/DesktopNavigation";
+import CategoryDropdown from "./Navigation/CategoryDropdown";
+import NavLink from "./Navigation/NavLink";
 import MobileNavigation from "./Navigation/MobileNavigation";
 import { mainCategories, standardNavLinks } from "./Navigation/NavData";
 
@@ -20,30 +21,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Funktion zur Prüfung, ob Link oder seine Unterkategorien aktiv sind
   const isActiveLink = (href: string, subcategories?: { name: string; href: string }[]) => {
     const isDirectMatch = location.pathname === href || 
       (href !== "/" && location.pathname.startsWith(href));
     
-    // Auch Unterkategorien prüfen
     if (subcategories && !isDirectMatch) {
       return subcategories.some(sub => location.pathname.startsWith(sub.href));
     }
@@ -56,68 +47,60 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/30" 
+          ? "bg-background/95 backdrop-blur-xl shadow-lg border-b border-border/30" 
           : "bg-background/90 backdrop-blur-md"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <motion.div 
-            className="relative"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <NavLogo />
-          </motion.div>
+          <NavLogo />
 
           {/* Desktop Navigation */}
-          <DesktopNavigation 
-            mainCategories={mainCategories} 
-            standardNavLinks={standardNavLinks}
-            isActiveLink={isActiveLink}
-          />
+          <nav className="hidden md:flex items-center space-x-2">
+            {mainCategories.map((category) => {
+              const isActive = isActiveLink(category.href, category.subcategories);
+              return (
+                <CategoryDropdown 
+                  key={category.name} 
+                  category={category} 
+                  isActive={isActive} 
+                />
+              );
+            })}
 
-          {/* Theme Toggle and Mobile Menu Toggle */}
+            {standardNavLinks.map((link) => {
+              const isActive = location.pathname === link.href || 
+                (link.href !== "/" && location.pathname.startsWith(link.href));
+              
+              return (
+                <NavLink 
+                  key={link.name} 
+                  href={link.href} 
+                  name={link.name} 
+                  isActive={isActive} 
+                />
+              );
+            })}
+          </nav>
+
+          {/* Theme Toggle and Mobile Menu */}
           <div className="flex items-center space-x-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ThemeToggle />
-            </motion.div>
+            <ThemeToggle />
             
-            <motion.button
+            <button
               onClick={toggleMenu}
-              className="md:hidden p-2 hover:bg-muted/50 rounded-xl transition-all duration-300 relative"
+              className="md:hidden p-2 hover:bg-muted/50 rounded-xl transition-all duration-300"
               aria-label="Toggle menu"
-              aria-expanded={isOpen}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
-              <div className="relative w-6 h-6">
-                <motion.div
-                  animate={{ rotate: isOpen ? 180 : 0, opacity: isOpen ? 0 : 1 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute inset-0"
-                >
-                  <Menu size={24} />
-                </motion.div>
-                <motion.div
-                  animate={{ rotate: isOpen ? 0 : -180, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute inset-0"
-                >
-                  <X size={24} />
-                </motion.div>
-              </div>
-            </motion.button>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation */}
       <MobileNavigation 
         isOpen={isOpen}
         mainCategories={mainCategories}
