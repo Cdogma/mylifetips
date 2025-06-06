@@ -39,7 +39,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   // Funktion zur Prüfung, ob Link oder seine Unterkategorien aktiv sind
-  const isActiveLink = (href, subcategories) => {
+  const isActiveLink = (href: string, subcategories?: { name: string; href: string }[]) => {
     const isDirectMatch = location.pathname === href || 
       (href !== "/" && location.pathname.startsWith(href));
     
