@@ -13,17 +13,16 @@ const Home2 = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   // Enhanced parallax effects
-  const yHero = useTransform(scrollYProgress, [0, 0.3], [0, -150]);
-  const yFeatures = useTransform(scrollYProgress, [0.2, 0.8], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.98]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 2]);
+  const yHero = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
+  const yFeatures = useTransform(scrollYProgress, [0.2, 0.8], [50, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.99]);
 
-  // Mouse tracking for 3D effects
+  // Mouse tracking for subtle 3D effects
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 30 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -35,8 +34,8 @@ const Home2 = () => {
         y: (clientY / innerHeight) * 100 
       });
       
-      mouseX.set((clientX / innerWidth - 0.5) * 20);
-      mouseY.set((clientY / innerHeight - 0.5) * 20);
+      mouseX.set((clientX / innerWidth - 0.5) * 10);
+      mouseY.set((clientY / innerHeight - 0.5) * 10);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -45,25 +44,25 @@ const Home2 = () => {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         {/* Enhanced Background Canvas */}
         <ParticleCanvas />
         
-        {/* Dynamic Background Gradients */}
+        {/* Subtile dynamische Hintergrund-Gradients */}
         <motion.div 
-          className="fixed inset-0 opacity-30 z-10"
+          className="fixed inset-0 opacity-20 z-10"
           style={{
             background: `
-              radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.4) 0%, transparent 70%),
-              radial-gradient(circle at ${100 - mousePosition.x}% ${mousePosition.y}%, rgba(168, 85, 247, 0.3) 0%, transparent 70%),
-              radial-gradient(circle at ${mousePosition.x}% ${100 - mousePosition.y}%, rgba(16, 185, 129, 0.3) 0%, transparent 70%)
+              radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at ${100 - mousePosition.x}% ${mousePosition.y}%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at ${mousePosition.x}% ${100 - mousePosition.y}%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)
             `,
           }}
           animate={{
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.15, 0.25, 0.15],
           }}
           transition={{
-            duration: 4,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -79,16 +78,22 @@ const Home2 = () => {
         />
         
         {/* Features Section */}
-        <FeaturesSection 
-          yFeatures={yFeatures}
-          rotate={rotate}
-        />
+        <div className="relative bg-gradient-to-b from-slate-950/50 to-slate-900/80 backdrop-blur-sm">
+          <FeaturesSection 
+            yFeatures={yFeatures}
+            rotate={useTransform(scrollYProgress, [0, 1], [0, 1])}
+          />
+        </div>
         
         {/* Stats Section */}
-        <StatsSection />
+        <div className="relative bg-gradient-to-b from-slate-900/80 to-slate-950/90">
+          <StatsSection />
+        </div>
         
         {/* CTA Section */}
-        <CTASection />
+        <div className="relative bg-slate-950">
+          <CTASection />
+        </div>
       </div>
     </PageTransition>
   );
