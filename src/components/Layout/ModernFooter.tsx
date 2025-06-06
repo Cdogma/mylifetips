@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowUp, Facebook, Instagram, Twitter, Linkedin, Heart, Sparkles } from "lucide-react";
@@ -313,7 +312,7 @@ const ModernFooter = () => {
       
       {/* Enhanced Scroll to top button */}
       <motion.div 
-        className={`fixed bottom-8 right-8 z-50 transition-all duration-500 ${
+        className={`fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer text-white shadow-2xl transition-all duration-500 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
         onClick={scrollToTop}
@@ -328,7 +327,6 @@ const ModernFooter = () => {
           backdropFilter: "blur(20px)",
           border: "1px solid rgba(255, 255, 255, 0.2)"
         }}
-        className="w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer text-white shadow-2xl"
       >
         <ArrowUp className="h-6 w-6" />
       </motion.div>

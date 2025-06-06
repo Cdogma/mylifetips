@@ -60,9 +60,6 @@ const Navbar = () => {
       {/* Animated background gradient */}
       <motion.div 
         className="absolute inset-0 opacity-30"
-        style={{
-          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%)",
-        }}
         animate={{
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
@@ -71,7 +68,10 @@ const Navbar = () => {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        style={{ backgroundSize: "200% 200%" }}
+        style={{
+          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%)",
+          backgroundSize: "200% 200%"
+        }}
       />
       
       <div className="container mx-auto px-4 relative z-10">
