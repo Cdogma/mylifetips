@@ -17,14 +17,14 @@ const DynamicStats = () => {
     },
     { 
       number: "99.99%", 
-      label: "Perfektion", 
+      label: "Präzision", 
       icon: "⚡",
       color: "from-cyan-400 to-blue-500", 
       targetValue: 99.99
     },
     { 
       number: "24/7", 
-      label: "Evolution", 
+      label: "Innovation", 
       icon: "🌟",
       color: "from-purple-400 to-pink-500",
       targetValue: 24
@@ -105,13 +105,29 @@ const DynamicStats = () => {
           
           <div className="relative z-10">
             <div className="text-center mb-16">
+              <motion.div
+                className="inline-flex items-center gap-3 px-6 py-3 mb-8 rounded-xl border border-white/20"
+                style={{
+                  background: "rgba(255, 255, 255, 0.05)",
+                  backdropFilter: "blur(20px)"
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                >
+                  📊
+                </motion.div>
+                <span className="text-white/80 font-semibold">Elite-Statistiken</span>
+              </motion.div>
+
               <h2 className="text-5xl md:text-6xl font-black mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-cyan-400">
-                  LEGENDARY STATS
+                  LEGENDÄRE ZAHLEN
                 </span>
               </h2>
               <p className="text-xl text-slate-300 font-light">
-                Zahlen, die Geschichte schreiben
+                Daten, die Geschichte schreiben
               </p>
             </div>
             
