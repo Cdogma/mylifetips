@@ -23,6 +23,12 @@ const MobileNavigation = ({
   toggleMenu
 }: MobileNavigationProps) => {
   const location = useLocation();
+  const isHome2 = location.pathname === '/home2';
+
+  // Don't render mobile navigation on Home2 page
+  if (isHome2) {
+    return null;
+  }
 
   return (
     <div 
