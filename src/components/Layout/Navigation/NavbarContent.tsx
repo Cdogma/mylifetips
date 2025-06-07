@@ -39,11 +39,13 @@ const NavbarContent = ({
           <NavLogo />
         </motion.div>
 
-        {/* Desktop Navigation - Hidden on Home2 */}
-        {!isHome2 && (
-          <nav className="hidden md:flex items-center space-x-2">
-            {mainCategories.map((category, index) => {
-              const isActive = isActiveLink(category.href, category.subcategories);
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-2">
+          {mainCategories.map((category, index) => {
+            const isActive = isActiveLink(category.href, category.subcategories);
+            
+            if (isHome2) {
+              // Simple text version for Home2
               return (
                 <motion.div
                   key={category.name}
@@ -52,18 +54,37 @@ const NavbarContent = ({
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -3, scale: 1.02 }}
                 >
-                  <CategoryDropdown 
-                    category={category} 
-                    isActive={isActive} 
-                  />
+                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                    isActive ? "text-white" : "text-gray-200 hover:text-white"
+                  }`}>
+                    {category.name}
+                  </span>
                 </motion.div>
               );
-            })}
+            }
+            
+            return (
+              <motion.div
+                key={category.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -3, scale: 1.02 }}
+              >
+                <CategoryDropdown 
+                  category={category} 
+                  isActive={isActive} 
+                />
+              </motion.div>
+            );
+          })}
 
-            {standardNavLinks.map((link, index) => {
-              const isActive = location.pathname === link.href || 
-                (link.href !== "/" && location.pathname.startsWith(link.href));
-              
+          {standardNavLinks.map((link, index) => {
+            const isActive = location.pathname === link.href || 
+              (link.href !== "/" && location.pathname.startsWith(link.href));
+            
+            if (isHome2) {
+              // Simple text version for Home2
               return (
                 <motion.div
                   key={link.name}
@@ -72,16 +93,32 @@ const NavbarContent = ({
                   transition={{ duration: 0.5, delay: (mainCategories.length + index) * 0.1 }}
                   whileHover={{ y: -3, scale: 1.02 }}
                 >
-                  <NavLink 
-                    href={link.href} 
-                    name={link.name} 
-                    isActive={isActive} 
-                  />
+                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                    isActive ? "text-white" : "text-gray-200 hover:text-white"
+                  }`}>
+                    {link.name}
+                  </span>
                 </motion.div>
               );
-            })}
-          </nav>
-        )}
+            }
+            
+            return (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: (mainCategories.length + index) * 0.1 }}
+                whileHover={{ y: -3, scale: 1.02 }}
+              >
+                <NavLink 
+                  href={link.href} 
+                  name={link.name} 
+                  isActive={isActive} 
+                />
+              </motion.div>
+            );
+          })}
+        </nav>
 
         {/* Theme Toggle and Mobile Menu */}
         <div className="flex items-center space-x-4">
@@ -93,28 +130,26 @@ const NavbarContent = ({
             <ThemeToggle />
           </motion.div>
           
-          {/* Mobile Menu Button - Only show on non-Home2 pages or when menu is open */}
-          {(!isHome2 || isOpen) && (
-            <motion.button
-              onClick={toggleMenu}
-              className="md:hidden p-3 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300"
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                backdropFilter: "blur(20px)",
-                boxShadow: "0 8px 32px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-              }}
-              aria-label="Toggle menu"
-              whileHover={{ scale: 1.1, rotateY: 10 }}
-              whileTap={{ scale: 0.9 }}
+          {/* Mobile Menu Button */}
+          <motion.button
+            onClick={toggleMenu}
+            className="md:hidden p-3 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 8px 32px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+            }}
+            aria-label="Toggle menu"
+            whileHover={{ scale: 1.1, rotateY: 10 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <motion.div
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
-              </motion.div>
-            </motion.button>
-          )}
+              {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
+            </motion.div>
+          </motion.button>
         </div>
       </div>
     </div>
