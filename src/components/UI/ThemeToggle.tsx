@@ -2,13 +2,41 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
+  const isHome2 = location.pathname === '/home2';
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
+  if (isHome2) {
+    // Simple version for Home2 without glassmorphism
+    return (
+      <motion.button
+        onClick={toggleTheme}
+        className="p-3 transition-all duration-300"
+        aria-label={theme === "light" ? "Dunkelmodus aktivieren" : "Hellmodus aktivieren"}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <motion.div 
+          className="transition-opacity duration-300"
+          whileHover={{ rotate: 180 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          {theme === "light" ? (
+            <Moon className="h-5 w-5 text-white transition-colors duration-300" />
+          ) : (
+            <Sun className="h-5 w-5 text-white transition-colors duration-300" />
+          )}
+        </motion.div>
+      </motion.button>
+    );
+  }
 
   return (
     <motion.button
