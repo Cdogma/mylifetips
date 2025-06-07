@@ -45,14 +45,7 @@ const NavLogo = () => {
           filter: "drop-shadow(0 0 30px rgba(255, 105, 180, 0.8))"
         }}
       >
-        MyLife
-        <motion.span 
-          className="relative"
-          whileHover={{ rotateY: 15 }}
-          transition={{ duration: 0.3 }}
-        >
-          Tips
-        </motion.span>
+        MyLifeTips
         
         {/* Quantum particles around logo */}
         <motion.div 
