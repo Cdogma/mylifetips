@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import ThemeToggle from "../../UI/ThemeToggle";
 import NavLogo from "./NavLogo";
 import CategoryDropdown from "./CategoryDropdown";
@@ -45,7 +45,7 @@ const NavbarContent = ({
             const isActive = isActiveLink(category.href, category.subcategories);
             
             if (isHome2) {
-              // Simple text version for Home2 without glassmorphism
+              // Functional link version for Home2 without glassmorphism
               return (
                 <motion.div
                   key={category.name}
@@ -54,11 +54,14 @@ const NavbarContent = ({
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -3, scale: 1.02 }}
                 >
-                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 cursor-pointer ${
-                    isActive ? "text-white" : "text-gray-200 hover:text-white"
-                  }`}>
+                  <Link 
+                    to={category.href}
+                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                      isActive ? "text-white" : "text-gray-200 hover:text-white"
+                    }`}
+                  >
                     {category.name}
-                  </span>
+                  </Link>
                 </motion.div>
               );
             }
@@ -84,7 +87,7 @@ const NavbarContent = ({
               (link.href !== "/" && location.pathname.startsWith(link.href));
             
             if (isHome2) {
-              // Simple text version for Home2 without glassmorphism
+              // Functional link version for Home2 without glassmorphism
               return (
                 <motion.div
                   key={link.name}
@@ -93,11 +96,14 @@ const NavbarContent = ({
                   transition={{ duration: 0.5, delay: (mainCategories.length + index) * 0.1 }}
                   whileHover={{ y: -3, scale: 1.02 }}
                 >
-                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 cursor-pointer ${
-                    isActive ? "text-white" : "text-gray-200 hover:text-white"
-                  }`}>
+                  <Link 
+                    to={link.href}
+                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                      isActive ? "text-white" : "text-gray-200 hover:text-white"
+                    }`}
+                  >
                     {link.name}
-                  </span>
+                  </Link>
                 </motion.div>
               );
             }
