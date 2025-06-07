@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -40,8 +41,27 @@ const NavbarContent = ({
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
-          {!isHome2 && mainCategories.map((category, index) => {
+          {mainCategories.map((category, index) => {
             const isActive = isActiveLink(category.href, category.subcategories);
+            
+            if (isHome2) {
+              // Simple text version for Home2 without glassmorphism
+              return (
+                <motion.div
+                  key={category.name}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                >
+                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                    isActive ? "text-white" : "text-gray-200 hover:text-white"
+                  }`}>
+                    {category.name}
+                  </span>
+                </motion.div>
+              );
+            }
             
             return (
               <motion.div
@@ -59,9 +79,28 @@ const NavbarContent = ({
             );
           })}
 
-          {!isHome2 && standardNavLinks.map((link, index) => {
+          {standardNavLinks.map((link, index) => {
             const isActive = location.pathname === link.href || 
               (link.href !== "/" && location.pathname.startsWith(link.href));
+            
+            if (isHome2) {
+              // Simple text version for Home2 without glassmorphism
+              return (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: (mainCategories.length + index) * 0.1 }}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                >
+                  <span className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                    isActive ? "text-white" : "text-gray-200 hover:text-white"
+                  }`}>
+                    {link.name}
+                  </span>
+                </motion.div>
+              );
+            }
             
             return (
               <motion.div
