@@ -45,7 +45,7 @@ const NavbarContent = ({
             const isActive = isActiveLink(category.href, category.subcategories);
             
             if (isHome2) {
-              // Functional link version for Home2 without glassmorphism
+              // Functional link version for Home2 with visible text
               return (
                 <motion.div
                   key={category.name}
@@ -56,8 +56,10 @@ const NavbarContent = ({
                 >
                   <Link 
                     to={category.href}
-                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                      isActive ? "text-white" : "text-gray-200 hover:text-white"
+                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 rounded-lg ${
+                      isActive 
+                        ? "text-white bg-white/10 border border-white/20" 
+                        : "text-white/90 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {category.name}
@@ -87,7 +89,7 @@ const NavbarContent = ({
               (link.href !== "/" && location.pathname.startsWith(link.href));
             
             if (isHome2) {
-              // Functional link version for Home2 without glassmorphism
+              // Functional link version for Home2 with visible text
               return (
                 <motion.div
                   key={link.name}
@@ -98,8 +100,10 @@ const NavbarContent = ({
                 >
                   <Link 
                     to={link.href}
-                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                      isActive ? "text-white" : "text-gray-200 hover:text-white"
+                    className={`px-6 py-3 text-sm font-medium transition-all duration-300 rounded-lg ${
+                      isActive 
+                        ? "text-white bg-white/10 border border-white/20" 
+                        : "text-white/90 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {link.name}
