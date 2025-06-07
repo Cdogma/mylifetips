@@ -1,0 +1,90 @@
+
+/* Utility Classes and Interactive Elements */
+@layer components {
+  /* Enhanced Micro-Interactions */
+  .micro-hover {
+    @apply transition-all duration-300;
+    transform-origin: center;
+  }
+  
+  .micro-hover:hover {
+    transform: translateY(-4px) scale(1.03);
+    filter: brightness(1.1);
+  }
+  
+  .micro-magnetic {
+    transition: transform var(--animation-normal) var(--ease-spring);
+  }
+  
+  .micro-tilt {
+    transition: transform var(--animation-normal) var(--ease-smooth);
+    transform-style: preserve-3d;
+  }
+  
+  .micro-tilt:hover {
+    transform: rotateX(5deg) rotateY(10deg) translateZ(20px);
+  }
+  
+  /* Floating Elements */
+  .float-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .float-element:nth-child(2n) {
+    animation-delay: 2s;
+    animation-direction: reverse;
+  }
+  
+  .float-element:nth-child(3n) {
+    animation-delay: 4s;
+  }
+  
+  /* Gradient Text Effects */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+  
+  .gradient-text-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Section Transitions */
+  .section-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-smooth);
+  }
+  
+  .section-fade.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16;
+  }
+  
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  .micro-hover:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+}

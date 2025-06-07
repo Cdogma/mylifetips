@@ -1,16 +1,17 @@
 
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import ThemeToggle from "../UI/ThemeToggle";
-import NavLogo from "./Navigation/NavLogo";
-import DesktopNavigation from "./Navigation/DesktopNavigation";
+import { motion } from "framer-motion";
+import { useMouseTracker } from "./Navigation/MouseTracker";
+import AuroraBackground from "./Navigation/AuroraBackground";
+import NavbarContent from "./Navigation/NavbarContent";
 import MobileNavigation from "./Navigation/MobileNavigation";
 import { mainCategories, standardNavLinks } from "./Navigation/NavData";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mousePosition = useMouseTracker();
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -19,30 +20,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Funktion zur Prüfung, ob Link oder seine Unterkategorien aktiv sind
-  const isActiveLink = (href, subcategories) => {
+  const isActiveLink = (href: string, subcategories?: { name: string; href: string }[]) => {
     const isDirectMatch = location.pathname === href || 
       (href !== "/" && location.pathname.startsWith(href));
     
-    // Auch Unterkategorien prüfen
     if (subcategories && !isDirectMatch) {
       return subcategories.some(sub => location.pathname.startsWith(sub.href));
     }
@@ -51,58 +42,34 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-bounce-soft ${
+    <motion.header 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? "glass-navbar shadow-lg shadow-black/5" 
-          : "bg-background/20 backdrop-blur-md"
-      } border-b border-border/20`}
+          ? "backdrop-blur-3xl" 
+          : "backdrop-blur-2xl"
+      }`}
+      style={{
+        background: scrolled 
+          ? "rgba(15, 23, 42, 0.85)"
+          : "rgba(15, 23, 42, 0.75)"
+      }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <div className="micro-hover">
-            <NavLogo />
-          </div>
+      {/* Aurora Background Effects */}
+      <AuroraBackground mousePosition={mousePosition} scrolled={scrolled} />
+      
+      <NavbarContent 
+        mainCategories={mainCategories}
+        standardNavLinks={standardNavLinks}
+        isActiveLink={isActiveLink}
+        isOpen={isOpen}
+        toggleMenu={toggleMenu}
+        location={location}
+      />
 
-          {/* Desktop Navigation */}
-          <DesktopNavigation 
-            mainCategories={mainCategories} 
-            standardNavLinks={standardNavLinks}
-            isActiveLink={isActiveLink}
-          />
-
-          {/* Theme Toggle and Mobile Menu Toggle */}
-          <div className="flex items-center space-x-2">
-            <div className="micro-hover">
-              <ThemeToggle />
-            </div>
-            
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 hover:bg-muted rounded-xl transition-all duration-300 micro-hover micro-click glass-card"
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-            >
-              <div className="relative w-6 h-6">
-                <Menu 
-                  size={24} 
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    isOpen ? 'rotate-180 opacity-0' : 'rotate-0 opacity-100'
-                  }`} 
-                />
-                <X 
-                  size={24} 
-                  className={`absolute inset-0 transition-all duration-300 ${
-                    isOpen ? 'rotate-0 opacity-100' : '-rotate-180 opacity-0'
-                  }`} 
-                />
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation */}
       <MobileNavigation 
         isOpen={isOpen}
         mainCategories={mainCategories}
@@ -110,7 +77,7 @@ const Navbar = () => {
         isActiveLink={isActiveLink}
         toggleMenu={toggleMenu}
       />
-    </header>
+    </motion.header>
   );
 };
 
