@@ -1,18 +1,10 @@
 
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "../../contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    document.body.style.transition = "background-color 0.5s ease, color 0.5s ease";
-    setTheme(theme === "light" ? "dark" : "light");
-    setTimeout(() => {
-      document.body.style.transition = "";
-    }, 500);
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <motion.button
