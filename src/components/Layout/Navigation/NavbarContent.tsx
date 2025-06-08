@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import ThemeToggle from "../../UI/ThemeToggle";
+import LanguageSwitcher from "../../UI/LanguageSwitcher";
 import NavLogo from "./NavLogo";
 import CategoryDropdown from "./CategoryDropdown";
 import NavLink from "./NavLink";
@@ -45,7 +46,6 @@ const NavbarContent = ({
             const isActive = isActiveLink(category.href, category.subcategories);
             
             if (isHome2) {
-              // Functional link version for Home2 with visible text
               return (
                 <motion.div
                   key={category.name}
@@ -89,7 +89,6 @@ const NavbarContent = ({
               (link.href !== "/" && location.pathname.startsWith(link.href));
             
             if (isHome2) {
-              // Functional link version for Home2 with visible text
               return (
                 <motion.div
                   key={link.name}
@@ -130,8 +129,19 @@ const NavbarContent = ({
           })}
         </nav>
 
-        {/* Theme Toggle and Mobile Menu */}
+        {/* Right side controls */}
         <div className="flex items-center space-x-4">
+          {/* Language Switcher */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <LanguageSwitcher />
+          </motion.div>
+
+          {/* Theme Toggle */}
           <motion.div
             whileHover={{ scale: 1.1, rotateY: 15 }}
             whileTap={{ scale: 0.9 }}

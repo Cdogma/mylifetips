@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import PageTransition from "../components/UI/PageTransition";
@@ -7,7 +8,6 @@ import FuturisticFeatures from "../components/Home2/FuturisticFeatures";
 import DynamicStats from "../components/Home2/DynamicStats";
 import EliteCallToAction from "../components/Home2/EliteCallToAction";
 import ScrollProgressIndicator from "../components/UI/ScrollProgressIndicator";
-import LanguageSwitcher from "../components/UI/LanguageSwitcher";
 import EasterEggs from "../components/UI/EasterEggs";
 import { LanguageProvider } from "../contexts/LanguageContext";
 
@@ -40,11 +40,6 @@ const Home2 = () => {
         <div className="relative min-h-screen overflow-hidden">
           {/* Scroll Progress Indicator */}
           <ScrollProgressIndicator />
-          
-          {/* Language Switcher - Fixed Position */}
-          <div className="fixed top-24 right-4 z-50">
-            <LanguageSwitcher />
-          </div>
           
           {/* Aurora Gradient Background */}
           <div className="fixed inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900" />
