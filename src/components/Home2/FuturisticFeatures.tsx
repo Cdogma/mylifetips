@@ -1,41 +1,42 @@
-
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Brain, Shield, Rocket, Infinity } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const FuturisticFeatures = () => {
   const featuresRef = useRef(null);
   const isFeaturesInView = useInView(featuresRef, { once: true });
+  const { t } = useLanguage();
 
   const features = [
     {
       icon: Brain,
-      title: "Neural Intelligence",
-      description: "KI-gestützte Analysen für hyperpräzise Empfehlungen",
+      title: t("neural.intelligence"),
+      description: t("neural.desc"),
       gradient: "from-orange-400 via-red-500 to-pink-500",
       delay: 0,
       shadowColor: "rgba(255, 105, 180, 0.4)"
     },
     {
       icon: Shield,
-      title: "Quantum Security",
-      description: "Unbreakable Verschlüsselung der nächsten Generation",
+      title: t("quantum.security"),
+      description: t("quantum.desc"),
       gradient: "from-cyan-400 via-blue-500 to-purple-500",
       delay: 0.1,
       shadowColor: "rgba(0, 255, 255, 0.4)"
     },
     {
       icon: Rocket,
-      title: "Warp Speed",
-      description: "Instantane Verarbeitung mit Zero-Latenz Technologie",
+      title: t("warp.speed"),
+      description: t("warp.desc"),
       gradient: "from-purple-400 via-pink-500 to-orange-500",
       delay: 0.2,
       shadowColor: "rgba(138, 43, 226, 0.4)"
     },
     {
       icon: Infinity,
-      title: "Unlimited Potential",
-      description: "Grenzenlose Möglichkeiten durch adaptive Algorithmen",
+      title: t("unlimited.potential"),
+      description: t("unlimited.desc"),
       gradient: "from-emerald-400 via-cyan-500 to-blue-500",
       delay: 0.3,
       shadowColor: "rgba(16, 185, 129, 0.4)"
@@ -56,11 +57,11 @@ const FuturisticFeatures = () => {
         >
           <h2 className="text-6xl md:text-7xl font-black mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400">
-              QUANTUM FEATURES
+              {t("quantum.features")}
             </span>
           </h2>
           <p className="text-2xl text-slate-300 max-w-4xl mx-auto font-light leading-relaxed">
-            Technologien, die die Realität neu definieren
+            {t("tech.redefining")}
           </p>
         </motion.div>
         

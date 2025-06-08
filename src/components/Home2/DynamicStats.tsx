@@ -1,37 +1,38 @@
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DynamicStats = () => {
   const statsRef = useRef(null);
   const isStatsInView = useInView(statsRef, { once: true });
   const [counters, setCounters] = useState([0, 0, 0, 0]);
+  const { t } = useLanguage();
 
   const stats = [
     { 
       number: "∞", 
-      label: "Möglichkeiten", 
+      label: t("possibilities"), 
       icon: "🚀",
       color: "from-orange-400 to-pink-500",
       targetValue: 999
     },
     { 
       number: "99.99%", 
-      label: "Perfektion", 
+      label: t("perfection"), 
       icon: "⚡",
       color: "from-cyan-400 to-blue-500", 
       targetValue: 99.99
     },
     { 
       number: "24/7", 
-      label: "Evolution", 
+      label: t("evolution"), 
       icon: "🌟",
       color: "from-purple-400 to-pink-500",
       targetValue: 24
     },
     { 
       number: "0ms", 
-      label: "Latenz", 
+      label: t("latency"), 
       icon: "💎",
       color: "from-emerald-400 to-cyan-500",
       targetValue: 0
@@ -107,11 +108,11 @@ const DynamicStats = () => {
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-cyan-400">
-                  LEGENDARY STATS
+                  {t("legendary.stats")}
                 </span>
               </h2>
               <p className="text-xl text-slate-300 font-light">
-                Zahlen, die Geschichte schreiben
+                {t("stats.making.history")}
               </p>
             </div>
             

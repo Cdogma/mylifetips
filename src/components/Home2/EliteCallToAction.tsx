@@ -1,9 +1,11 @@
-
 import { motion } from "framer-motion";
 import { Heart, Rocket, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const EliteCallToAction = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.section className="relative py-32 px-4">
       <div className="max-w-5xl mx-auto text-center">
@@ -85,14 +87,14 @@ const EliteCallToAction = () => {
                   filter: "drop-shadow(0 0 30px rgba(255, 105, 180, 0.6))"
                 }}
               >
-                READY FOR INFINITY?
+                {t("ready.infinity")}
               </motion.span>
             </h2>
             
             <p className="text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              Betrete eine neue Dimension der Möglichkeiten. 
+              {t("new.dimension")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-orange-400 font-semibold">
-                {" "}Deine Metamorphose wartet.
+                {" "}{t("metamorphosis.awaits")}
               </span>
             </p>
             
@@ -123,7 +125,7 @@ const EliteCallToAction = () => {
                   }}
                 />
                 <span className="relative z-10 flex items-center">
-                  ASCENSION BEGINNEN
+                  {t("ascension.begin")}
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -142,7 +144,7 @@ const EliteCallToAction = () => {
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
                 }}
               >
-                ELITE KONTAKT
+                {t("elite.contact")}
               </Link>
             </div>
           </div>
