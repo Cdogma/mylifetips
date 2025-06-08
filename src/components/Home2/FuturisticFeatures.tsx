@@ -17,8 +17,8 @@ const FuturisticFeatures = () => {
   }> = [
     {
       icon: Brain,
-      title: "KI-Powered Analytics",
-      description: "Modernste künstliche Intelligenz analysiert Millionen von Datenpunkten für präzise Empfehlungen",
+      title: "Intelligente Analyse",
+      description: "Modernste KI-Algorithmen analysieren Millionen von Datenpunkten für perfekte Empfehlungen",
       color: "from-orange-400 to-pink-500",
       delay: 0
     },
@@ -31,29 +31,29 @@ const FuturisticFeatures = () => {
     },
     {
       icon: Zap,
-      title: "Blitzschnelle Performance",
-      description: "Sofortige Ergebnisse durch modernste Cloud-Technologie und optimierte Algorithmen",
+      title: "Blitzschnell",
+      description: "Sofortige Ergebnisse durch modernste Cloud-Technologie und optimierte Performance",
       color: "from-yellow-400 to-orange-500",
       delay: 0.2
     },
     {
       icon: Globe,
-      title: "Globale Marktanalyse",
-      description: "Weltweite Datenquellen für umfassende Produktvergleiche und beste Deals",
+      title: "Globaler Überblick",
+      description: "Weltweite Marktanalyse für die besten Deals und innovativsten Produkte",
       color: "from-blue-400 to-indigo-500",
       delay: 0.3
     },
     {
       icon: Rocket,
-      title: "Innovative Technologie",
-      description: "Cutting-edge Tools für zukunftsweisende Empfehlungen und Trends",
+      title: "Zukunftstechnologie",
+      description: "Immer einen Schritt voraus mit den neuesten Trends und bahnbrechenden Innovationen",
       color: "from-purple-400 to-pink-500",
       delay: 0.4
     },
     {
       icon: Infinity,
-      title: "Endlose Möglichkeiten",
-      description: "Kontinuierlich wachsende Datenbank für jeden Lebensbereich und jede Kategorie",
+      title: "Unbegrenzte Möglichkeiten",
+      description: "Endlose Kategorien und kontinuierlich wachsende Datenbank für jeden Lebensbereich",
       color: "from-cyan-400 to-purple-500",
       delay: 0.5
     }
@@ -90,7 +90,7 @@ const FuturisticFeatures = () => {
 
           <h2 className="text-5xl md:text-7xl font-black mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-cyan-400">
-              SMARTE
+              INTELLIGENTE
             </span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-400">
