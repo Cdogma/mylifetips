@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
     >
       <motion.button
         onClick={() => setLanguage("de")}
-        className={`px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 ${
+        className={`px-4 py-2 rounded-xl transition-all duration-300 ${
           language === "de" 
             ? "bg-gradient-to-r from-orange-400 to-pink-500 text-white shadow-lg" 
             : "text-white/70 hover:text-white"
@@ -21,13 +21,12 @@ const LanguageSwitcher = () => {
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-lg">🇩🇪</span>
         <span className="text-sm font-medium">DE</span>
       </motion.button>
       
       <motion.button
         onClick={() => setLanguage("en")}
-        className={`px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 ${
+        className={`px-4 py-2 rounded-xl transition-all duration-300 ${
           language === "en" 
             ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-lg" 
             : "text-white/70 hover:text-white"
@@ -35,7 +34,6 @@ const LanguageSwitcher = () => {
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-lg">🇺🇸</span>
         <span className="text-sm font-medium">EN</span>
       </motion.button>
     </motion.div>
