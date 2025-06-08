@@ -38,23 +38,6 @@ const EliteCallToAction = () => {
           />
           
           <div className="relative z-10">
-            {/* Badge */}
-            <motion.div
-              className="inline-flex items-center gap-3 px-6 py-3 mb-12 rounded-xl border border-white/20"
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                backdropFilter: "blur(20px)"
-              }}
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              >
-                🚀
-              </motion.div>
-              <span className="text-white/80 font-semibold">Bereit für die Zukunft?</span>
-            </motion.div>
-
             {/* Floating icon constellation */}
             <motion.div 
               className="flex justify-center mb-12"
@@ -109,7 +92,7 @@ const EliteCallToAction = () => {
             <p className="text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               Betrete eine neue Dimension der Möglichkeiten. 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-orange-400 font-semibold">
-                {" "}Deine digitale Evolution beginnt jetzt.
+                {" "}Deine Metamorphose wartet.
               </span>
             </p>
             

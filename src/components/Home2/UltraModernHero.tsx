@@ -1,207 +1,212 @@
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const UltraModernHero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const isHeroInView = useInView(heroRef, { once: true });
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+  const letterVariants = {
+    hidden: { y: 50, opacity: 0, rotateX: -90 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      rotateX: 0,
+      transition: {
+        delay: i * 0.05,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100
+      }
+    })
+  };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const text1 = "REVOLUTION".split("");
+  const text2 = "BEGINNT JETZT".split("");
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Dynamic cursor glow */}
-      <motion.div
-        className="fixed w-96 h-96 pointer-events-none z-10"
-        style={{
-          background: "radial-gradient(circle, rgba(255, 105, 180, 0.15) 0%, transparent 70%)",
-          left: mousePosition.x - 192,
-          top: mousePosition.y - 192,
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-
-      <div className="max-w-6xl mx-auto text-center relative z-20">
+    <motion.section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center px-4 py-20"
+    >
+      {/* Floating Geometric Elements */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotateX: -10 }}
-          animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-          transition={{ duration: 1.2, type: "spring" }}
-          className="mb-12"
-        >
-          {/* Floating badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="inline-flex items-center gap-3 px-8 py-4 mb-12 rounded-2xl border border-white/20"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(20px)",
-              boxShadow: "0 25px 50px -12px rgba(255, 105, 180, 0.3)"
-            }}
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-6 h-6 text-orange-400" />
-            </motion.div>
-            <span className="text-white/90 font-semibold text-lg">
-              Willkommen in der Zukunft
-            </span>
-          </motion.div>
-
-          {/* Main headline with quantum effects */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-none overflow-hidden">
-            <motion.span 
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-cyan-400"
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{
-                backgroundSize: "200% 200%",
-                filter: "drop-shadow(0 0 40px rgba(255, 105, 180, 0.6))"
-              }}
-            >
-              ELITE
-            </motion.span>
-            <motion.span 
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-400"
-              animate={{
-                backgroundPosition: ["100% 50%", "0% 50%", "100% 50%"],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{
-                backgroundSize: "200% 200%",
-                filter: "drop-shadow(0 0 40px rgba(0, 255, 255, 0.6))"
-              }}
-            >
-              LIFESTYLE
-            </motion.span>
-          </h1>
-
-          {/* Subtitle with kinetic typography */}
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-2xl md:text-3xl text-slate-300 mb-16 max-w-4xl mx-auto font-light leading-relaxed"
-          >
-            Entdecke eine neue Dimension der 
-            <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-orange-400 font-semibold"
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              {" "}Perfektion{" "}
-            </motion.span>
-            und erlebe, wie Technologie dein Leben revolutioniert
-          </motion.p>
-
-          {/* CTA Buttons with magnetic effects */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <Link
-              to="/empfehlungen"
-              className="group relative px-12 py-6 text-xl font-bold text-white rounded-2xl inline-flex items-center transition-all duration-700 hover:scale-110 hover:rotate-1"
-              style={{
-                background: "linear-gradient(135deg, #ff9a00, #ff69b4, #00ffff, #8a2be2)",
-                backgroundSize: "300% 300%",
-                boxShadow: "0 25px 50px -12px rgba(255, 105, 180, 0.5)"
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 rounded-2xl"
-                animate={{
-                  backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                style={{
-                  background: "linear-gradient(135deg, #8a2be2, #00ffff, #ff69b4, #ff9a00)",
-                  backgroundSize: "300% 300%"
-                }}
-              />
-              <span className="relative z-10 flex items-center">
-                Evolution starten
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowRight className="ml-3 w-6 h-6" />
-                </motion.div>
-              </span>
-            </Link>
-
-            <Link
-              to="/kontakt"
-              className="px-12 py-6 text-xl font-semibold text-white rounded-2xl inline-flex items-center transition-all duration-500 hover:scale-105"
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                backdropFilter: "blur(20px)",
-                border: "2px solid rgba(255, 255, 255, 0.1)",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-              }}
-            >
-              <Zap className="mr-3 w-6 h-6 text-cyan-400" />
-              Beratung erhalten
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Floating elements */}
-        <motion.div
-          className="absolute top-1/4 left-10 w-4 h-4 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full"
           animate={{
-            y: [0, -20, 0],
-            opacity: [0.5, 1, 0.5],
-            scale: [1, 1.2, 1]
+            rotate: [0, 360],
+            scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-20 left-[15%] w-32 h-32"
+        >
+          <div className="w-full h-full border-2 border-orange-400/30 rounded-full" />
+          <div className="absolute inset-4 border border-pink-400/40 rounded-full" />
+        </motion.div>
+        
+        <motion.div
+          animate={{
+            rotate: [360, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 25,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-20 w-6 h-6 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.3, 1]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
+          className="absolute bottom-32 right-[10%] w-24 h-24 border-2 border-cyan-400/30 rotate-45"
         />
       </div>
-    </section>
+      
+      <div className="relative z-10 text-center max-w-7xl mx-auto">
+        {/* Premium Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.8 }}
+          animate={isHeroInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 1, delay: 0.2, type: "spring" }}
+          className="mb-12"
+        >
+          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 backdrop-blur-xl mb-8 group hover:scale-105 transition-all duration-500"
+               style={{
+                 background: "linear-gradient(135deg, rgba(255, 154, 0, 0.1), rgba(255, 105, 180, 0.1), rgba(0, 255, 255, 0.05))",
+                 boxShadow: "0 20px 40px -12px rgba(255, 105, 180, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+               }}>
+            <div className="flex items-center gap-2">
+              <Star className="w-5 h-5 text-orange-400 fill-orange-400" />
+              <Star className="w-5 h-5 text-pink-400 fill-pink-400" />
+              <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" />
+            </div>
+            <span className="text-white font-bold text-lg">
+              ELITE EXPERIENCE
+            </span>
+            <Sparkles className="w-6 h-6 text-orange-400" />
+          </div>
+        </motion.div>
+        
+        {/* Kinetic Typography Headlines */}
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={isHeroInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-6xl md:text-8xl lg:text-9xl font-black mb-4 leading-[0.85] overflow-hidden"
+        >
+          <div className="mb-2">
+            {text1.map((letter, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate={isHeroInView ? "visible" : "hidden"}
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400"
+                style={{
+                  backgroundSize: "200% 200%",
+                  filter: "drop-shadow(0 0 30px rgba(255, 105, 180, 0.6))"
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </div>
+          <div>
+            {text2.map((letter, i) => (
+              <motion.span
+                key={i}
+                custom={i + text1.length}
+                variants={letterVariants}
+                initial="hidden"
+                animate={isHeroInView ? "visible" : "hidden"}
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
+                style={{
+                  backgroundSize: "200% 200%",
+                  filter: "drop-shadow(0 0 30px rgba(0, 255, 255, 0.6))"
+                }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
+          </div>
+        </motion.h1>
+        
+        {/* Animated Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="text-2xl md:text-3xl text-slate-300 mb-16 max-w-5xl mx-auto leading-relaxed font-light"
+        >
+          Tauche ein in die{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-400 font-semibold">
+            Zukunft des Lebens
+          </span>
+          {" "}– wo jede Entscheidung{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
+            perfekt optimiert
+          </span>
+          {" "}ist.
+        </motion.p>
+        
+        {/* Advanced CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+        >
+          <Link
+            to="/empfehlungen"
+            className="group relative overflow-hidden px-12 py-6 text-xl font-bold text-white rounded-2xl inline-flex items-center transition-all duration-700 hover:scale-110 hover:rotate-1"
+            style={{
+              background: "linear-gradient(135deg, #ff9a00, #ff69b4, #00ffff, #8a2be2)",
+              backgroundSize: "300% 300%",
+              boxShadow: "0 25px 50px -12px rgba(255, 105, 180, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)"
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                background: isHovered 
+                  ? "linear-gradient(135deg, #8a2be2, #00ffff, #ff69b4, #ff9a00)"
+                  : "linear-gradient(135deg, #ff9a00, #ff69b4, #00ffff, #8a2be2)",
+                backgroundPosition: isHovered ? "100% 100%" : "0% 0%"
+              }}
+              transition={{ duration: 0.8 }}
+              style={{ backgroundSize: "300% 300%" }}
+            />
+            <span className="relative z-10 flex items-center">
+              EVOLUTION STARTEN
+              <motion.div
+                animate={{ rotate: isHovered ? 360 : 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                <Zap className="ml-3 w-6 h-6" />
+              </motion.div>
+            </span>
+          </Link>
+          
+          <Link
+            to="/ueber-mich"
+            className="px-12 py-6 text-xl font-semibold backdrop-blur-xl border-2 text-white rounded-2xl inline-flex items-center transition-all duration-500 hover:scale-105"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              borderImage: "linear-gradient(135deg, rgba(255, 154, 0, 0.5), rgba(0, 255, 255, 0.5)) 1",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.3)"
+            }}
+          >
+            MEHR ERFAHREN
+            <ArrowRight className="ml-3 w-6 h-6" />
+          </Link>
+        </motion.div>
+      </div>
+    </motion.section>
   );
 };
 
