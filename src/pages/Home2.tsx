@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
@@ -35,21 +34,21 @@ const Home2 = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Theme-aware gradient colors
+  // Theme-aware gradient colors with MUCH more contrast
   const getThemeGradients = () => {
     if (theme === 'light') {
       return {
-        primary: 'rgba(99, 102, 241, 0.15)',
-        secondary: 'rgba(139, 92, 246, 0.12)',
-        accent: 'rgba(236, 72, 153, 0.08)',
-        complementary: 'rgba(16, 185, 129, 0.15)'
+        primary: 'rgba(99, 102, 241, 0.3)',
+        secondary: 'rgba(139, 92, 246, 0.25)',
+        accent: 'rgba(236, 72, 153, 0.2)',
+        complementary: 'rgba(16, 185, 129, 0.25)'
       };
     } else {
       return {
-        primary: 'rgba(34, 197, 94, 0.15)',
-        secondary: 'rgba(6, 182, 212, 0.12)',
-        accent: 'rgba(168, 85, 247, 0.08)',
-        complementary: 'rgba(245, 158, 11, 0.15)'
+        primary: 'rgba(34, 197, 94, 0.4)',
+        secondary: 'rgba(6, 182, 212, 0.35)',
+        accent: 'rgba(168, 85, 247, 0.3)',
+        complementary: 'rgba(245, 158, 11, 0.25)'
       };
     }
   };
@@ -153,3 +152,5 @@ const Home2 = () => {
 };
 
 export default Home2;
+
+</edits_to_apply>
