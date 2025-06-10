@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTheme } from "../contexts/ThemeContext";
 import PageTransition from "../components/UI/PageTransition";
 import ParticleBackground from "../components/Home2/ParticleBackground";
 import UltraModernHero from "../components/Home2/UltraModernHero";
@@ -13,6 +14,7 @@ import EasterEggs from "../components/UI/EasterEggs";
 const Home2 = () => {
   const { scrollYProgress } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { theme } = useTheme();
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
@@ -33,16 +35,40 @@ const Home2 = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Theme-aware gradient colors
+  const getThemeGradients = () => {
+    if (theme === 'light') {
+      return {
+        primary: 'rgba(99, 102, 241, 0.15)',
+        secondary: 'rgba(139, 92, 246, 0.12)',
+        accent: 'rgba(236, 72, 153, 0.08)',
+        complementary: 'rgba(16, 185, 129, 0.15)'
+      };
+    } else {
+      return {
+        primary: 'rgba(34, 197, 94, 0.15)',
+        secondary: 'rgba(6, 182, 212, 0.12)',
+        accent: 'rgba(168, 85, 247, 0.08)',
+        complementary: 'rgba(245, 158, 11, 0.15)'
+      };
+    }
+  };
+
+  const themeGradients = getThemeGradients();
+
   return (
     <PageTransition>
       <div className="relative min-h-screen overflow-hidden">
         {/* Scroll Progress Indicator */}
         <ScrollProgressIndicator />
         
-        {/* Aurora Gradient Background */}
-        <div className="fixed inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900" />
+        {/* Theme-aware Background */}
+        <div 
+          className="fixed inset-0" 
+          style={{ background: 'var(--gradient-background)' }}
+        />
         
-        {/* Dynamic Gradient Overlay */}
+        {/* Dynamic Theme-aware Gradient Overlay */}
         <motion.div 
           className="fixed inset-0 z-10"
           style={{ 
@@ -51,14 +77,14 @@ const Home2 = () => {
             opacity,
             background: `
               radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 154, 0, 0.15) 0%, 
-                rgba(255, 105, 180, 0.12) 25%, 
-                rgba(0, 255, 255, 0.08) 50%, 
+                ${themeGradients.primary} 0%, 
+                ${themeGradients.secondary} 25%, 
+                ${themeGradients.accent} 50%, 
                 transparent 70%
               ),
               radial-gradient(circle at ${100 - mousePosition.x}% ${100 - mousePosition.y}%, 
-                rgba(138, 43, 226, 0.15) 0%, 
-                rgba(255, 20, 147, 0.12) 30%, 
+                ${themeGradients.complementary} 0%, 
+                ${themeGradients.primary} 30%, 
                 transparent 60%
               )
             `,
@@ -70,10 +96,15 @@ const Home2 = () => {
           <ParticleBackground />
         </div>
 
-        {/* Aurora Light Effects */}
+        {/* Theme-aware Aurora Light Effects */}
         <div className="fixed inset-0 z-30 pointer-events-none">
           <motion.div
-            className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-radial from-orange-400/20 to-transparent rounded-full blur-3xl"
+            className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
+            style={{
+              background: theme === 'light' 
+                ? 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%)'
+            }}
             animate={{
               scale: [1, 1.2, 0.8, 1],
               opacity: [0.3, 0.6, 0.2, 0.4],
@@ -86,7 +117,12 @@ const Home2 = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-cyan-400/20 to-transparent rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl"
+            style={{
+              background: theme === 'light'
+                ? 'radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)'
+            }}
             animate={{
               scale: [0.8, 1.3, 1, 0.9],
               opacity: [0.2, 0.5, 0.3, 0.4],

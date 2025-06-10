@@ -34,16 +34,27 @@
 
     --radius: 0.5rem;
 
-    /* Enhanced Glassmorphism Variables */
-    --glass-bg: rgba(255, 255, 255, 0.08);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    --glass-hover: rgba(255, 255, 255, 0.12);
+    /* Light Mode - Modern Vibrant Color Palette */
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(99, 102, 241, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.15);
+    --glass-hover: rgba(255, 255, 255, 0.25);
     
-    /* Modern Gradient System */
-    --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-    --gradient-secondary: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+    /* Modern Light Mode Gradients - Vibrant & Fresh */
+    --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    --gradient-secondary: linear-gradient(135deg, #10b981, #06b6d4, #3b82f6);
     --gradient-accent: linear-gradient(135deg, #f59e0b, #ef4444, #ec4899);
+    --gradient-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    
+    /* Light Mode Specific Colors */
+    --home2-primary: #6366f1;
+    --home2-secondary: #8b5cf6;
+    --home2-accent: #ec4899;
+    --home2-success: #10b981;
+    --home2-warning: #f59e0b;
+    --home2-surface: rgba(255, 255, 255, 0.8);
+    --home2-text-primary: #1e293b;
+    --home2-text-secondary: #64748b;
     
     /* Animation Variables */
     --animation-fast: 0.2s;
@@ -82,11 +93,27 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
 
-    /* Dark Mode Glassmorphism */
+    /* Dark Mode - Cyber & Premium Color Palette */
     --glass-bg: rgba(15, 23, 42, 0.8);
-    --glass-border: rgba(71, 85, 105, 0.3);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --glass-border: rgba(34, 197, 94, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
     --glass-hover: rgba(71, 85, 105, 0.4);
+
+    /* Modern Dark Mode Gradients - Cyber & Neon */
+    --gradient-primary: linear-gradient(135deg, #22c55e, #06b6d4, #a855f7);
+    --gradient-secondary: linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6);
+    --gradient-accent: linear-gradient(135deg, #06b6d4, #3b82f6, #6366f1);
+    --gradient-background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    
+    /* Dark Mode Specific Colors */
+    --home2-primary: #22c55e;
+    --home2-secondary: #06b6d4;
+    --home2-accent: #a855f7;
+    --home2-success: #10b981;
+    --home2-warning: #f59e0b;
+    --home2-surface: rgba(15, 23, 42, 0.9);
+    --home2-text-primary: #f1f5f9;
+    --home2-text-secondary: #94a3b8;
   }
 }
 
@@ -99,9 +126,14 @@
     @apply bg-background text-foreground;
     font-variation-settings: 'wght' 400;
     transition: all 0.3s var(--ease-smooth);
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background: var(--gradient-background);
     background-attachment: fixed;
     min-height: 100vh;
+  }
+  
+  /* Home2 specific body styling */
+  body.home2-page {
+    background: var(--gradient-background);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -110,6 +142,7 @@
     overflow: visible;
     line-height: 1.4;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--home2-text-primary);
   }
   
   h1 {
@@ -132,5 +165,42 @@
     @apply text-xl sm:text-2xl md:text-3xl;
     font-variation-settings: 'wght' 650;
     line-height: 1.4;
+  }
+
+  /* Home2 Theme-aware utility classes */
+  .home2-primary {
+    color: var(--home2-primary);
+  }
+  
+  .home2-secondary {
+    color: var(--home2-secondary);
+  }
+  
+  .home2-accent {
+    color: var(--home2-accent);
+  }
+  
+  .home2-surface {
+    background: var(--home2-surface);
+  }
+  
+  .home2-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .home2-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .home2-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .home2-text-primary {
+    color: var(--home2-text-primary);
+  }
+  
+  .home2-text-secondary {
+    color: var(--home2-text-secondary);
   }
 }
