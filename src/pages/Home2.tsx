@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
@@ -152,5 +153,3 @@ const Home2 = () => {
 };
 
 export default Home2;
-
-</edits_to_apply>
