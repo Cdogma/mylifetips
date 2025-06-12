@@ -1,4 +1,5 @@
 
+
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
@@ -35,21 +36,21 @@ const Home2 = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Theme-aware gradient colors with MUCH more contrast
+  // Theme-aware gradient colors with EXTREME contrast
   const getThemeGradients = () => {
     if (theme === 'light') {
       return {
-        primary: 'rgba(99, 102, 241, 0.3)',
-        secondary: 'rgba(139, 92, 246, 0.25)',
-        accent: 'rgba(236, 72, 153, 0.2)',
-        complementary: 'rgba(16, 185, 129, 0.25)'
+        primary: 'rgba(255, 20, 147, 0.8)',     // Deep Pink
+        secondary: 'rgba(0, 191, 255, 0.7)',    // Deep Sky Blue
+        accent: 'rgba(255, 105, 180, 0.6)',     // Hot Pink
+        complementary: 'rgba(50, 205, 50, 0.7)' // Lime Green
       };
     } else {
       return {
-        primary: 'rgba(34, 197, 94, 0.4)',
-        secondary: 'rgba(6, 182, 212, 0.35)',
-        accent: 'rgba(168, 85, 247, 0.3)',
-        complementary: 'rgba(245, 158, 11, 0.25)'
+        primary: 'rgba(0, 255, 255, 0.9)',      // Electric Cyan
+        secondary: 'rgba(255, 0, 255, 0.8)',    // Electric Magenta
+        accent: 'rgba(0, 255, 0, 0.7)',         // Electric Green
+        complementary: 'rgba(255, 255, 0, 0.6)' // Electric Yellow
       };
     }
   };
@@ -68,7 +69,7 @@ const Home2 = () => {
           style={{ background: 'var(--gradient-background)' }}
         />
         
-        {/* Dynamic Theme-aware Gradient Overlay */}
+        {/* Dynamic Theme-aware Gradient Overlay with EXTREME colors */}
         <motion.div 
           className="fixed inset-0 z-10"
           style={{ 
@@ -96,18 +97,18 @@ const Home2 = () => {
           <ParticleBackground />
         </div>
 
-        {/* Theme-aware Aurora Light Effects */}
+        {/* Theme-aware Aurora Light Effects with EXTREME colors */}
         <div className="fixed inset-0 z-30 pointer-events-none">
           <motion.div
             className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
             style={{
               background: theme === 'light' 
-                ? 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)'
-                : 'radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%)'
+                ? 'radial-gradient(circle, rgba(255, 20, 147, 0.6) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, transparent 70%)'
             }}
             animate={{
               scale: [1, 1.2, 0.8, 1],
-              opacity: [0.3, 0.6, 0.2, 0.4],
+              opacity: [0.3, 0.8, 0.2, 0.6],
               x: [0, 100, -50, 0],
             }}
             transition={{
@@ -120,12 +121,12 @@ const Home2 = () => {
             className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl"
             style={{
               background: theme === 'light'
-                ? 'radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)'
-                : 'radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)'
+                ? 'radial-gradient(circle, rgba(0, 191, 255, 0.6) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(255, 0, 255, 0.8) 0%, transparent 70%)'
             }}
             animate={{
               scale: [0.8, 1.3, 1, 0.9],
-              opacity: [0.2, 0.5, 0.3, 0.4],
+              opacity: [0.2, 0.7, 0.3, 0.5],
               y: [0, -80, 40, 0],
             }}
             transition={{
